@@ -19,8 +19,8 @@ app.use(passport.session());
 app.use(cookieParser());
 
 db.sync().then(() =>
-  app.listen(6666, function () {
-    console.log("Example app listening on port 6666!");
+  app.listen(3000, function () {
+    console.log("Example app listening on port 3000!");
   })
 );
 app.use("/api", require("./routes"));
