@@ -23,6 +23,10 @@ User.init(
     },
     salt: {
       type: S.TEXT
+    },
+    isAdmin: {
+      type: S.BOOLEAN,
+      defaultValue: false
     }
   },
   { sequelize: db, modelName: "user" }
