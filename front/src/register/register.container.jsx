@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
-import RegisterForm from "../login/login.component";
+import RegisterForm from "../register/register.component";
 
 export class RegisterContainer extends React.Component {
   constructor() {
     super();
     this.state = {
       userInput: "",
-      passInput: ""
+      passInput: "",
+      mailInput: ""
     };
     this.handlePassInput = this.handlePassInput.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
