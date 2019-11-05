@@ -1,7 +1,6 @@
 const crypto = require("crypto");
 const S = require("sequelize");
 const db = require("../config/db");
-const Favorite = require("./favs");
 
 class User extends S.Model {}
 
@@ -15,7 +14,13 @@ User.init(
       type: S.STRING,
       allowNull: false
     },
-
+    email: {
+      type: S.STRING,
+      validate: {
+        isEmail: true,
+        allowNull: false
+      }
+    },
     salt: {
       type: S.TEXT
     }
@@ -40,14 +45,5 @@ User.beforeCreate(user => {
   user.salt = user.randomSalt();
   user.password = user.hashPassword(user.password);
 });
-
-User.hasMany(Favorite, { as: "favorite" });
-
-User.prototype.addFavs = function(movie) {
-  return Favorite.create(movie).then(fav => {
-    this.addFavorite(fav);
-    return fav;
-  });
-};
 
 module.exports = User;

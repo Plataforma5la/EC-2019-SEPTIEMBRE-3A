@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
-import RegisterForm from "../components/RegisterLogin";
-
-export class RegisterContainer extends React.Component {
+import LoginForm from "./login.component";
+import { fetchUser } from "../store/actions/user";
+import { connect } from "react-redux";
+class LoginContainer extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -23,19 +24,26 @@ export class RegisterContainer extends React.Component {
       passInput: password
     });
   }
+
   handleSubmit(event) {
     event.preventDefault();
     if (this.state.userInput && this.state.passInput) {
-      axios.post("/api/users/register", {
-        username: this.state.userInput,
-        password: this.state.passInput
-      });
-      this.props.history.push("/");
+      axios
+        .post("http://localhost:3000/api/users/login", {
+          username: this.state.userInput,
+          password: this.state.passInput
+        })
+        .then(user => {
+          this.props.fetchUser();
+
+          this.props.history.push("/");
+        })
+        .catch(err => console.log(err));
     }
   }
   render() {
     return (
-      <RegisterForm
+      <LoginForm
         setUsername={this.handleUserInput}
         setPassword={this.handlePassInput}
         handleSubmit={this.handleSubmit}
@@ -43,3 +51,12 @@ export class RegisterContainer extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  fetchUser: () => dispatch(fetchUser())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(LoginContainer);

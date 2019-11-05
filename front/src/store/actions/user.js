@@ -1,5 +1,4 @@
 import axios from "axios";
-import { receiveFavs } from "./favs";
 
 const receiveUser = user => ({
   type: "RECEIVE_USER",
@@ -17,5 +16,4 @@ export const fetchUser = () => dispatch =>
 export const logOutUser = () => dispatch =>
   axios.get("/api/users/logout").then(() => {
     dispatch(receiveUser({}));
-    dispatch(receiveFavs([]));
   });
