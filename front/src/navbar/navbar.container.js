@@ -1,35 +1,36 @@
-import React, { Component } from 'react'
-import NavBar from './navbar.component'
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import NavBar from "./navbar.component";
+import Button from "@material-ui/core/Button";
+import { logOutUser } from "../store/actions/user";
+import { connect } from "react-redux";
 
-export class navbarContainer extends Component {
-    constructor(props) {
-        super(props)
-        this.handleLogOut = this.handleLogOut.bind(this);
-    }
-    handleLogOut() {
-        this.props.logOutUser();
-        this.props.history.push("/");
-    }
-    render() {
-        let greet;
-        let botonLog;
-        let botonReg;
-        if (this.props.user) {
-            greet = "Bienvenido " + this.props.user.username
-            botonLog = <Button onclick={this.handleLogOut} color="inherit">Logout</Button>
-        } else {
-            greet = ""
-            botonLog = <Link className="thumbnail" to={`/login`}><Button color="inherit">Login</Button></Link>
-            botonReg = <Link className="thumbnail" to={`/register`}><Button color="inherit">Register</Button></Link>
-        }
-        return (
-            <div>
-                <NavBar greeting={greet} botonLog={botonLog} botonReg={botonReg} />
-            </div>
-        )
-    }
+export class NavbarContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+  handleLogOut() {
+    this.props.logOutUser();
+    this.props.history.push("/");
+  }
+  render() {
+    return (
+      <div>
+        <NavBar user={this.props.user} handleLogOut={this.handleLogOut} />
+      </div>
+    );
+  }
 }
 
-export default navbarContainer
+const mapStateToProps = ({ logged }) => ({
+  user: logged.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  logOutUser: () => dispatch(logOutUser())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavbarContainer);
