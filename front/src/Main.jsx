@@ -4,6 +4,7 @@ import RegisterContainer from "./register/register.container";
 import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
+import SingleProductContainer from "./SingleProduct/singleProduct.container"
 import ProductListContainer from "./productList/productList.container";
 import FilteredProductListContainer from "./productList/filteredproductList.container";
 import NavBar from "./navbar/navbar.container";
@@ -36,9 +37,17 @@ class Main extends React.Component {
           />
           <Route
             exact
-            path="/products"
-            render={() => <ProductListContainer history={this.props.history} />}
+            path="/product/:productID"
+            render={() => <SingleProductContainer history={this.props.history} />}
           />
+          <Route
+            exact
+            path="/"
+            render={() =>  <ProductListContainer history={this.props.history} />}
+          />        
+       
+        
+
           <Route
             exact
             path="/filteredproducts/:catId"
