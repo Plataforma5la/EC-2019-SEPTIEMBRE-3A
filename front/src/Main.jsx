@@ -5,6 +5,8 @@ import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
 
+import Sidebar from "./sidebar/sidebar.container";
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+        <Sidebar />
         <Switch>
           <Route
             exact
