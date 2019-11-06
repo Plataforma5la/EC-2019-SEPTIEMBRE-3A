@@ -35,7 +35,6 @@ class LoginContainer extends React.Component {
         })
         .then(user => {
           this.props.fetchUser();
-
           this.props.history.push("/");
         })
         .catch(err => console.log(err));

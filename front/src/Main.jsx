@@ -4,6 +4,7 @@ import { RegisterContainer } from "./register/register.container";
 import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
+import NavBar from "./navbar/navbar.component"
 
 class Main extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+        <NavBar />
         <Switch>
           <Route
             exact
