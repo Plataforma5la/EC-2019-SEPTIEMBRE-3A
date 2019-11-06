@@ -22,13 +22,13 @@ app.use(passport.session());
 app.use(cookieParser());
 
 db.sync().then(() =>
-  app.listen(3001, function () {
+  app.listen(3000, function() {
     console.log("Example app listening on port 3000!");
   })
 );
 app.use("/api", require("./routes"));
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   if (path.extname(req.path).length > 0) {
     res.status(404).end();
   } else {
@@ -36,6 +36,6 @@ app.use(function (req, res, next) {
   }
 });
 
-app.get("/*", function (req, res) {
+app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
