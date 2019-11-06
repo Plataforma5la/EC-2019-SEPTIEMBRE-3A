@@ -1,4 +1,17 @@
+const Category = require('./models/categories')
 const Product = require("./models/products");
+
+Category.bulkCreate([
+  {
+    name: "Impulsor"
+  },
+  {
+    name: "Vibrador"
+  },
+  {
+    name: "Anal"
+  }
+]);
 
 Product.bulkCreate([
   {
