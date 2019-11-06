@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import RegisterContainer from "./register/register.container";
 import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
-import { logOutUser } from "./store/actions/user"
 import { connect } from "react-redux";
 import ProductListContainer from "./productList/productList.container";
 import NavBar from "./navbar/navbar.container";
@@ -19,8 +18,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <NavBar user={this.props.user} />
-        <ProductListContainer history={this.props.history} />
+        <NavBar user={this.props.user} history={this.props.history} />
         <Switch>
           <Route
             exact
@@ -33,6 +31,7 @@ class Main extends React.Component {
             render={() => <LoginContainer history={this.props.history} />}
           />
         </Switch>
+        <ProductListContainer history={this.props.history} />
       </div>
     );
   }
@@ -43,7 +42,7 @@ const mapStateToProps = ({ logged }) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchUser: () => dispatch(fetchUser()),
-  logOutUser: () => dispatch(fetchUser)
+  logOutUser: () => dispatch(logOutUser())
 });
 
 export default connect(
