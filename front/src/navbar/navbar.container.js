@@ -1,24 +1,36 @@
-import React, { Component } from 'react'
-import NavBar from './navbar.component'
+import React, { Component } from "react";
+import NavBar from "./navbar.component";
+import Button from "@material-ui/core/Button";
+import { logOutUser } from "../store/actions/user";
+import { connect } from "react-redux";
 
-export class navbarContainer extends Component {
-    constructor(props) {
-        super(props)
-
-    }
-    render() {
-        let greet;
-        if (this.props.user) {
-            greet = "Bienvenido " + this.props.user.username
-        } else {
-            greet = ''
-        }
-        return (
-            <div>
-                <NavBar greeting={greet} />
-            </div>
-        )
-    }
+export class NavbarContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+  handleLogOut() {
+    this.props.logOutUser();
+    this.props.history.push("/");
+  }
+  render() {
+    return (
+      <div>
+        <NavBar user={this.props.user} handleLogOut={this.handleLogOut} />
+      </div>
+    );
+  }
 }
 
-export default navbarContainer
+const mapStateToProps = ({ logged }) => ({
+  user: logged.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  logOutUser: () => dispatch(logOutUser())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavbarContainer);
