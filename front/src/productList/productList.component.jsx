@@ -5,7 +5,7 @@ function ProductList({ products }) {
   return (
     <div>
       {products.map(product => (
-        <div className="card" style={{ width: 200 }} key={product.productID}>
+        <div className="card" style={{ width: 200 }} key={product.id}>
           <Link className="thumbnail" to={`/${product.name}`}>
             <img src={product.img1Url} className="card-img-top"></img>
           </Link>

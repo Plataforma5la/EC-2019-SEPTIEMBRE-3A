@@ -16,9 +16,9 @@ User.init(
     },
     email: {
       type: S.STRING,
+      allowNull: false,
       validate: {
-        isEmail: true,
-        allowNull: false
+        isEmail: true
       }
     },
     salt: {
