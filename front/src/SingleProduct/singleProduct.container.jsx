@@ -1,7 +1,7 @@
 import React from "react";
 import SingleProduct from "./singleProduct.component";
 import { connect } from "react-redux";
-import Navbar from "";
+import Navbar from "./navbar/navbar.container";
 
 class SingleProductContainer extends React.Component {
   constructor() {
