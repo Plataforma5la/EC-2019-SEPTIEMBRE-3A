@@ -101,10 +101,9 @@ db.sync({force: true})
       }
       ])
       .then((categories) =>{
-        console.log("@@@@", categories)
         categories.forEach(X => {
-          X.addProducts(products[Math.floor(Math.random() * 3)])
-          X.addProducts(products[Math.floor(Math.random() * 3)])
+          X.addProducts(products[Math.floor(Math.random() * products.length)])
+          X.addProducts(products[Math.floor(Math.random() * products.length)])
     })
   })
 })
