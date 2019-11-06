@@ -36,11 +36,16 @@ class Main extends React.Component {
           />
           <Route
             exact
-            path="/singleProduct/:productID"
+            path="/product/:productID"
             render={() => <SingleProductContainer history={this.props.history} />}
           />
+          <Route
+            exact
+            path="/"
+            render={() =>  <ProductListContainer history={this.props.history} />}
+          />        
+       
         </Switch>
-        <ProductListContainer history={this.props.history} />
       </div>
     );
   }

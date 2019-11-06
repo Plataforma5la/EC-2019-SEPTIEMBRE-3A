@@ -1,23 +1,33 @@
 import React from "react";
+import Carousel from 'react-bootstrap/Carousel'
 
 export default function({ product }) {
-  
-  let image = product.img1Url
-
     return (
     <div className="container">
       <div className="row">
-        {product.img2Url ? (
-          <di>
-            <img src={image} alt="Picture of a dildo" />
-            <button className="pull-left" onClick={()=> ( image = product.img1Url)}>Flecha izq</button>
-            <button className="pull-right" onClick={()=> ( image = product.img2Url)}>Flecha der</button>
-          </di>
-        ) : (
-          <img src={product.img1Url} alt="Picture of a dildo" />
-        )}
+        <Carousel>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={product.img1Url}
+      alt="Dildo pic"
+    />
+    <Carousel.Caption>
+      <h1 className="productTitle">{product.name}</h1>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={product.img1Url}
+      alt="Dildo pic"
+    />
 
-
+    <Carousel.Caption>
+      <h1 className="productTitle">{product.name}</h1>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
       </div>
       <div className="row">
         <h3>{product.name}</h3>

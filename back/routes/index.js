@@ -10,5 +10,4 @@ router.use("/products", productListRouter);
 router.use("/singleProduct", singleProductDataRouter);
 router.use("/categories", categoryRouter);
 
-
 module.exports = router;
