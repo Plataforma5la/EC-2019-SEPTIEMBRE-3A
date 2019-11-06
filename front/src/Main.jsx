@@ -4,6 +4,7 @@ import { RegisterContainer } from "./register/register.container";
 import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
+import SingleProductContainer from "./SingleProduct/singleProduct.container"
 
 class Main extends React.Component {
   constructor(props) {
@@ -26,6 +27,11 @@ class Main extends React.Component {
             exact
             path="/login"
             render={() => <LoginContainer history={this.props.history} />}
+          />
+          <Route
+            exact
+            path="/singleProduct"
+            render={() => <SingleProductContainer history={this.props.history} />}
           />
         </Switch>
       </div>
