@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ({categories}) { 
+export default function ({categories, FilterCategory}) { 
   
   return (
   
@@ -18,7 +18,7 @@ export default function ({categories}) {
           {
             categories.map(category => {
               return (
-                <li key={category.id} className="playlist-item menu-item">
+                <li key={category.id} className="playlist-item menu-item" onClick={() => FilterCategory(category.id)}>
                   <Link to={`/filteredproducts/${category.id}`}>{category.name}</Link>
                 </li>
               );

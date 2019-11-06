@@ -9,7 +9,6 @@ class FilteredProductListContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("@@@Categoria: ", this.props.catId)
     this.props.fetchFilteredProductList(this.props.catId);
   }
 
