@@ -7,8 +7,6 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const Product = require("./models/products");
-const Categorie = require("./models/categories");
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
@@ -22,7 +20,7 @@ app.use(passport.session());
 app.use(cookieParser());
 
 db.sync().then(() =>
-  app.listen(3000, function () {
+  app.listen(3001, function () {
     console.log("Example app listening on port 3000!");
   })
 );

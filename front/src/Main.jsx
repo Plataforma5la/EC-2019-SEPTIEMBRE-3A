@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import ProductListContainer from "./productList/productList.container";
 import NavBar from "./navbar/navbar.container";
 
+import Sidebar from "./sidebar/sidebar.container";
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +21,7 @@ class Main extends React.Component {
     return (
       <div>
         <NavBar user={this.props.user} history={this.props.history} />
+        <Sidebar />
         <Switch>
           <Route
             exact
