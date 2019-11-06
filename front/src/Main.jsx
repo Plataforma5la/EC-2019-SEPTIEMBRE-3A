@@ -5,7 +5,8 @@ import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
 import { logOutUser } from "./store/actions/user"
 import { connect } from "react-redux";
-import NavBar from "./navbar/navbar.container"
+import ProductListContainer from "./productList/productList.container";
+import NavBar from "./navbar/navbar.container";
 
 class Main extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class Main extends React.Component {
     return (
       <div>
         <NavBar user={this.props.user} />
+        <ProductListContainer history={this.props.history} />
         <Switch>
           <Route
             exact
