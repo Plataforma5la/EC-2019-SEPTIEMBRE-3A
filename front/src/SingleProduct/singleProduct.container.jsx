@@ -1,8 +1,7 @@
 import React from "react";
 import SingleProduct from "./singleProduct.component";
 import { connect } from "react-redux";
-import Navbar from ""
-
+import Navbar from "";
 
 class SingleProductContainer extends React.Component {
   constructor() {
@@ -11,17 +10,19 @@ class SingleProductContainer extends React.Component {
 
   render() {
     return (
+      <div>
         <Navbar />
-      <SingleProduct
-        product={this.props.product}
-        //reviews={this.props.reviews}
-      />
+        <SingleProduct
+          product={this.props.product}
+          //reviews={this.props.reviews}
+        />
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  product: state.product.selected ,
+  product: state.product.selected,
   reviews: state.product.reviews
 });
 
