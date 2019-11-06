@@ -5,12 +5,12 @@ const searchProductList = products => ({
   products
 });
 
-const bringProductList = products => dispatch =>
+const fetchProductList = () => dispatch =>
   axios
-    .get("http://localhost:3000/api/products")
+    .get("/api/products")
     .then(res => res.data) //recibo la data del back //
     .then(products => dispatch(searchProductList(products)));
-export default bringProductList;
+export default fetchProductList;
 
 
 const setCategories = function(categories){

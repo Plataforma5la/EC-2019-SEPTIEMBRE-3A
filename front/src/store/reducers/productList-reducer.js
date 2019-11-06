@@ -7,9 +7,9 @@ const initialState = {
   export default (state = initialState, action) => {
     switch (action.type) {
       case "SEARCH_PRODUCTLIST":
-        return Object.assign({}, state, {
-          list: [...state.productList, action.products]
-        });
+          return Object.assign({}, state, {
+            productList: action.products
+          });
       case "SET_CATEGORIES":
       return Object.assign({}, state, {
           categories: action.categories

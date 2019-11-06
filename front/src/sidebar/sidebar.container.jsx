@@ -36,8 +36,8 @@ FilterCategory(e){
 
 const mapStateToProps = function(state) {
     return {
-        categories: state.list.categories,
-        category: state.list.category
+        categories: state.products.categories,
+        category: state.products.category
     }
   }
   
