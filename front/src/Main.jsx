@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import RegisterContainer from "./register/register.container";
 import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
+import { logOutUser } from "./store/actions/user"
 import { connect } from "react-redux";
 import NavBar from "./navbar/navbar.container"
 
@@ -39,7 +40,8 @@ const mapStateToProps = ({ logged }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUser: () => dispatch(fetchUser())
+  fetchUser: () => dispatch(fetchUser()),
+  logOutUser: () => dispatch(fetchUser)
 });
 
 export default connect(

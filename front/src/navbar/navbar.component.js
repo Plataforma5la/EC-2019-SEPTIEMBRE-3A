@@ -7,6 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function MenuAppBar({ greeting }) {
+export default function MenuAppBar({ greeting, boton }) {
     const classes = useStyles();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -40,7 +41,6 @@ export default function MenuAppBar({ greeting }) {
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    {greeting}
                     {auth && (
                         <div>
                             <IconButton
@@ -66,11 +66,11 @@ export default function MenuAppBar({ greeting }) {
                                 open={open}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
                             </Menu>
                         </div>
                     )}
+                    {greeting}
+                    {boton}
                 </Toolbar>
             </AppBar>
         </div>
