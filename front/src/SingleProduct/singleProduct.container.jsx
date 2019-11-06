@@ -21,8 +21,8 @@ class SingleProductContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  product: "hola" //state.product.selected ,
-  //reviews: state.product.reviews
+  product: state.product.selected ,
+  reviews: state.product.reviews
 });
 
 // const mapDispatchToProps = dispatch => ({
