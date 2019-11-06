@@ -1,7 +1,7 @@
 import React from "react";
 import SingleProduct from "./singleProduct.component";
 import { connect } from "react-redux";
-import Navbar from "./navbar/navbar.container";
+//import Navbar from "./navbar/navbar.container";
 
 class SingleProductContainer extends React.Component {
   constructor() {
@@ -11,7 +11,7 @@ class SingleProductContainer extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <SingleProduct
           product={this.props.product}
           //reviews={this.props.reviews}

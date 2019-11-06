@@ -5,8 +5,8 @@ export default function({ product }) {
   let image = product.img1Url
 
     return (
-    <div>
-      <div>
+    <div className="container">
+      <div className="row">
         {product.img2Url ? (
           <di>
             <img src={image} alt="Picture of a dildo" />
@@ -19,12 +19,12 @@ export default function({ product }) {
 
 
       </div>
-      <div>
+      <div className="row">
         <h3>{product.name}</h3>
         <p>{product.description}</p>
         <button>Boton de carrito</button>
       </div>
-      <div>
+      <div className="row">
         <p>Rating: {product.rating}</p>
       </div>
     </div>

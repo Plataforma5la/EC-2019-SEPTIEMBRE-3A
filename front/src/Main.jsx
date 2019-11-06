@@ -30,7 +30,7 @@ class Main extends React.Component {
           />
           <Route
             exact
-            path="/singleProduct"
+            path="/singleProduct/:productID"
             render={() => <SingleProductContainer history={this.props.history} />}
           />
         </Switch>
