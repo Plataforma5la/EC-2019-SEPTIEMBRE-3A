@@ -14,16 +14,19 @@ export class navbarContainer extends Component {
     }
     render() {
         let greet;
-        let boton;
+        let botonLog;
+        let botonReg;
         if (this.props.user) {
             greet = "Bienvenido " + this.props.user.username
-            boton = <Button onclick={this.handleLogOut} color="inherit">Logout</Button>
+            botonLog = <Button onclick={this.handleLogOut} color="inherit">Logout</Button>
         } else {
-            greet = <Link className="thumbnail" to={`/login`}><Button color="inherit">Login</Button></Link>
+            greet = ""
+            botonLog = <Link className="thumbnail" to={`/login`}><Button color="inherit">Login</Button></Link>
+            botonReg = <Link className="thumbnail" to={`/register`}><Button color="inherit">Register</Button></Link>
         }
         return (
             <div>
-                <NavBar greeting={greet} boton={boton} />
+                <NavBar greeting={greet} botonLog={botonLog} botonReg={botonReg} />
             </div>
         )
     }
