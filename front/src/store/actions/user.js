@@ -17,3 +17,11 @@ export const logOutUser = () => dispatch =>
   axios.get("/api/users/logout").then(() => {
     dispatch(receiveUser({}));
   });
+
+export const registerUser = ({ username, email, password }) => dispatch =>
+  axios
+    .post("api/users/register", { username, email, password })
+    .then(res => res.data)
+    .then(user => {
+      dispatch(receiveUser(user));
+    });

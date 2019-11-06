@@ -34,8 +34,6 @@ class LoginContainer extends React.Component {
           password: this.state.passInput
         })
         .then(user => {
-          this.props.fetchUser();
-
           this.props.history.push("/");
         })
         .catch(err => console.log(err));
