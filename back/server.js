@@ -7,6 +7,9 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const Product = require("./models/products");
+const Categorie = require("./models/categories");
+
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

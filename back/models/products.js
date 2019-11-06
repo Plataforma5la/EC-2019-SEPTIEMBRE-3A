@@ -21,7 +21,11 @@ Product.init(
       type: S.INTEGER,
       allowNull: false
     },
-    imgUrl: {
+    img1Url: {
+      type: S.TEXT,
+      allowNull: false
+    },
+    img2Url: {
       type: S.TEXT,
       allowNull: false
     },
@@ -32,3 +36,5 @@ Product.init(
   },
   { sequelize: db, modelName: "product" }
 );
+
+module.exports = Product;
