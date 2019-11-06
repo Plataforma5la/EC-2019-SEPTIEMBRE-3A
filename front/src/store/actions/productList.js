@@ -5,12 +5,26 @@ const searchProductList = products => ({
   products
 });
 
-const fetchProductList = () => dispatch =>
-  axios
+
+export const fetchProductList = function() {
+  return function (dispatch, getState) {
+    axios
     .get("/api/products")
     .then(res => res.data) //recibo la data del back //
     .then(products => dispatch(searchProductList(products)));
-export default fetchProductList;
+  };
+};
+
+export const fetchFilteredProductList = function(catid) {
+  return function (dispatch, getState) {
+    axios
+    .get(`/api/products/category/${catid}`)
+    .then(res => res.data) //recibo la data del back //
+    .then(category => {
+      dispatch(searchProductList(category.products))
+    });
+  };
+};
 
 
 const setCategories = function(categories){

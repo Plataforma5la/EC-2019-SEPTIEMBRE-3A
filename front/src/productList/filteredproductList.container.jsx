@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProductList from "./productList.component";
-import { fetchProductList } from "../store/actions/productList";
+import { fetchFilteredProductList } from "../store/actions/productList";
 
-class ProductListContainer extends Component {
+class FilteredProductListContainer extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.fetchProductList();
+    console.log("@@@Categoria: ", this.props.catId)
+    this.props.fetchFilteredProductList(this.props.catId);
   }
 
   render() {
@@ -28,10 +29,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchProductList: () => dispatch(fetchProductList())
+  fetchFilteredProductList: (catid) => dispatch(fetchFilteredProductList(catid))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductListContainer);
+)(FilteredProductListContainer);
