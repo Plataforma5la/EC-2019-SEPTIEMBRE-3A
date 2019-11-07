@@ -5,13 +5,14 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-
+import RegisterContainer from "../register/register.container";
+import LoginContainer from "../login/login.container";
 export default function MenuAppBar(props) {
   return (
     <div>
       <>
         <Navbar className="navbar">
-          <Navbar.Brand href="#home">E-Climax</Navbar.Brand>
+          <Navbar.Brand>E-Climax</Navbar.Brand>
           <Nav className="mr-auto">
             {props.user.username ? (
               <div id="bienvenido">
@@ -19,12 +20,8 @@ export default function MenuAppBar(props) {
               </div>
             ) : (
               <div>
-                <Link to="/login">
-                  <Button>login</Button>
-                </Link>
-                <Link to="/register">
-                  <Button>register</Button>
-                </Link>
+                <LoginContainer />
+                <RegisterContainer />
               </div>
             )}
             {props.user.username ? (
@@ -38,23 +35,5 @@ export default function MenuAppBar(props) {
         </Navbar>
       </>
     </div>
-
-    /*  <div className="navbar">
-             {props.user.username ? (
-                 <div>
-                     <p>Bienvenidx {props.user.username}</p>
-                     <Button onClick={props.handleLogOut}>Logout</Button>
-                 </div>
-             ) : (
-                     <div>
-                         <Link to="/login">
-                             <Button>login</Button>
-                         </Link>
-                         <Link to="/register">
-                             <Button>register</Button>
-                         </Link>
-                     </div>
-                 )}
-         </div> */
   );
 }
