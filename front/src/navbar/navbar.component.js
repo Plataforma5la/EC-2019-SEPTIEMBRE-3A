@@ -35,23 +35,5 @@ export default function MenuAppBar(props) {
         </Navbar>
       </>
     </div>
-
-    /*  <div className="navbar">
-             {props.user.username ? (
-                 <div>
-                     <p>Bienvenidx {props.user.username}</p>
-                     <Button onClick={props.handleLogOut}>Logout</Button>
-                 </div>
-             ) : (
-                     <div>
-                         <Link to="/login">
-                             <Button>login</Button>
-                         </Link>
-                         <Link to="/register">
-                             <Button>register</Button>
-                         </Link>
-                     </div>
-                 )}
-         </div> */
   );
 }
