@@ -8,13 +8,7 @@ import Axios from "axios";
 export class NavbarContainer extends Component {
   constructor(props) {
     super(props);
-    this.handleMe = this.handleMe.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this);
-  }
-
-  handleMe(){
-    Axios.get("/api/users/me")
-    .then(res=>console.log(res.data))
   }
 
   handleLogOut() {
@@ -24,7 +18,6 @@ export class NavbarContainer extends Component {
   render() {
     return (
       <div>
-      <button onClick={this.handleMe}></button>
         <NavBar user={this.props.user} handleLogOut={this.handleLogOut} />
       </div>
     );

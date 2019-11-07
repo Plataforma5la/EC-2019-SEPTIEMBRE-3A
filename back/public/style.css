@@ -5,7 +5,7 @@
 .singleProducPicBox {
   overflow: hidden;
   flex-direction: row;
-  background-color: whitesmoke;
+  background-color: rgb(87, 64, 82);
   border-radius: 100px;
 }
 
@@ -14,6 +14,7 @@
 }
 
 .singleProductPic {
+  object-fit: contain;
   height: 2%;
 }
 
@@ -28,10 +29,10 @@
 }
 
 body {
-  background-color: #efd2ee;
+  background-color: black;
 }
 .navbar {
-  background-color: purple;
+  background-color: #600624;
   z-index: 2;
   position: fixed;
   width: 100%;
@@ -49,12 +50,11 @@ body {
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   left: 0;
-  background-color: purple; /* Black */
+  background-color: #600624; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+  padding-top: 87px;
 }
 
-/* The navigation menu links */
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -63,7 +63,6 @@ body {
   display: block;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: #f1f1f1;
 }
@@ -89,16 +88,31 @@ body {
   text-align: center;
 }
 .main {
-  margin-left: 160px;
+  margin-left: 175px;
   padding: 0px 10px;
-  padding-top: 65px;
+  padding-top: 90px;
 }
 .productsContainer {
   margin-top: 20px;
 }
 
-.card-img-top{
-    width: 100%;
-    height: 210px;
-    object-fit: contain;
+.card-img-top {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+}
+
+.singleProductContainer {
+  padding-top: 10%;
+  padding-left: 10%;
+}
+
+#categorias {
+  text-align: center;
+}
+
+.navButton {
+  background-color: black;
+  color: white;
+  border: solid black;
 }
