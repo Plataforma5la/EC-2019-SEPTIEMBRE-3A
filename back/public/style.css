@@ -1,4 +1,9 @@
-.productTitle {
-    color: black
-    
+.navbar{
+    background-color: purple;
+}
+
+#bienvenido{
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
 }

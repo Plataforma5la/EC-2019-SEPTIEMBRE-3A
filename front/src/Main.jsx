@@ -20,7 +20,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="grid">
         <NavBar user={this.props.user} history={this.props.history} />
         <Sidebar />
         <Switch>
@@ -46,7 +46,7 @@ class Main extends React.Component {
           />        
           <Redirect from="/" to="/products" />
         </Switch>
-        
+
       </div>
     );
   }
