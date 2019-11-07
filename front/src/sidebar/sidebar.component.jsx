@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ({categories, FilterCategory}) { 
+export default function ({categories, FetchProductList, FilterbyCategory}) { 
   
   return (
   
@@ -13,13 +13,13 @@ export default function ({categories, FilterCategory}) {
       {/* <hr /> */}
       <section>
         <h4 className="text-muted">CATEGORIAS</h4>
-        <Link to={`/`}>VER TODAS</Link>
+        <Link to={`/`} onClick={() => FetchProductList()} >VER TODAS</Link>
         <ul className="list-unstyled">
           {
             categories.map(category => {
               return (
-                <li key={category.id} className="playlist-item menu-item" onClick={() => FilterCategory(category.id)}>
-                  <Link to={`/filteredproducts/${category.id}`}>{category.name}</Link>
+                <li key={category.id} className="playlist-item menu-item" onClick={() => FilterbyCategory(category.id)}>
+                  <Link to={`/`}>{category.name}</Link>
                 </li>
               );
             })
