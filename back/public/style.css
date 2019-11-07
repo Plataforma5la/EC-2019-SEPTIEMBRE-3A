@@ -7,6 +7,7 @@
 }
 
 .singleProducPicBox {
+  overflow: hidden;
   flex-direction: row;
   background-color: whitesmoke;
   border-radius: 100px;
@@ -21,23 +22,21 @@
 }
 
 .carousel-control-next-icon {
-  border-radius: 80px;
-}
-
-.carousel-control-prev-icon {
-  background-color: purple;
+  background-color: gray;
   border-radius: 50%;
 }
 
-body {
-    background-color: #EFD2EE;
-}
-.navbar{
-    background-color: purple;
+.carousel-control-prev-icon {
+  background-color: gray;
+  border-radius: 50%;
 }
 
-#bienvenido{
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
+.navbar {
+  background-color: purple;
+}
+
+#bienvenido {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
 }
