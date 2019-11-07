@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 
 function ProductList({ products, handleClick }) {
   return (
+<<<<<<< HEAD
     <div className="card-deck">
+=======
+    <div id="page-content-wrapper">
+>>>>>>> efaf3a8173a7ff7d0268fd7c8ac3aad6b5ff7f7b
       {products.map(product => (
         <div className="card" key={product.id}>
           <Link

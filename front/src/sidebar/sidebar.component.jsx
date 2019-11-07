@@ -1,16 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ({categories, FetchProductList, FilterbyCategory}) { 
-  
-  return (
-  
-    <div className="col-xs-2">
-    <section className='sidebar'>
-      {/* <img src="https://www.colourbox.com/preview/24207220-lips-kiss-vector-patch-sticker-isolated-on-white-cool-sexy-red-kissed-selphie-cartoon-sign-for-print-in-comics-fashion-pop-art-retro-style-80-s-90s.jpg" className="logo" /> */}
+export default function ({ categories, FetchProductList, FilterbyCategory }) {
 
-    
-      {/* <hr /> */}
+  return (
+
+
+    <div class="sidenav">
       <section>
         <h4 className="text-muted">CATEGORIAS</h4>
         <Link to={`/`} onClick={() => FetchProductList()} >VER TODAS</Link>
@@ -26,8 +22,10 @@ export default function ({categories, FetchProductList, FilterbyCategory}) {
           }
         </ul>
       </section>
-    </section>
-  </div>
-  
+    </div>
+
+
+
   );
 }
+
