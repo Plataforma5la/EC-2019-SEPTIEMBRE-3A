@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import SingleProductContainer from "./SingleProduct/singleProduct.container"
 import ProductListContainer from "./productList/productList.container";
 import NavBar from "./navbar/navbar.container";
-
+import "../../back/public/style.css"
 import Sidebar from "./sidebar/sidebar.container";
 
 class Main extends React.Component {
@@ -42,8 +42,8 @@ class Main extends React.Component {
           <Route
             exact
             path="/"
-            render={() =>  <ProductListContainer history={this.props.history} />}
-          />        
+            render={() => <ProductListContainer history={this.props.history} />}
+          />
           <Redirect from="/" to="/products" />
         </Switch>
 
