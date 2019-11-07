@@ -5,10 +5,9 @@ export default function ({ categories, FetchProductList, FilterbyCategory }) {
 
   return (
 
-
     <div class="sidenav">
       <section>
-        <h4 className="text-muted">CATEGORIAS</h4>
+        <h4 id="categorias">Categorias</h4>
         <Link to={`/`} onClick={() => FetchProductList()} >VER TODAS</Link>
         <ul className="list-unstyled">
           {
