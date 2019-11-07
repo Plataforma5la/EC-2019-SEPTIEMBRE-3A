@@ -6,7 +6,6 @@ import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
 import SingleProductContainer from "./SingleProduct/singleProduct.container"
 import ProductListContainer from "./productList/productList.container";
-import FilteredProductListContainer from "./productList/filteredproductList.container";
 import NavBar from "./navbar/navbar.container";
 
 import Sidebar from "./sidebar/sidebar.container";
@@ -45,14 +44,6 @@ class Main extends React.Component {
             path="/"
             render={() =>  <ProductListContainer history={this.props.history} />}
           />        
-       
-        
-
-          <Route
-            exact
-            path="/filteredproducts/:catId"
-            render={({match}) => <FilteredProductListContainer history={this.props.history} catId={match.params.catId} />}
-          />
           <Redirect from="/" to="/products" />
         </Switch>
         
