@@ -8,7 +8,7 @@ function ProductList({ products, handleClick }) {
         <div className="card" style={{ width: 200 }} key={product.id}>
           <Link
             className="thumbnail"
-            to={`/${product.id}`}
+            to={`/product/${product.id}`}
             onClick={() => handleClick(product.id)}
           >
             <img src={product.img1Url} className="card-img-top"></img>

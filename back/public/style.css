@@ -1,0 +1,15 @@
+.grid{
+    display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "header header header header"
+    ". . . ."
+    ". . . .";
+}
+
+
+.navbar {
+    grid-area: header;
+    background-color: brown;
+}

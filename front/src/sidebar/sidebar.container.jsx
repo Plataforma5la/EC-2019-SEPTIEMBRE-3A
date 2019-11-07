@@ -10,17 +10,17 @@ class Sidebar extends React.Component {
     // this.UsernamechangeHandler = this.UsernamechangeHandler.bind(this)
     // this.PasswordchangeHandler = this.PasswordchangeHandler.bind(this)
     // this.SubmitLogin = this.SubmitLogin.bind(this)
-    // this.SubmitLogout = this.SubmitLogout.bind(this)
+    this.FilterCategory = this.FilterCategory.bind(this)
   }
 
   componentDidMount() {
     this.props.getCategories();
   }
 
-  FilterCategory(e) {
+  FilterCategory(catid) {
     event.preventDefault();
-    console.log("@@@", this.state["category"]);
-    this.props.filterCategory(e.target.value);
+    console.log("@@@@", catid)
+    this.props.filterCategory(catid);
   }
 
   render() {

@@ -1,6 +1,6 @@
 const S = require("sequelize");
 const db = require("../config/db");
-const Category = require('./categories')
+const Categorie = require("./categories");
 
 class Product extends S.Model {}
 
@@ -42,7 +42,7 @@ Product.init(
   { sequelize: db, modelName: "product" }
 );
 
-Product.belongsToMany(Category, {through: 'product_categories'})
-
+// Product.hasMany(Categorie, { as: "categories" });
+Product.belongsToMany(Categorie, { through: "categorie_product" });
 
 module.exports = Product;
