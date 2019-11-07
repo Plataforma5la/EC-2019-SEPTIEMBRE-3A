@@ -21,7 +21,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div className="grid">
+      <div>
         <NavBar user={this.props.user} history={this.props.history} />
         <Sidebar />
         <Switch>
