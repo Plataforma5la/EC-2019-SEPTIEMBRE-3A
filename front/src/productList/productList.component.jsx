@@ -17,7 +17,14 @@ function ProductList({ products, handleClick }) {
           <div className="card-body">
             <h5 className="card-title">{product.name}</h5>
             <h5 className="card-title">{product.price}</h5>
-            <h5 className="card-title">{product.rating}</h5>
+
+            <h5 className="card-title">{product.ratingValue}</h5>
+            {product.categories.map(category => (
+                <i key={category.id} className="card-title">#{category.name}</i>
+            ))
+
+            }
+            
             {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
             <button>Agregar carrito</button>
           </div>

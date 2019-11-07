@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import SidebarComponent from "./sidebar.component";
 import { getCategories, filterCategory } from "../store/actions/categories";
+import { fetchProductList, fetchFilteredProductList } from "../store/actions/productList";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -10,23 +11,32 @@ class Sidebar extends React.Component {
     // this.UsernamechangeHandler = this.UsernamechangeHandler.bind(this)
     // this.PasswordchangeHandler = this.PasswordchangeHandler.bind(this)
     // this.SubmitLogin = this.SubmitLogin.bind(this)
-    // this.SubmitLogout = this.SubmitLogout.bind(this)
+    this.FetchProductList = this.FetchProductList.bind(this)
+    this.FilterbyCategory = this.FilterbyCategory.bind(this)
   }
 
   componentDidMount() {
     this.props.getCategories();
   }
 
-  FilterCategory(e) {
+  FetchProductList(){
     event.preventDefault();
-    console.log("@@@", this.state["category"]);
-    this.props.filterCategory(e.target.value);
+    this.props.fetchProductList();
+    this.props.filterCategory("");
+  }
+
+  FilterbyCategory(catid) {
+    event.preventDefault();
+    this.props.fetchFilteredProductList(catid);
+    this.props.filterCategory(catid);
   }
 
   render() {
     return (
       <SidebarComponent
+        FetchProductList={this.FetchProductList}
         FilterCategory={this.FilterCategory}
+        FilterbyCategory={this.FilterbyCategory}
         categories={this.props.categories}
       />
     );
@@ -35,15 +45,16 @@ class Sidebar extends React.Component {
 
 const mapStateToProps = function(state) {
   return {
-    categories: state.categories.categories,
-    category: state.category
+    categories: state.categories.categories
   };
 };
 
 const mapDispatchToProps = function(dispatch) {
   return {
     getCategories: () => dispatch(getCategories()),
-    filterCategory: category => dispatch(filterCategory(category))
+    fetchProductList: () => dispatch(fetchProductList()),
+    filterCategory: category => dispatch(filterCategory(category)),
+    fetchFilteredProductList: (catid) => dispatch(fetchFilteredProductList(catid))
   };
 };
 

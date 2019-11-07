@@ -23,5 +23,8 @@ export const getCategories = function() {
 };
 
 export const filterCategory = function(category) {
-  dispatch(setCategory(category));
-};
+  return function(dispatch, getState) {
+    dispatch(setCategory(category));
+    };
+  };
+
