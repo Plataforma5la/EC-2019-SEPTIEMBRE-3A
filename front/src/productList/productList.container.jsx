@@ -12,7 +12,8 @@ class ProductListContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProductList();
+    console.log("@@@t",this.props)
+    if (this.props.category == "") this.props.fetchProductList();
   }
 
   handleClick(id) {
@@ -33,7 +34,8 @@ class ProductListContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    productList: state.products.productList
+    productList: state.products.productList,
+    category: state.categories.category
   };
 };
 

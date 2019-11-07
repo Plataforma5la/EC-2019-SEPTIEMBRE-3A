@@ -1,3 +1,37 @@
+.productTitle {
+  color: black;
+}
+
+.singleProductContainer {
+  display: flex;
+}
+
+.singleProducPicBox {
+  flex-direction: row;
+  background-color: whitesmoke;
+  border-radius: 100px;
+}
+
+.singleProductDescription {
+  color: grey;
+}
+
+.singleProductPic {
+  height: 2%;
+}
+
+.carousel-control-next-icon {
+  border-radius: 80px;
+}
+
+.carousel-control-prev-icon {
+  background-color: purple;
+  border-radius: 50%;
+}
+
+body {
+    background-color: #EFD2EE;
+}
 .navbar{
     background-color: purple;
 }
