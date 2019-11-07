@@ -12,7 +12,7 @@ class ProductListContainer extends Component {
   }
 
   componentDidMount() {
-    if (this.props.category == "") this.props.fetchProductList();
+    this.props.fetchProductList();
   }
 
   handleClick(id) {
