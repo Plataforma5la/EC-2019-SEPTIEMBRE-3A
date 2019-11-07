@@ -1,6 +1,6 @@
 const initialState = {
   categories: [],
-  category: {}
+  category: ""
 };
 
 export default (state = initialState, action) => {

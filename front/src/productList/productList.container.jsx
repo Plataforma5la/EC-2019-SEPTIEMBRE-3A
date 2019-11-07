@@ -12,6 +12,7 @@ class ProductListContainer extends Component {
   }
 
   componentDidMount() {
+    console.log("@@@t",this.props)
     if (this.props.category == "") this.props.fetchProductList();
   }
 
