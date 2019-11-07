@@ -35,6 +35,7 @@ export default props => {
                 placeholder="Password"
                 onChange={e => props.setPassword(e.target.value)}
               />
+              <Form.Text className="text-muted">{props.wrongUser}</Form.Text>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

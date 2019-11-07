@@ -7,7 +7,8 @@ class LoginContainer extends React.Component {
     super();
     this.state = {
       userInput: "",
-      passInput: ""
+      passInput: "",
+      wrongUser: ""
     };
     this.handlePassInput = this.handlePassInput.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -27,11 +28,14 @@ class LoginContainer extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     if (this.state.userInput && this.state.passInput) {
-      this.props.loginUser({
-        username: this.state.userInput,
-        password: this.state.passInput
-      });
-      this.props.history.push("/");
+      this.props
+        .loginUser({
+          username: this.state.userInput,
+          password: this.state.passInput
+        })
+        .catch(err =>
+          this.setState({ wrongUser: "incorrect username or password" })
+        );
     }
   }
   render() {
@@ -40,6 +44,7 @@ class LoginContainer extends React.Component {
         setUsername={this.handleUserInput}
         setPassword={this.handlePassInput}
         handleSubmit={this.handleSubmit}
+        wrongUser={this.state.wrongUser}
       />
     );
   }
