@@ -43,7 +43,6 @@ class RegisterContainer extends React.Component {
         email: this.state.mailInput,
         password: this.state.passInput
       });
-      this.props.history.push("/");
     }
   }
   render() {
