@@ -3,6 +3,7 @@
 }
 
 .singleProducPicBox {
+  overflow: hidden;
   flex-direction: row;
   background-color: whitesmoke;
   border-radius: 100px;
@@ -17,11 +18,12 @@
 }
 
 .carousel-control-next-icon {
-  border-radius: 80px;
+  background-color: gray;
+  border-radius: 50%;
 }
 
 .carousel-control-prev-icon {
-  background-color: purple;
+  background-color: gray;
   border-radius: 50%;
 }
 

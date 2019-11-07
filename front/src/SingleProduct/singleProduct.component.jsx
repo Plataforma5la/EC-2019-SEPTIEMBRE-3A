@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { FaShoppingCart } from 'react-icons/fa';
 import { TiThermometer } from "react-icons/ti"
 
-export default function({ product }) {
+export default function({ product}) {
   return (
     <div className="container">
       <div className="row">
@@ -19,7 +19,7 @@ export default function({ product }) {
             <Carousel.Item>
               <img
                 className="d-block w-100 singleProductPic"
-                src={product.img1Url}
+                src={product.img2Url}
                 alt="Dildo pic"
               />
             </Carousel.Item>
@@ -29,6 +29,7 @@ export default function({ product }) {
       <div className="col-4">
         <h1>{product.name}</h1>
         <p className="singleProductDescription">{product.description}</p>
+        {/* <p className="singleProductCategoriesTag"></p> */}
         <button><FaShoppingCart/></button>
       </div>
       <div className="col-4">
