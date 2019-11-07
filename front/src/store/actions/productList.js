@@ -15,4 +15,4 @@ export const fetchFilteredProductList = (catId) => dispatch =>
   axios
     .get(`/api/products/category/${catId}`)
     .then(res => res.data) //recibo la data del back //
-    .then(category => dispatch(searchProductList(category.products)));
+    .then(products => dispatch(searchProductList(products)));
