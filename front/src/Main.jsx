@@ -21,7 +21,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="grid">
         <NavBar user={this.props.user} history={this.props.history} />
         <Sidebar />
         <Switch>
@@ -43,19 +43,19 @@ class Main extends React.Component {
           <Route
             exact
             path="/"
-            render={() =>  <ProductListContainer history={this.props.history} />}
-          />        
-       
-        
+            render={() => <ProductListContainer history={this.props.history} />}
+          />
+
+
 
           <Route
             exact
             path="/filteredproducts/:catId"
-            render={({match}) => <FilteredProductListContainer history={this.props.history} catId={match.params.catId} />}
+            render={({ match }) => <FilteredProductListContainer history={this.props.history} catId={match.params.catId} />}
           />
           <Redirect from="/" to="/products" />
         </Switch>
-        
+
       </div>
     );
   }
