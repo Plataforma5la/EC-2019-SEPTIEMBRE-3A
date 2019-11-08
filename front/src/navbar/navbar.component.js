@@ -13,10 +13,10 @@ export default function MenuAppBar(props) {
             <>
                 <Navbar className="navbar">
 
-                    <Navbar.Brand>E-Climax</Navbar.Brand>
+                    <Navbar.Brand id="titulo">E-Climax</Navbar.Brand>
                     <Nav className="mr-auto">
                         {props.user.username ? (
-                            <div id="bienvenido">
+                            <div id="bienvenido" className="textoNavbar">
                                 <Button className="navButton" onClick={props.handleLogOut}>
                                     Logout
                 </Button>
@@ -29,7 +29,7 @@ export default function MenuAppBar(props) {
                                 </div>
                             )}
                         {props.user.username ? (
-                            <h1>Bienvenidx {props.user.username}</h1>
+                            <h1 className="textoNavbar">Bienvenidx {props.user.username}</h1>
                         ) : null}
                     </Nav>
                     <Form inline>

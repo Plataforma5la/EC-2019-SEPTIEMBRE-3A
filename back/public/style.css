@@ -2,6 +2,10 @@
   color: white
 }
 
+.textoNavbar{
+  color: white
+}
+
 .singleProducPicBox {
   overflow: hidden;
   flex-direction: row;
@@ -33,6 +37,7 @@ body {
 }
 .navbar {
   background-color: #600624;
+  color: white;
   z-index: 2;
   position: fixed;
   width: 100%;
@@ -42,10 +47,11 @@ body {
   width: 400px;
   display: flex;
   justify-content: space-between;
+  color: white;
 }
 
 .sidenav {
-
+  color: white;
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 160px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
@@ -60,7 +66,7 @@ body {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: black;
+  color:white;
   display: block;
 }
 
@@ -110,11 +116,16 @@ body {
 }
 
 #categorias {
+  color: white;
   text-align: center;
 }
 
 .navButton {
   background-color: black;
-  color: white;
+  color: white !important;
   border: solid black;
+}
+
+#titulo{
+  color: white !important
 }
