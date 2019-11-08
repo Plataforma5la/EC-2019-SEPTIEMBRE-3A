@@ -22,6 +22,8 @@
 }
 
 .singleProductPic {
+  max-width: 100%;
+  max-height: 50vh;
   object-fit: contain;
   height: 2%;
 }
@@ -106,6 +108,10 @@ body {
 }
 .productsContainer {
   margin-top: 20px;
+}
+
+.card-width{
+  width: 200px
 }
 
 .card-img-top {
