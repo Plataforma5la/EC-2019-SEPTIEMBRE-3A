@@ -9,13 +9,13 @@ export default props => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="navButton" onClick={handleShow}>
         Login
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Register</Modal.Title>
+          <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Form onSubmit={props.handleSubmit}>
           <Modal.Body>
@@ -35,6 +35,7 @@ export default props => {
                 placeholder="Password"
                 onChange={e => props.setPassword(e.target.value)}
               />
+              <Form.Text className="text-muted">{props.wrongUser}</Form.Text>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
@@ -42,7 +43,7 @@ export default props => {
               Close
             </Button>
             <Button variant="primary" type="submit">
-              Save Changes
+              Login
             </Button>
           </Modal.Footer>
         </Form>

@@ -3,12 +3,14 @@ import NavBar from "./navbar.component";
 import Button from "@material-ui/core/Button";
 import { logOutUser } from "../store/actions/user";
 import { connect } from "react-redux";
+import Axios from "axios";
 
 export class NavbarContainer extends Component {
   constructor(props) {
     super(props);
     this.handleLogOut = this.handleLogOut.bind(this);
   }
+
   handleLogOut() {
     this.props.logOutUser();
     this.props.history.push("/");

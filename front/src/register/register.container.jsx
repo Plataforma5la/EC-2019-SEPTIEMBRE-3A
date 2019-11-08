@@ -34,7 +34,6 @@ class RegisterContainer extends React.Component {
     });
   }
 
-  //editar axios para que salga desde los actions y que incluya el email
   handleSubmit(event) {
     event.preventDefault();
     if (this.state.userInput && this.state.passInput && this.state.mailInput) {

@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import SingleProductContainer from "./SingleProduct/singleProduct.container";
 import ProductListContainer from "./productList/productList.container";
 import NavBar from "./navbar/navbar.container";
-import "../../back/public/style.css"
+import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
 
 class Main extends React.Component {
@@ -19,6 +19,7 @@ class Main extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <NavBar user={this.props.user} history={this.props.history} />
@@ -27,9 +28,7 @@ class Main extends React.Component {
           <Route
             exact
             path="/product/:productID"
-            render={() => (
-              <SingleProductContainer history={this.props.history} />
-            )}
+            component={SingleProductContainer}
           />
           <Route
             exact

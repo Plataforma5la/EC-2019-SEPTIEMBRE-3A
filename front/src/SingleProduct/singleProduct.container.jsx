@@ -1,17 +1,22 @@
 import React from "react";
 import SingleProduct from "./singleProduct.component";
 import { connect } from "react-redux";
-//import Navbar from "./navbar/navbar.container";
+import fetchSingleProductData from "../store/actions/singleProductData";
 
 class SingleProductContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    console.log("CCCOOCOCOCOCO");
+    this.props.fetchSingleProductData(this.props.match.params.productID);
   }
 
   render() {
+    console.log(this.props, "BBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
     return (
       <div>
-        {/* <Navbar /> */}
         <SingleProduct
           product={this.props.product}
           //reviews={this.props.reviews}
@@ -26,8 +31,11 @@ const mapStateToProps = state => ({
   reviews: state.reviews
 });
 
-// const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
+  fetchSingleProductData: id => dispatch(fetchSingleProductData(id))
+});
 
-// })
-
-export default connect(mapStateToProps)(SingleProductContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SingleProductContainer);
