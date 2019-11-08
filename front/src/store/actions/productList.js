@@ -16,3 +16,10 @@ export const fetchFilteredProductList = (catId) => dispatch =>
     .get(`/api/products/category/${catId}`)
     .then(res => res.data) //recibo la data del back //
     .then(products => dispatch(searchProductList(products)));
+
+export const fetchSearchedProductList = (text) => dispatch =>
+  axios
+    .get(`/api/products/search/${text}`)
+    .then(res => res.data) //recibo la data del back //
+    .then(products => dispatch(searchProductList(products)));
+    // .then(products => console.log(products));
