@@ -33,13 +33,13 @@ export default function ({ product }) {
           <h1 className="singleProductDescription">{product.name}</h1>
             <span></span>
             {product.categories?product.categories.map(category =>
-              <span key={category.id} class="badge singleProductCategoriesTag badge-secondary">{category.name}</span>)
+              <span key={category.id} className="badge singleProductCategoriesTag badge-secondary">{category.name}</span>)
               :""
             } 
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
-                <button>
+                <button className="shoppingCartButton">
                   <FaShoppingCart className="shoppingCart"/>
                 </button> 
 
