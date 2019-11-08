@@ -3,9 +3,15 @@ const User = require("../models/user");
 const passport = require("../config/passport");
 
 router.post("/register", function(req, res) {
-  User.create(req.body)
-    .then(user => res.send(user))
-    .catch(err => console.log(err));
+  User.create(req.body).then(user =>
+    req.login(user, function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(user);
+      }
+    })
+  );
 });
 
 router.post("/login", passport.authenticate("local"), function(req, res) {
