@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
 
-export default function({ product }) {
+export default function ({ product }) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -30,7 +30,7 @@ export default function({ product }) {
             </Carousel>
           </div>
           <div className="col-4">
-            <h1>{product.name}</h1>
+          <h1 className="singleProductDescription">{product.name}</h1>
             <span></span>
             {product.categories?product.categories.map(category =>
               <span key={category.id} class="badge singleProductCategoriesTag badge-secondary">{category.name}</span>)
@@ -48,13 +48,13 @@ export default function({ product }) {
             </div>
           </div>
           <div className="col-4">
-            <h4>
+            <h4 className="singleProductDescription">
               Rating: <TiThermometer />
               <TiThermometer />
               <TiThermometer />
               {product.rating}
             </h4>
-            <p>
+            <p className="singleProductDescription">
               Robusto: Buen producto para lo que vale, se ve que el motor es
               bueno porque tiene buena potencia. Trae un juego de carbones de
               repuesto. Lo probé con mechas de copa y normales para madera y va

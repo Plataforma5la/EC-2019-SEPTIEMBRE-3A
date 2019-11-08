@@ -2,7 +2,7 @@ const S = require("sequelize");
 const db = require("../config/db");
 const Categorie = require("./categories");
 
-class Product extends S.Model {}
+class Product extends S.Model { }
 
 Product.init(
   {
