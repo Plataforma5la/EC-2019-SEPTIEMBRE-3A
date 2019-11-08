@@ -31,11 +31,21 @@ export default function({ product }) {
           </div>
           <div className="col-4">
             <h1>{product.name}</h1>
+            <span></span>
+            {product.categories?product.categories.map(category =>
+              <span key={category.id} class="badge singleProductCategoriesTag badge-secondary">{category.name}</span>)
+              :""
+            } 
             <p className="singleProductDescription">{product.description}</p>
-            {/* <p className="singleProductCategoriesTag"></p> */}
-            <button>
-              <FaShoppingCart />
-            </button>
+            <div className="container">
+              <div className="row">
+                <button>
+                  <FaShoppingCart className="shoppingCart"/>
+                </button> 
+
+                <p className="singleProductDescription">Precio: ${product.price}</p>
+              </div>
+            </div>
           </div>
           <div className="col-4">
             <h4>

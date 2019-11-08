@@ -2,6 +2,10 @@
   color: white
 }
 
+.shoppingCart{
+  border-color: grey;
+}
+
 .singleProducPicBox {
   overflow: hidden;
   flex-direction: row;
