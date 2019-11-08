@@ -42,7 +42,7 @@ Product.init(
   { sequelize: db, modelName: "product" }
 );
 
-// Product.hasMany(Categorie, { as: "categories" });
+
 Product.belongsToMany(Categorie, { through: "categorie_product" });
 
 module.exports = Product;
