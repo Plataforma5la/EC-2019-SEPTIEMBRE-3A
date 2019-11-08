@@ -2,6 +2,15 @@
   color: white
 }
 
+.shoppingCart{
+  color:black;
+}
+
+.shoppingCartButton{
+  background-color: grey;
+  border-radius: 10px;
+}
+
 .singleProducPicBox {
   overflow: hidden;
   flex-direction: row;
