@@ -8,16 +8,17 @@ import FormControl from "react-bootstrap/FormControl";
 import RegisterContainer from "../register/register.container";
 import LoginContainer from "../login/login.container";
 export default function MenuAppBar(props) {
-  return (
-    <div>
-      <>
-        <Navbar className="navbar">
-          <Navbar.Brand>E-Climax</Navbar.Brand>
-          <Nav className="mr-auto">
-            {props.user.username ? (
-              <div id="bienvenido">
-                <Button className="navButton" onClick={props.handleLogOut}>
-                  Logout
+    return (
+        <div>
+            <>
+                <Navbar className="navbar">
+
+                    <Navbar.Brand>E-Climax</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        {props.user.username ? (
+                            <div id="bienvenido">
+                                <Button className="navButton" onClick={props.handleLogOut}>
+                                    Logout
                 </Button>
               </div>
             ) : (

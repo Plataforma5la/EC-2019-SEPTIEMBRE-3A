@@ -1,10 +1,15 @@
 import React from "react";
 import SingleProduct from "./singleProduct.component";
 import { connect } from "react-redux";
+import fetchSingleProductData from "../store/actions/singleProductData";
 
 class SingleProductContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchSingleProductData(this.props.match.params.productID);
   }
 
   render() {
@@ -24,8 +29,11 @@ const mapStateToProps = state => ({
   reviews: state.reviews
 });
 
-// const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
+  fetchSingleProductData: id => dispatch(fetchSingleProductData(id))
+});
 
-// })
-
-export default connect(mapStateToProps)(SingleProductContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SingleProductContainer);
