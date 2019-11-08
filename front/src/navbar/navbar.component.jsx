@@ -31,8 +31,8 @@ export default function MenuAppBar(props) {
               <h1>Bienvenidx {props.user.username}</h1>
             ) : null}
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <Form inline onSubmit={props.handleSearch}>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={props.handleSearchtextChange} />
           </Form>
         </Navbar>
       </>
