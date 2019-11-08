@@ -16,11 +16,12 @@ export default function MenuAppBar(props) {
           <Nav className="mr-auto">
             {props.user.username ? (
               <div id="bienvenido">
-                <Button onClick={props.handleLogOut}>Logout</Button>
+                <Button className="navButton" onClick={props.handleLogOut}>Logout</Button>
               </div>
             ) : (
               <div>
                 <LoginContainer />
+                <span> </span>
                 <RegisterContainer />
               </div>
             )}

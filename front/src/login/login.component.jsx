@@ -9,7 +9,7 @@ export default props => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="navButton" onClick={handleShow}>
         Login
       </Button>
 
