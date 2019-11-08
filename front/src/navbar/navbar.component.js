@@ -8,34 +8,35 @@ import FormControl from "react-bootstrap/FormControl";
 import RegisterContainer from "../register/register.container";
 import LoginContainer from "../login/login.container";
 export default function MenuAppBar(props) {
-  return (
-    <div>
-      <>
-        <Navbar className="navbar">
-          <Navbar.Brand>E-Climax</Navbar.Brand>
-          <Nav className="mr-auto">
-            {props.user.username ? (
-              <div id="bienvenido">
-                <Button className="navButton" onClick={props.handleLogOut}>
-                  Logout
+    return (
+        <div>
+            <>
+                <Navbar className="navbar">
+
+                    <Navbar.Brand>E-Climax</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        {props.user.username ? (
+                            <div id="bienvenido">
+                                <Button className="navButton" onClick={props.handleLogOut}>
+                                    Logout
                 </Button>
-              </div>
-            ) : (
-              <div>
-                <LoginContainer />
-                <span> </span>
-                <RegisterContainer />
-              </div>
-            )}
-            {props.user.username ? (
-              <h1>Bienvenidx {props.user.username}</h1>
-            ) : null}
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          </Form>
-        </Navbar>
-      </>
-    </div>
-  );
+                            </div>
+                        ) : (
+                                <div>
+                                    <LoginContainer />
+                                    <span> </span>
+                                    <RegisterContainer />
+                                </div>
+                            )}
+                        {props.user.username ? (
+                            <h1>Bienvenidx {props.user.username}</h1>
+                        ) : null}
+                    </Nav>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    </Form>
+                </Navbar>
+            </>
+        </div>
+    );
 }
