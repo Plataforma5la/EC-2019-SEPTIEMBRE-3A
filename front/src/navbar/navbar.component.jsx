@@ -12,8 +12,12 @@ export default function MenuAppBar(props) {
     <div>
       <>
         <Navbar className="navbar">
+          <Link to="/">
+            <Navbar.Brand id="titulo" onClick={() => props.FetchProductList()}>
+              E-Climax
+            </Navbar.Brand>
+          </Link>
 
-          <Navbar.Brand id="titulo">E-Climax</Navbar.Brand>
           <Nav className="mr-auto">
             {props.user.username ? (
               <div id="bienvenido" className="textoNavbar">
@@ -22,18 +26,23 @@ export default function MenuAppBar(props) {
                 </Button>
               </div>
             ) : (
-                <div>
-                  <LoginContainer />
-                  <span> </span>
-                  <RegisterContainer />
-                </div>
-              )}
+              <div>
+                <LoginContainer />
+                <span> </span>
+                <RegisterContainer />
+              </div>
+            )}
             {props.user.username ? (
               <h1 className="textoNavbar">Bienvenidx {props.user.username}</h1>
             ) : null}
           </Nav>
           <Form inline onSubmit={props.handleSearch}>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={props.handleSearchtextChange} />
+            <FormControl
+              type="text"
+              placeholder="Search"
+              className="mr-sm-2"
+              onChange={props.handleSearchtextChange}
+            />
           </Form>
         </Navbar>
       </>
