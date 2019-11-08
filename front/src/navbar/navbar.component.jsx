@@ -33,7 +33,9 @@ export default function MenuAppBar(props) {
               </div>
             )}
             {props.user.username ? (
-              <h1 className="textoNavbar">Bienvenidx {props.user.username}</h1>
+              <h1 className="textoNavbar">
+                BienvenidX.X.X {props.user.username}
+              </h1>
             ) : null}
           </Nav>
           <Form inline onSubmit={props.handleSearch}>
