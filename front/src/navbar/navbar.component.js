@@ -16,7 +16,9 @@ export default function MenuAppBar(props) {
           <Nav className="mr-auto">
             {props.user.username ? (
               <div id="bienvenido">
-                <Button className="navButton" onClick={props.handleLogOut}>Logout</Button>
+                <Button className="navButton" onClick={props.handleLogOut}>
+                  Logout
+                </Button>
               </div>
             ) : (
               <div>
@@ -31,7 +33,6 @@ export default function MenuAppBar(props) {
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            {/* <Button variant="outline-info">Search</Button> */}
           </Form>
         </Navbar>
       </>
