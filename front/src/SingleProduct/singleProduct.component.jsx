@@ -30,12 +30,22 @@ export default function ({ product }) {
             </Carousel>
           </div>
           <div className="col-4">
-            <h1 className="singleProductDescription">{product.name}</h1>
+          <h1 className="singleProductDescription">{product.name}</h1>
+            <span></span>
+            {product.categories?product.categories.map(category =>
+              <span key={category.id} className="badge singleProductCategoriesTag badge-secondary">{category.name}</span>)
+              :""
+            } 
             <p className="singleProductDescription">{product.description}</p>
-            {/* <p className="singleProductCategoriesTag"></p> */}
-            <button>
-              <FaShoppingCart />
-            </button>
+            <div className="container">
+              <div className="row">
+                <button className="shoppingCartButton">
+                  <FaShoppingCart className="shoppingCart"/>
+                </button> 
+
+                <p className="singleProductDescription">Precio: ${product.price}</p>
+              </div>
+            </div>
           </div>
           <div className="col-4">
             <h4 className="singleProductDescription">
