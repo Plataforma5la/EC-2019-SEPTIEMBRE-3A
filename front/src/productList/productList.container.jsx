@@ -9,9 +9,6 @@ class ProductListContainer extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    if (this.props.category == "") this.props.fetchProductList();
-  }
 
   render() {
     return (
