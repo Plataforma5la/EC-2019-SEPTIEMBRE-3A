@@ -1,0 +1,118 @@
+.productTitle {
+  color: black;
+}
+
+.singleProducPicBox {
+  overflow: hidden;
+  flex-direction: row;
+  background-color: rgb(87, 64, 82);
+  border-radius: 100px;
+}
+
+.singleProductDescription {
+  color: grey;
+}
+
+.singleProductPic {
+  object-fit: contain;
+  height: 2%;
+}
+
+.carousel-control-next-icon {
+  background-color: gray;
+  border-radius: 50%;
+}
+
+.carousel-control-prev-icon {
+  background-color: gray;
+  border-radius: 50%;
+}
+
+body {
+  background-color: black;
+}
+.navbar {
+  background-color: #600624;
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+}
+
+#bienvenido {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  left: 0;
+  background-color: #600624; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 87px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.card {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(87, 64, 82);
+  color: white;
+  text-align: center;
+  display: inline-flex;
+  margin: 5px;
+  height: 400px;
+}
+.img {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 210px;
+  background-color: rgb(182, 45, 152);
+  color: white;
+  text-align: center;
+}
+.main {
+  margin-left: 175px;
+  padding: 0px 10px;
+  padding-top: 90px;
+}
+.productsContainer {
+  margin-top: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+}
+
+.singleProductContainer {
+  padding-top: 10%;
+  padding-left: 10%;
+}
+
+#categorias {
+  text-align: center;
+}
+
+.navButton {
+  background-color: black;
+  color: white;
+  border: solid black;
+}
