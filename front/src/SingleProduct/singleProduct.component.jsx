@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
+import Youtube from "react-youtube";
 
 export default function ({ product }) {
   return (
@@ -11,7 +12,7 @@ export default function ({ product }) {
           <div> </div>
         </div>
         <div className="row">
-          <div className="singleProducPicBox col-4">
+          <div data-interval="false" className="singleProducPicBox col-4">
             <Carousel>
               <Carousel.Item>
                 <img
@@ -27,6 +28,19 @@ export default function ({ product }) {
                   alt="Dildo pic"
                 />
               </Carousel.Item>
+              {/* <Carousel.Item> */}
+              {/* <iframe id="ytplayer" type="text/html" 
+  src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+  frameborder="0"/> */}
+              {/* <Youtube    className="d-block w-100 singleProductVideo"
+                 videoId="IPfG4OdGEyI"
+              /> */}
+                {/* <img
+                  className="d-block w-100 singleProductPic"
+                  src={product.img2Url}
+                  alt="Dildo pic"
+                /> */}
+              {/* </Carousel.Item> */}
             </Carousel>
           </div>
           <div className="col-4">
