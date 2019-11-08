@@ -15,7 +15,7 @@ export default props => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Register</Modal.Title>
+          <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Form onSubmit={props.handleSubmit}>
           <Modal.Body>
@@ -43,7 +43,7 @@ export default props => {
               Close
             </Button>
             <Button variant="primary" type="submit">
-              Save Changes
+              Login
             </Button>
           </Modal.Footer>
         </Form>
