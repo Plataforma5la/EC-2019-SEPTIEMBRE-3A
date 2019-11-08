@@ -9,6 +9,7 @@ import ProductListContainer from "./productList/productList.container";
 import NavBar from "./navbar/navbar.container";
 import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
+import { fetchProductList } from "./store/actions/productList";
 
 class Main extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Main extends React.Component {
   }
   componentDidMount() {
     this.props.fetchUser();
+    this.props.fetchProductList();
   }
 
   render() {
@@ -46,7 +48,8 @@ const mapStateToProps = ({ logged }) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchUser: () => dispatch(fetchUser()),
-  logOutUser: () => dispatch(logOutUser())
+  logOutUser: () => dispatch(logOutUser()),
+  fetchProductList: () => dispatch(fetchProductList()),
 });
 
 export default connect(
