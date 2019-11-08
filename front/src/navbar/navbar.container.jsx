@@ -9,6 +9,7 @@ import { fetchSearchedProductList } from "../store/actions/productList";
 export class NavbarContainer extends Component {
   constructor(props) {
     super(props);
+    this.state={}
     this.handleLogOut = this.handleLogOut.bind(this);
     this.handleSearchtextChange = this.handleSearchtextChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
@@ -24,9 +25,11 @@ export class NavbarContainer extends Component {
   }
 
   handleSearch(event) {
-    console.log(this.state.text)
     event.preventDefault();
+    if (!this.state.text || this.state.text.replace(/\s+/g, '') =="") return;
+    console.log(this.state.text)
     this.props.fetchSearchedProductList(this.state.text)
+    this.props.history.push("/");
   }
 
   render() {
