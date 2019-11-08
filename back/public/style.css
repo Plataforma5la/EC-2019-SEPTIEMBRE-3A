@@ -1,5 +1,5 @@
 .productTitle {
-  color: black;
+  color: white
 }
 
 .singleProducPicBox {
@@ -10,7 +10,7 @@
 }
 
 .singleProductDescription {
-  color: grey;
+  color: white;
 }
 
 .singleProductPic {
@@ -45,6 +45,7 @@ body {
 }
 
 .sidenav {
+
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 160px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
@@ -77,6 +78,7 @@ body {
   display: inline-flex;
   margin: 5px;
   height: 400px;
+  border-radius: 25px
 }
 .img {
   left: 0;

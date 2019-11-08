@@ -88,7 +88,7 @@ db.sync({ force: true }).then(() => {
           "https://www.funfactory.com/fileadmin/images/product_details/pictures%20product%20detail/MissBi/MissBi-Mood-2.jpg"
       }
     ]).then(products => {
-      Category.create({ name: "impulsor" }).then(impulsor => {
+      Category.create({ name: "Impulsor" }).then(impulsor => {
         products.forEach(X => {
           X.addCategories(Date.now() % 2 == 0 ? categories : impulsor);
         });
