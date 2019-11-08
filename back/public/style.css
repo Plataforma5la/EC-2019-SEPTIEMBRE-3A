@@ -1,11 +1,7 @@
-.productTitle {
-  color: white
-}
 
 .shoppingCart{
   color:black;
 }
-
 .shoppingCartButton{
   background-color: grey;
   border-radius: 10px;
@@ -54,7 +50,7 @@ body {
 }
 
 .sidenav {
-
+  
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 160px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
@@ -126,4 +122,8 @@ body {
   background-color: black;
   color: white;
   border: solid black;
+}
+
+.productTitle {
+  color: white
 }
