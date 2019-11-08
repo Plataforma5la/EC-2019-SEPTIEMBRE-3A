@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { FaShoppingCart } from 'react-icons/fa';
-import { TiThermometer } from "react-icons/ti"
+import { FaShoppingCart } from "react-icons/fa";
+import { TiThermometer } from "react-icons/ti";
 
 export default function({ product }) {
   return (
@@ -24,20 +24,31 @@ export default function({ product }) {
               />
             </Carousel.Item>
           </Carousel>
-        
+        </div>
+        <div className="col-4">
+          <h1>{product.name}</h1>
+          <p className="singleProductDescription">{product.description}</p>
+          <button>
+            <FaShoppingCart />
+          </button>
+        </div>
+        <div className="col-4">
+          <h4>
+            Rating: <TiThermometer />
+            <TiThermometer />
+            <TiThermometer />
+            {product.rating}
+          </h4>
+          <p>
+            Robusto: Buen producto para lo que vale, se ve que el motor es bueno
+            porque tiene buena potencia. Trae un juego de carbones de repuesto.
+            Lo probé con mechas de copa y normales para madera y va perfecto. El
+            mandril es un poco tosco, en general los acabados no son excelentes
+            pero es un gran producto para trabajar tranquilo y por el precio
+            vale mucho la pena.{" "}
+          </p>
+        </div>
       </div>
-      <div className="col-4">
-        <h1>{product.name}</h1>
-        <p className="singleProductDescription">{product.description}</p>
-        <button><FaShoppingCart/></button>
-      </div>
-      <div className="col-4">
-      <h4>Rating: <TiThermometer/><TiThermometer/><TiThermometer/>{product.rating}</h4>
-      <p>Robusto:
-Buen producto para lo que vale, se ve que el motor es bueno porque tiene buena potencia. Trae un juego de carbones de repuesto. Lo probé con mechas de copa y normales para madera y va perfecto. El mandril es un poco tosco, en general los acabados no son excelentes pero es un gran producto para trabajar tranquilo y por el precio vale mucho la pena. </p>
-      </div>
-      </div>
-
     </div>
   );
 }
