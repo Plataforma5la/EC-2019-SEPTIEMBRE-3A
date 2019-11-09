@@ -28,6 +28,11 @@ export default function ({ product }) {
                   alt="Dildo pic"
                 />
               </Carousel.Item>
+
+
+              {/* INTENTOS DE VIDEO, POR AHORA NO BORRAR  */}
+
+
               {/* <Carousel.Item> */}
               {/* <iframe id="ytplayer" type="text/html" 
   src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
@@ -56,8 +61,8 @@ export default function ({ product }) {
                 <button className="shoppingCartButton">
                   <FaShoppingCart className="shoppingCart"/>
                 </button> 
-
-                <p className="singleProductDescription">Precio: ${product.price}</p>
+            
+                <p className="singleProductPrice col-5"> Precio: ${product.price}</p>
               </div>
             </div>
           </div>

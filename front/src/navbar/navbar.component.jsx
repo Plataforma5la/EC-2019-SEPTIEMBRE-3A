@@ -10,44 +10,80 @@ import LoginContainer from "../login/login.container";
 export default function MenuAppBar(props) {
   return (
     <div>
-      <>
-        <Navbar className="navbar">
-          <Link to="/">
-            <Navbar.Brand id="titulo" onClick={() => props.FetchProductList()}>
-              E-Climax
-            </Navbar.Brand>
-          </Link>
+      <Navbar className="navbar">
+        
+          
+            <div className="logoContainer">
+              <Link to="/">
+                <Navbar.Brand
+                  id="titulo"
+                  onClick={() => props.FetchProductList()}
+                ><h2>
 
-          <Nav className="mr-auto">
+                  E-Climax
+                </h2>
+                </Navbar.Brand>
+              </Link>
+            </div>
             {props.user.username ? (
-              <div id="bienvenido" className="textoNavbar">
+              <div className="col-3">
+                <h4 className="textoNavbar">
+                  BienvenidX.X.X {props.user.username}
+                </h4>
+              </div>
+            ) : (
+              <div className="col-3">
+                <span></span>
+              </div>
+            )}
+            <div className="col-3">
+              <Form  onSubmit={props.handleSearch}>
+                <FormControl
+                  type="text"
+                  placeholder="Search"
+                  className="mr-sm-2"
+                  onChange={props.handleSearchtextChange}
+                />
+              </Form>
+            </div>
+            {props.user.username ? (
+              <div className="col-3">
                 <Button className="navButton" onClick={props.handleLogOut}>
                   Logout
                 </Button>
               </div>
             ) : (
-              <div>
+              <div className="col-3 loginRegisterContainer">
                 <LoginContainer />
+                <span> </span>
                 <span> </span>
                 <RegisterContainer />
               </div>
             )}
-            {props.user.username ? (
-              <h1 className="textoNavbar">
-                BienvenidX.X.X {props.user.username}
-              </h1>
-            ) : null}
-          </Nav>
-          <Form inline onSubmit={props.handleSearch}>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="mr-sm-2"
-              onChange={props.handleSearchtextChange}
-            />
-          </Form>
-        </Navbar>
-      </>
+          
+   
+      </Navbar>
     </div>
   );
+}
+
+{
+  /* {props.user.username ? (
+                  <div id="bienvenido" className="textoNavbar">
+                    <Button className="navButton" onClick={props.handleLogOut}>
+                      Logout
+                    </Button>
+                  </div>
+                ) : (
+                  <div>
+                    <LoginContainer />
+                    <span> </span>
+                    <RegisterContainer />
+                  </div>
+                )}
+                {props.user.username ? (
+                  <h1 className="textoNavbar">
+                    BienvenidX.X.X {props.user.username}
+                  </h1>
+                ) : null} */
 }
