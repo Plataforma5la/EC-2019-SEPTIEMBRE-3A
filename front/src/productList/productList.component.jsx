@@ -5,7 +5,7 @@ function ProductList({ products, handleClick }) {
   return (
     <div className="main">
       {products.map(product => (
-        <div className="card " style={{ width: 200 }} key={product.id}>
+        <div className="card card-width"  key={product.id}>
           <Link className="thumbnail" to={`/product/${product.id}`}>
             <img src={product.img1Url} className="card-img-top"></img>
           </Link>
@@ -22,7 +22,6 @@ function ProductList({ products, handleClick }) {
               </i>
             ))}
             <br></br>
-            {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
             <button type="button" className="btn btn-secondary">
               Deseo
             </button>

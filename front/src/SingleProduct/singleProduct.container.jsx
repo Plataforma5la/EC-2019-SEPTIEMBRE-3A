@@ -17,7 +17,6 @@ class SingleProductContainer extends React.Component {
       <div>
         <SingleProduct
           product={this.props.product}
-          //reviews={this.props.reviews}
         />
       </div>
     );
@@ -26,7 +25,6 @@ class SingleProductContainer extends React.Component {
 
 const mapStateToProps = state => ({
   product: state.singleProductData.singleProductData,
-  reviews: state.reviews
 });
 
 const mapDispatchToProps = dispatch => ({
