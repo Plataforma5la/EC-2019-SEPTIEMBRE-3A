@@ -6,7 +6,7 @@ function ProductList({ products, handleClick }) {
   return (
     <div className="main">
       {products.map(product => (
-        <div className="card card-width"  key={product.id}>
+        <div className="card card-width" key={product.id}>
           <Link className="thumbnail" to={`/product/${product.id}`}>
             <img src={product.img1Url} className="card-img-top"></img>
           </Link>
@@ -23,15 +23,12 @@ function ProductList({ products, handleClick }) {
               </i>
             ))}
             <br></br>
-<<<<<<< HEAD
             <div>
               <TiThermometer />
               <TiThermometer />
               <TiThermometer />
             </div>
             {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-=======
->>>>>>> 3459f5977c2a32167837fe92180cf46ee9ba927c
             <button type="button" className="btn btn-secondary">
               Deseo
             </button>
