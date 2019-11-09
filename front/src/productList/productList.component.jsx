@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ProductList({ products, handleClick }) {
+function ProductList({ products, handleAddToCart }) {
   return (
     <div className="main">
       {products.map(product => (
@@ -22,7 +22,7 @@ function ProductList({ products, handleClick }) {
               </i>
             ))}
             <br></br>
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-secondary" onClick={() => handleAddToCart(product)}>
               Deseo
             </button>
           </div>
