@@ -2,6 +2,10 @@ import React from "react";
 import LoginForm from "./login.component";
 import { connect } from "react-redux";
 import { loginUser } from "../store/actions/user";
+import { fetchCart } from "../store/actions/cart";
+
+
+
 class LoginContainer extends React.Component {
   constructor() {
     super();
@@ -33,6 +37,7 @@ class LoginContainer extends React.Component {
           username: this.state.userInput,
           password: this.state.passInput
         })
+        .then(()=> this.props.fetchCart())
         .catch(err =>
           this.setState({ wrongUser: "incorrect username or password" })
         );
@@ -51,8 +56,9 @@ class LoginContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: ({ username, password }) =>
-    dispatch(loginUser({ username, password }))
+  loginUser: ({ username, password }) => dispatch(loginUser({ username, password })),
+  fetchCart: () => dispatch(fetchCart())
+
 });
 
 export default connect(
