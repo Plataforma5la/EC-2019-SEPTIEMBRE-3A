@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TiThermometer } from "react-icons/ti";
 
-function ProductList({ products, handleClick }) {
+function ProductList({ products, handleAddToCart }) {
   return (
     <div className="main">
       {products.map(product => (
