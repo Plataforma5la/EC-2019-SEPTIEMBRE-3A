@@ -1,21 +1,19 @@
-
-.navbarContainer{
-margin: 0;
+.navbarContainer {
+  margin: 0;
 }
 
-.loginRegisterContainer{
-left: 340px;
+.loginRegisterContainer {
+  left: 340px;
 }
 
-
-.textoNavbar{
-  color: white
+.textoNavbar {
+  color: white;
 }
-.shoppingCart{
-  color:black;
+.shoppingCart {
+  color: black;
 }
-.shoppingCartButton{
-  background-color: grey;
+.shoppingCartButton {
+  background-color: white;
   border-radius: 10px;
 }
 
@@ -31,17 +29,16 @@ left: 340px;
   color: white;
 }
 
-.singleProductPrice{
-margin: 0;
-padding: 12;
-color: white;
+.singleProductPrice {
+  margin: 0;
+  padding: 12;
+  color: white;
 }
-.singleProductVideo{
+.singleProductVideo {
   width: 600px;
 }
 
 .singleProductPic {
-  
   max-height: 50vh;
   object-fit: contain;
   height: 2%;
@@ -78,12 +75,12 @@ body {
 .sidenav {
   color: white;
   height: 100%;
-  width: 160px; 
-  position: fixed; 
-  z-index: 1; 
+  width: 160px;
+  position: fixed;
+  z-index: 1;
   left: 0;
-  background-color: #600624; 
-  overflow-x: hidden; 
+  background-color: #600624;
+  overflow-x: hidden;
   padding-top: 87px;
 }
 
@@ -91,7 +88,7 @@ body {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color:white;
+  color: white;
   display: block;
 }
 
@@ -109,7 +106,7 @@ body {
   display: inline-flex;
   margin: 5px;
   height: 400px;
-  border-radius: 25px
+  border-radius: 25px;
 }
 .img {
   left: 0;
@@ -129,8 +126,8 @@ body {
   margin-top: 20px;
 }
 
-.card-width{
-  width: 200px
+.card-width {
+  width: 200px;
 }
 
 .card-img-top {
@@ -149,17 +146,22 @@ body {
   text-align: center;
 }
 
+.navbarLogoutContainer{
+  left: 430px;
+}
+
 .navButton {
+  border-radius: 10px;
   background-color: black;
   color: white !important;
   border: solid black;
 }
 
 .productTitle {
-  color: white
+  color: white;
 }
-#titulo{
-  color: white !important
+#titulo {
+  color: white !important;
 }
 
 /* #ytplayer{
