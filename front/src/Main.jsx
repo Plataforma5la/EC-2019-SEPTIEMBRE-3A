@@ -27,7 +27,7 @@ class Main extends React.Component {
         <Switch>
           <Route
             exact
-            path="/product/:productID"
+            path={"/product/:productID"}
             component={SingleProductContainer}
           />
           <Route

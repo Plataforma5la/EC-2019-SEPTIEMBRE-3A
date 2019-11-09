@@ -9,12 +9,10 @@ class SingleProductContainer extends React.Component {
   }
 
   componentDidMount() {
-    console.log("CCCOOCOCOCOCO");
     this.props.fetchSingleProductData(this.props.match.params.productID);
   }
 
   render() {
-    console.log(this.props, "BBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
     return (
       <div>
         <SingleProduct

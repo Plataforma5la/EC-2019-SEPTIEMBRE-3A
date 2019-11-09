@@ -7,24 +7,16 @@ import fetchSingleProductData from "../store/actions/singleProductData";
 class ProductListContainer extends Component {
   constructor(props) {
     super(props);
-
-    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     if (this.props.category == "") this.props.fetchProductList();
   }
 
-  handleClick(id) {
-    this.props.fetchSingleProductData(id);
-  }
-
   render() {
     return (
       <div>
-        <ProductList
-          products={this.props.productList}
-          handleClick={this.handleClick}
+        <ProductList products={this.props.productList} />
         />
       </div>
     );
@@ -39,8 +31,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchProductList: () => dispatch(fetchProductList()),
-  fetchSingleProductData: id => dispatch(fetchSingleProductData(id))
+  fetchProductList: () => dispatch(fetchProductList())
+  // fetchSingleProductData: id => dispatch(fetchSingleProductData(id))
 });
 
 export default connect(
