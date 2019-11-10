@@ -10,13 +10,18 @@ import NavBar from "./navbar/navbar.container";
 import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
 import { fetchProductList } from "./store/actions/productList";
+import { fetchCart } from "./store/actions/cart";
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
   }
   componentDidMount() {
-    this.props.fetchUser();
+    this.props.fetchUser().then(() => {
+      if (this.props.user.username) {
+        this.props.fetchCart();
+      }
+    });
     this.props.fetchProductList();
   }
 
@@ -51,6 +56,7 @@ const mapDispatchToProps = dispatch => ({
   fetchUser: () => dispatch(fetchUser()),
   logOutUser: () => dispatch(logOutUser()),
   fetchProductList: () => dispatch(fetchProductList()),
+  fetchCart: () => dispatch(fetchCart())
 });
 
 export default connect(

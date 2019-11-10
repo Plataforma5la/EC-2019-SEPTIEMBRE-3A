@@ -2,8 +2,10 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
+import Youtube from "react-youtube";
+import { getThemeProps } from "@material-ui/styles";
 
-export default function ({ product }) {
+export default function({ product, handleAddToCart }) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -11,7 +13,7 @@ export default function ({ product }) {
           <div> </div>
         </div>
         <div className="row">
-          <div className="singleProducPicBox col-4">
+          <div data-interval="false" className="singleProducPicBox col-4">
             <Carousel>
               <Carousel.Item>
                 <img
@@ -27,23 +29,51 @@ export default function ({ product }) {
                   alt="Dildo pic"
                 />
               </Carousel.Item>
+
+              {/* INTENTOS DE VIDEO, POR AHORA NO BORRAR  */}
+
+              {/* <Carousel.Item> */}
+              {/* <iframe id="ytplayer" type="text/html" 
+  src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+  frameborder="0"/> */}
+              {/* <Youtube    className="d-block w-100 singleProductVideo"
+                 videoId="IPfG4OdGEyI"
+              /> */}
+              {/* <img
+                  className="d-block w-100 singleProductPic"
+                  src={product.img2Url}
+                  alt="Dildo pic"
+                /> */}
+              {/* </Carousel.Item> */}
             </Carousel>
           </div>
           <div className="col-4">
-          <h1 className="singleProductDescription">{product.name}</h1>
+            <h1 className="singleProductDescription">{product.name}</h1>
             <span></span>
-            {product.categories?product.categories.map(category =>
-              <span key={category.id} className="badge singleProductCategoriesTag badge-secondary">{category.name}</span>)
-              :""
-            } 
+            {product.categories
+              ? product.categories.map(category => (
+                  <span
+                    key={category.id}
+                    className="badge singleProductCategoriesTag badge-secondary"
+                  >
+                    {category.name}
+                  </span>
+                ))
+              : ""}
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
-                <button className="shoppingCartButton">
-                  <FaShoppingCart className="shoppingCart"/>
-                </button> 
+                <button
+                  className="shoppingCartButton"
+                  onClick={() => handleAddToCart(product)}
+                >
+                  <FaShoppingCart className="shoppingCart" />
+                </button>
 
-                <p className="singleProductDescription">Precio: ${product.price}</p>
+                <p className="singleProductPrice col-5">
+                  {" "}
+                  Precio: ${product.price}
+                </p>
               </div>
             </div>
           </div>
