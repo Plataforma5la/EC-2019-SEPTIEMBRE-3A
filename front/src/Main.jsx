@@ -17,7 +17,11 @@ class Main extends React.Component {
     super(props);
   }
   componentDidMount() {
-    this.props.fetchUser().then(() => this.props.fetchCart());
+    this.props.fetchUser().then(() => {
+      if (this.props.user.username) {
+        this.props.fetchCart();
+      }
+    });
     this.props.fetchProductList();
   }
 
