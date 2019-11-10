@@ -3,8 +3,9 @@ import Carousel from "react-bootstrap/Carousel";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
 import Youtube from "react-youtube";
+import { getThemeProps } from "@material-ui/styles";
 
-export default function ({ product }) {
+export default function({ product, handleAddToCart }) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -29,9 +30,7 @@ export default function ({ product }) {
                 />
               </Carousel.Item>
 
-
               {/* INTENTOS DE VIDEO, POR AHORA NO BORRAR  */}
-
 
               {/* <Carousel.Item> */}
               {/* <iframe id="ytplayer" type="text/html" 
@@ -40,7 +39,7 @@ export default function ({ product }) {
               {/* <Youtube    className="d-block w-100 singleProductVideo"
                  videoId="IPfG4OdGEyI"
               /> */}
-                {/* <img
+              {/* <img
                   className="d-block w-100 singleProductPic"
                   src={product.img2Url}
                   alt="Dildo pic"
@@ -49,20 +48,32 @@ export default function ({ product }) {
             </Carousel>
           </div>
           <div className="col-4">
-          <h1 className="singleProductDescription">{product.name}</h1>
+            <h1 className="singleProductDescription">{product.name}</h1>
             <span></span>
-            {product.categories?product.categories.map(category =>
-              <span key={category.id} className="badge singleProductCategoriesTag badge-secondary">{category.name}</span>)
-              :""
-            } 
+            {product.categories
+              ? product.categories.map(category => (
+                  <span
+                    key={category.id}
+                    className="badge singleProductCategoriesTag badge-secondary"
+                  >
+                    {category.name}
+                  </span>
+                ))
+              : ""}
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
-                <button className="shoppingCartButton">
-                  <FaShoppingCart className="shoppingCart"/>
-                </button> 
-            
-                <p className="singleProductPrice col-5"> Precio: ${product.price}</p>
+                <button
+                  className="shoppingCartButton"
+                  onClick={() => handleAddToCart(product)}
+                >
+                  <FaShoppingCart className="shoppingCart" />
+                </button>
+
+                <p className="singleProductPrice col-5">
+                  {" "}
+                  Precio: ${product.price}
+                </p>
               </div>
             </div>
           </div>

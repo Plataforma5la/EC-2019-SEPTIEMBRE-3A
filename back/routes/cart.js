@@ -3,32 +3,25 @@ const Cart = require("../models/cart");
 const Product = require("../models/products");
 
 router.get("/", function(req, res) {
-  Cart.findAll({ 
+  Cart.findAll({
     where: { buyerId: req.user.id },
     include: [Product]
-})
-  .then(cart =>{
+  }).then(cart => {
     res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
+    res.setHeader("Content-Type", "application/json");
     res.json(cart);
-  })
+  });
 });
 
 router.post("/", function(req, res) {
-    Cart.findOrCreate({ 
-      where: { buyerId: req.user.id, status:'open' },
-      include: [Product]
-  })
-    .then(cart =>{
-        console.log("@KKKKKKK", cart[0])
-        console.log("@PPPPP", req.body)
-        cart[0].addProducts(req.body.product.id)
-        .then(respX => {
-                res.send(respX)
-        })
-    })
+  Cart.findOrCreate({
+    where: { buyerId: req.user.id, status: "open" },
+    include: [Product]
+  }).then(cart => {
+    cart[0].addProducts(req.body.product.id).then(respX => {
+      res.send(respX);
+    });
   });
-
-
+});
 
 module.exports = router;

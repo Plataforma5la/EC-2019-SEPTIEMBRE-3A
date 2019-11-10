@@ -4,6 +4,7 @@ import { logOutUser } from "../store/actions/user";
 import { connect } from "react-redux";
 import { fetchSearchedProductList } from "../store/actions/productList";
 import { fetchProductList } from "../store/actions/productList";
+import { emptyCart } from "../store/actions/cart";
 
 export class NavbarContainer extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export class NavbarContainer extends Component {
 
   handleLogOut() {
     this.props.logOutUser();
+    this.props.emptyCart();
     this.props.history.push("/");
   }
 
@@ -59,7 +61,8 @@ const mapStateToProps = ({ logged }) => ({
 const mapDispatchToProps = dispatch => ({
   logOutUser: () => dispatch(logOutUser()),
   fetchSearchedProductList: text => dispatch(fetchSearchedProductList(text)),
-  fetchProductList: () => dispatch(fetchProductList())
+  fetchProductList: () => dispatch(fetchProductList()),
+  emptyCart: () => dispatch(emptyCart())
 });
 
 export default connect(
