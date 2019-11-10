@@ -3,8 +3,7 @@ import LoginForm from "./login.component";
 import { connect } from "react-redux";
 import { loginUser } from "../store/actions/user";
 import { fetchCart } from "../store/actions/cart";
-
-
+import { createCart } from "../store/actions/cart";
 
 class LoginContainer extends React.Component {
   constructor() {
@@ -30,6 +29,7 @@ class LoginContainer extends React.Component {
   }
 
   handleSubmit(event) {
+    const products = this.props.products;
     event.preventDefault();
     if (this.state.userInput && this.state.passInput) {
       this.props
@@ -37,7 +37,13 @@ class LoginContainer extends React.Component {
           username: this.state.userInput,
           password: this.state.passInput
         })
-        .then(()=> this.props.fetchCart())
+        .then(() => {
+          if (products.length) {
+            this.props.createCart(products);
+          } else {
+            this.props.fetchCart();
+          }
+        })
         .catch(err =>
           this.setState({ wrongUser: "incorrect username or password" })
         );
@@ -54,14 +60,18 @@ class LoginContainer extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  products: state.cart.cart
+});
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: ({ username, password }) => dispatch(loginUser({ username, password })),
-  fetchCart: () => dispatch(fetchCart())
-
+  loginUser: ({ username, password }) =>
+    dispatch(loginUser({ username, password })),
+  fetchCart: () => dispatch(fetchCart()),
+  createCart: products => dispatch(createCart(products))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LoginContainer);

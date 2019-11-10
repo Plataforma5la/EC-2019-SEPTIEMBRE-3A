@@ -3,13 +3,27 @@ const Cart = require("../models/cart");
 const Product = require("../models/products");
 
 router.get("/", function(req, res) {
-  Cart.findAll({
-    where: { buyerId: req.user.id },
+  if (req.user) {
+    Cart.findAll({
+      where: { buyerId: req.user.id },
+      include: [Product]
+    }).then(cart => {
+      res.status(200);
+      res.send(cart);
+    });
+  } else {
+    res.sendStatus(200);
+  }
+});
+
+router.put("/", function(req, res) {
+  Cart.findOrCreate({
+    where: { buyerId: req.user.id, status: "open" },
     include: [Product]
   }).then(cart => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/json");
-    res.json(cart);
+    cart[0].addProducts(req.body.product.id).then(respX => {
+      res.send(respX);
+    });
   });
 });
 
@@ -18,9 +32,20 @@ router.post("/", function(req, res) {
     where: { buyerId: req.user.id, status: "open" },
     include: [Product]
   }).then(cart => {
-    cart[0].addProducts(req.body.product.id).then(respX => {
-      res.send(respX);
-    });
+    if (cart[1]) {
+      req.body.products.forEach(product => {
+        cart[0].addProducts(product.id).then(respX => {
+          res.send(true);
+        });
+      });
+    } else {
+      Cart.findAll({
+        where: { buyerId: req.user.id },
+        include: [Product]
+      }).then(cart => {
+        res.send(cart);
+      });
+    }
   });
 });
 
