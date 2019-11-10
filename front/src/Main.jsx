@@ -26,7 +26,6 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <NavBar user={this.props.user} history={this.props.history} />

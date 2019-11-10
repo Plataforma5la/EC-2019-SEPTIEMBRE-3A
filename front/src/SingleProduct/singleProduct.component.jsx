@@ -2,8 +2,8 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
-import Youtube from "react-youtube";
-import { getThemeProps } from "@material-ui/styles";
+// import Youtube from "react-youtube";
+// import { getThemeProps } from "@material-ui/styles";
 
 export default function({ product, handleAddToCart }) {
   return (

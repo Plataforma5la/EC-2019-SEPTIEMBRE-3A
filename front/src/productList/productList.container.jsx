@@ -13,11 +13,6 @@ class ProductListContainer extends Component {
 
   handleAddToCart(product) {
     event.preventDefault();
-<<<<<<< HEAD
-    console.log("@@@>>>", product);
-    console.log("@@@", this.props.user);
-=======
->>>>>>> 6c6e88d3d60e52b8fd61597d32cd0f5813cf2ec5
     if (!this.props.user.username) {
       this.props.addToCartState(product);
     } else {
