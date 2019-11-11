@@ -46,6 +46,7 @@ class RegisterContainer extends React.Component {
           password: this.state.passInput
         })
         .then(() => {
+          localStorage.removeItem('CART')
           if (products.length) {
             this.props.createCart(products);
           }
