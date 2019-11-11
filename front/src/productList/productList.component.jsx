@@ -13,7 +13,7 @@ function ProductList({ products, handleAddToCart }) {
           <div className="card-body">
             <h5 className="card-title">{product.name}</h5>
 
-            <h5 className="card-title">{product.price}</h5>
+            <h5 className="card-title">${product.price}</h5>
 
             <h5 className="card-title">{product.ratingValue}</h5>
             {product.categories.map(category => (
