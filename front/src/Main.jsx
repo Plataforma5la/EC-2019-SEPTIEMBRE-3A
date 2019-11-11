@@ -11,10 +11,9 @@ import NavBar from "./navbar/navbar.container";
 import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
 import { fetchProductList } from "./store/actions/productList";
-import { fetchCart } from "./store/actions/cart";
 import confirmarCompra from "./confirmarCompra/confirmarCompra.container";
 import loginContainer from "./login/login.container";
-import { fetchCartFromLocalStorage } from "./store/actions/cart";
+import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 
 class Main extends React.Component {
   constructor(props) {

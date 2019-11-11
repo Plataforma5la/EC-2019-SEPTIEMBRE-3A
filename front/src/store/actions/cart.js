@@ -54,7 +54,6 @@ export const addToCartDbState = function (product) {
 
 export const refetchCart = function (products) {
   return function (dispatch, getState) {
-    console.log("SOY PRODUCTS", products)
     dispatch(setCart(products))
   }
 }
