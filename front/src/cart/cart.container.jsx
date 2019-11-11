@@ -7,15 +7,36 @@ import {
   deleteProduct,
   addToCartState,
   addToCartDbState,
-  fetchCount
+  fetchCart,
+  refetchCart
 } from "../store/actions/cart";
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleEmptyCart = this.handleEmptyCart.bind(this);
     this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
-    this.handleAddToCart = this.handleAddToCart.bind(this);
+  }
+
+  componentDidUpdate() {
+    console.log("SE UPDATEEO");
+    if (!this.props.user.username) {
+      this.props.refetchCart(this.props.cart);
+    } else {
+      this.props.fetchCart(product);
+    }
+  }
+
+  handleAddToCart(product) {
+    event.preventDefault();
+    if (!this.props.user.username) {
+      this.props.addToCartState(product);
+      this.props.refetchCart(this.props.cart);
+    } else {
+      this.props.addToCartDbState(product);
+      this.props.fetchCart(product);
+    }
   }
 
   handleEmptyCart(cart) {
@@ -61,10 +82,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   deleteProduct: product => dispatch(deleteProduct(product)),
   deleteCart: cart => dispatch(deleteCart(cart)),
+  fetchCart: () => dispatch(fetchCart()),
+  refetchCart: cart => dispatch(refetchCart(cart)),
   emptyCart: () => dispatch(emptyCart()),
   addToCartState: product => dispatch(addToCartState(product)),
   addToCartDbState: product => dispatch(addToCartDbState(product))
-  // fetchCount: count => dispatch(fetchCount(count))
 });
 
 export default connect(
