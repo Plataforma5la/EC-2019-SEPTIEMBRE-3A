@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Cart = require("../models/cart");
 const Product = require("../models/products");
+const Cart_product = require("../models/cart_product");
 
 router.get("/", function(req, res) {
   if (req.user) {
@@ -48,5 +49,17 @@ router.post("/", function(req, res) {
     }
   });
 });
+
+router.delete("/", function(req, res) {
+  console.log("SOY EL BACK", req.body);
+});
+
+
+
+// router.delete("/", function(req, res) {
+//   console.log("SOY EL BACK")
+//   Cart.removeProducts({ cartId: req.body })
+//   .then(res=>res.send("listo"))
+// });
 
 module.exports = router;

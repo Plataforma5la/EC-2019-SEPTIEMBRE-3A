@@ -63,3 +63,32 @@ export const createCart = function(products) {
     });
   };
 };
+
+
+export const deleteProduct = function(product){
+  return function(dispatch,getState){
+    console.log("PRODUCT EN EL FRONT",product.id),
+    axios.delete(`/api/cart/`)
+    
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+export const deleteCart = function(cart){ //solo llega acá si estoy logeado, sino borra el state
+  return function(dispatch, getState) {
+    let cartid =  cart[0].cart_product.cartId;
+    axios.delete("/api/cart",{data: {cartid}})
+    .then(res=>console.log("AAAAAAAAAAAAAAAAAAAAAA",res.data))
+  };
+}
