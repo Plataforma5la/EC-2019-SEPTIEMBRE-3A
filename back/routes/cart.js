@@ -3,7 +3,7 @@ const Cart = require("../models/cart");
 const Product = require("../models/products");
 const Cart_product = require("../models/cart_product");
 
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
   if (req.user) {
     Cart.findOne({
       where: { buyerId: req.user.id, status: "open" },
@@ -17,7 +17,7 @@ router.get("/", function(req, res) {
   }
 });
 
-router.put("/", function(req, res) {
+router.put("/", function (req, res) {
   Cart.findOrCreate({
     where: { buyerId: req.user.id, status: "open" },
     include: [Product]
@@ -37,7 +37,7 @@ router.put("/", function(req, res) {
   });
 });
 
-router.post("/", function(req, res) {
+router.post("/", function (req, res) {
   Cart.findOrCreate({
     where: { buyerId: req.user.id, status: "open" },
     include: [Product]
@@ -66,5 +66,9 @@ router.post("/", function(req, res) {
     }
   });
 });
+
+/* router.post('/confirmar-compra', function (req, res) {
+  // Grab the form data and send email
+}); */
 
 module.exports = router;
