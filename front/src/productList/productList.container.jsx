@@ -4,11 +4,18 @@ import ProductList from "./productList.component";
 import { fetchProductList } from "../store/actions/productList";
 import fetchSingleProductData from "../store/actions/singleProductData";
 import { addToCartState, addToCartDbState } from "../store/actions/cart";
+import ReactPaginate from 'react-paginate'
+
 
 class ProductListContainer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentPage: 1,
+      productsPerPage: 6,
+    }
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handlePageClick = this.handlePageClick.bind(this)
   }
 
   handleAddToCart(product) {
@@ -20,12 +27,41 @@ class ProductListContainer extends Component {
     }
   }
 
+  handlePageClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
+  }
+
+
   render() {
+    const indexLastProduct = this.state.currentPage * this.state.productsPerPage
+    const indexFirstProduct = indexLastProduct - this.state.productsPerPage
+    const currentProducts = this.props.productList.slice(indexFirstProduct, indexLastProduct)
+    const pageNumbers = [];
+
+    for (let i = 1; i <= Math.ceil(this.props.productList.length / this.state.productsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li className="numeros"
+          key={number}
+          id={number}
+          onClick={this.handlePageClick}
+        >
+          {number}
+        </li>
+      );
+    });
+
     return (
-      <div>
+      <div className="paginaprincipal">
         <ProductList
-          products={this.props.productList}
+          products={currentProducts}
           handleAddToCart={this.handleAddToCart}
+          renderPageNumbers={renderPageNumbers}
         />
       </div>
     );
