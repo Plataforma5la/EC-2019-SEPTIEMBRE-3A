@@ -9,7 +9,6 @@ router.get("/", function(req, res) {
       where: { buyerId: req.user.id, status: "open" },
       include: [Product]
     }).then(cart => {
-      console.log(cart);
       res.send(cart);
     });
   } else {

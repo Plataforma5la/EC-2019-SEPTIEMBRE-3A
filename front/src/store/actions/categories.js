@@ -25,6 +25,10 @@ export const getCategories = function() {
 export const filterCategory = function(category) {
   return function(dispatch, getState) {
     dispatch(setCategory(category));
-    };
   };
+};
 
+export const newCategory = category => dispatch =>
+  axios
+    .post("/api/admin/newCategory", category)
+    .then(response => dispatch(setCategories(response.data)));
