@@ -11,6 +11,8 @@ import NavBar from "./navbar/navbar.container";
 import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
 import { fetchProductList } from "./store/actions/productList";
+import confirmarCompra from "./confirmarCompra/confirmarCompra.container";
+import loginContainer from "./login/login.container";
 import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 
 class Main extends React.Component {
@@ -22,7 +24,6 @@ class Main extends React.Component {
       if (this.props.user.username) {
         this.props.fetchCart();
       } else {
-        console.log("@@@@ACA SIN LOGUEAR")
         this.props.fetchCartFromLocalStorage()
       }
     });
@@ -45,10 +46,15 @@ class Main extends React.Component {
             path="/"
             render={() => <ProductListContainer history={this.props.history} />}
           />
-          <Route 
+          <Route
             exact
             path={"/cart"}
             render={() => <CartContainer history={this.props.history} />}
+          />
+          <Route
+            exact
+            path={"/cart/confirmar-compra"}
+            component={confirmarCompra}
           />
           <Redirect from="/" to="/products" />
         </Switch>
