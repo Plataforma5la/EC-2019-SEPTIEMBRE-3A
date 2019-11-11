@@ -41,9 +41,6 @@ function ProductList({ products, handleAddToCart, renderPageNumbers }) {
           </div>
         ))}
       </div>
-      <ul className="pagination">
-        {renderPageNumbers}
-      </ul>
     </div>
   );
 }
