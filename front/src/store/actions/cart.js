@@ -28,10 +28,17 @@ export const addToCartDbState = function(product) {
   };
 };
 
+export const refetchCart = function(products){
+  return function(dispatch,getState){
+    console.log("SOY PRODUCTS",products)
+    dispatch(setCart(products))
+  }
+}
+
 export const fetchCart = function() {
   return function(dispatch, getState) {
     axios.get("/api/cart").then(response => {
-      console.log("response.data", response.data);
+      console.log("response.data", response.data.products);
       if (response.data) {
         dispatch(setCart(response.data.products));
       } else {
