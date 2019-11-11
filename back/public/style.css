@@ -209,5 +209,10 @@ body {
   justify-content: center;
 }
 
+.formDireccion{
+  background-color: black;
+  color: white
+}
+
 .pagination li:hover:not(.active) {background-color: #ddd;}
 
