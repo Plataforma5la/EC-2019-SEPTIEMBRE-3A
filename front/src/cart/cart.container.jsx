@@ -1,22 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 import CartComponent from "./cart.component";
+import Store from "../store/index"
 import {emptyCart, deleteCart, deleteProduct, addToCartState, addToCartDbState,fetchCart, refetchCart} from "../store/actions/cart"
 
 class Cart extends React.Component {
     constructor(props){
         super(props);
+        this.state = Store.getState()
         this.handleAddToCart = this.handleAddToCart.bind(this)
         this.handleEmptyCart = this.handleEmptyCart.bind(this);
         this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
     }
 
+
+
+
     componentDidUpdate(){
-      console.log("SE UPDATEEO")
       if (!this.props.user.username) {
-        this.props.refetchCart(this.props.cart)
+        this.props.refetchCart(this.state.cart.cart)
       } else {
-        this.props.fetchCart(product);
+        this.props.fetchCart(this.state.cart.cart);
       }
     }
     
@@ -24,24 +28,24 @@ class Cart extends React.Component {
       event.preventDefault();
       if (!this.props.user.username) {
         this.props.addToCartState(product);
-        this.props.refetchCart(this.props.cart)
+        this.props.refetchCart(product)
       } else {
         this.props.addToCartDbState(product);
         this.props.fetchCart(product);
       }
     }
-
+    
     handleEmptyCart(cart) {   //si hay user logeado borra el cart de la db, sino del state
-        event.preventDefault();
-     !this.props.user.username ?
-            this.props.emptyCart()
-          :
-            this.props.deleteCart(cart) 
-        }
+      event.preventDefault();
+      !this.props.user.username ?
+      this.props.emptyCart()
+      :
+      this.props.deleteCart(cart) 
+    }
     
     handleDeleteProduct(product){
-         event.preventDefault();
-         this.props.deleteProduct(product)
+      event.preventDefault();
+      this.props.deleteProduct(product)
     }
 
   render() {
