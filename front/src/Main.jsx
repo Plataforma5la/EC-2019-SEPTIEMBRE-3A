@@ -6,7 +6,7 @@ import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
 import SingleProductContainer from "./SingleProduct/singleProduct.container";
 import ProductListContainer from "./productList/productList.container";
-import CartContainer from "./cart/cart.container"
+import CartContainer from "./cart/cart.container";
 import NavBar from "./navbar/navbar.container";
 import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
@@ -14,6 +14,7 @@ import { fetchProductList } from "./store/actions/productList";
 import confirmarCompra from "./confirmarCompra/confirmarCompra.container";
 import loginContainer from "./login/login.container";
 import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
+import NewProductContainer from "./newproduct/newProduct.container";
 
 class Main extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Main extends React.Component {
       if (this.props.user.username) {
         this.props.fetchCart();
       } else {
-        this.props.fetchCartFromLocalStorage()
+        this.props.fetchCartFromLocalStorage();
       }
     });
     this.props.fetchProductList();
@@ -34,7 +35,7 @@ class Main extends React.Component {
     return (
       <div>
         <NavBar user={this.props.user} history={this.props.history} />
-        <Sidebar />
+        <Sidebar history={this.props.history} />
         <Switch>
           <Route
             exact
@@ -51,6 +52,7 @@ class Main extends React.Component {
             path={"/cart"}
             render={() => <CartContainer history={this.props.history} />}
           />
+          <Route exact path={"/newproduct"} component={NewProductContainer} />
           <Route
             exact
             path={"/cart/confirmar-compra"}
