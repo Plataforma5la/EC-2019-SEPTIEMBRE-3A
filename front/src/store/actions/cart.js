@@ -32,8 +32,8 @@ export const fetchCart = function() {
   return function(dispatch, getState) {
     axios.get("/api/cart").then(response => {
       console.log("response.data", response.data);
-      if (response.data[0]) {
-        dispatch(setCart(response.data[0].products));
+      if (response.data) {
+        dispatch(setCart(response.data.products));
       } else {
         dispatch(setCart([]));
       }
@@ -57,5 +57,21 @@ export const createCart = function(products) {
         dispatch(setCart(response.data[0].products));
       }
     });
+  };
+};
+
+export const deleteProduct = function(product) {
+  return function(dispatch, getState) {
+    console.log("PRODUCT EN EL FRONT", product.id), axios.delete(`/api/cart/`);
+  };
+};
+
+export const deleteCart = function(cart) {
+  //solo llega acá si estoy logeado, sino borra el state
+  return function(dispatch, getState) {
+    let cartid = cart[0].cart_product.cartId;
+    axios
+      .delete("/api/cart", { data: { cartid } })
+      .then(res => console.log("AAAAAAAAAAAAAAAAAAAAAA", res.data));
   };
 };
