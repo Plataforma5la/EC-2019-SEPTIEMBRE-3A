@@ -2,7 +2,6 @@ const router = require("express").Router();
 const nodeMailer = require('nodemailer');
 
 router.post("/", function(req, res) {
-    console.log(req.body.HTML_MESSAGE)
    
     let transporter = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
@@ -15,7 +14,7 @@ router.post("/", function(req, res) {
     });
     let mailOptions = {
         // should be replaced with real recipient's account
-        to: ['franpegels@gmail.com'/*, 'anyother@hotmail.com'*/],
+        to: [req.user.email/*, 'anyother@hotmail.com'*/],
         subject: 'COMPRA eClimax.com',
         text: 'Hello world?', // plain text body
         html: req.body.HTML_MESSAGE // html body
