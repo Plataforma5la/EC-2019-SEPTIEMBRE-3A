@@ -8,31 +8,29 @@ import { addToCartState, addToCartDbState } from "../store/actions/cart";
 class ProductListContainer extends Component {
   constructor(props) {
     super(props);
-    this.handleAddToCart = this.handleAddToCart.bind(this)
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   handleAddToCart(product) {
-    event.preventDefault()
-    console.log("@@@>>>", product)
-    console.log("@@@", this.props.user)
+    event.preventDefault();
     if (!this.props.user.username) {
-          this.props.addToCartState(product)}
-    else {
-          this.props.addToCartDbState(product)
+      this.props.addToCartState(product);
+    } else {
+      this.props.addToCartDbState(product);
     }
-
   }
 
   render() {
     return (
       <div>
-        <ProductList products={this.props.productList} 
-                     handleAddToCart={this.handleAddToCart}/>
+        <ProductList
+          products={this.props.productList}
+          handleAddToCart={this.handleAddToCart}
+        />
       </div>
     );
   }
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -45,8 +43,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   fetchProductList: () => dispatch(fetchProductList()),
   fetchSingleProductData: id => dispatch(fetchSingleProductData(id)),
-  addToCartState: (product) => dispatch(addToCartState(product)),
-  addToCartDbState: (product) => dispatch(addToCartDbState(product))
+  addToCartState: product => dispatch(addToCartState(product)),
+  addToCartDbState: product => dispatch(addToCartDbState(product))
 });
 
 export default connect(

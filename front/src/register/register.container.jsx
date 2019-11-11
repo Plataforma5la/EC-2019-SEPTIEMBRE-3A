@@ -3,6 +3,7 @@ import axios from "axios";
 import RegisterForm from "../register/register.component";
 import { registerUser } from "../store/actions/user";
 import { connect } from "react-redux";
+import { createCart } from "../store/actions/cart";
 
 class RegisterContainer extends React.Component {
   constructor() {
@@ -36,12 +37,19 @@ class RegisterContainer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const products = this.props.products;
     if (this.state.userInput && this.state.passInput && this.state.mailInput) {
-      this.props.registerUser({
-        username: this.state.userInput,
-        email: this.state.mailInput,
-        password: this.state.passInput
-      });
+      this.props
+        .registerUser({
+          username: this.state.userInput,
+          email: this.state.mailInput,
+          password: this.state.passInput
+        })
+        .then(() => {
+          if (products.length) {
+            this.props.createCart(products);
+          }
+        });
     }
   }
   render() {
@@ -55,13 +63,17 @@ class RegisterContainer extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  products: state.cart.cart
+});
 
 const mapDispatchToProps = dispatch => ({
   registerUser: ({ username, email, password }) =>
-    dispatch(registerUser({ username, email, password }))
+    dispatch(registerUser({ username, email, password })),
+  createCart: products => dispatch(createCart(products))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(RegisterContainer);
