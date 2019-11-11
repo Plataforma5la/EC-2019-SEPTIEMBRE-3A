@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function cartComponent({ cart, handleEmptyCart, handleDeleteProduct }) {
+export default function cartComponent({ cart, handleEmptyCart, handleDeleteProduct, handleAddToCart }) {
   return (
     <div className="container cartProductsContainer">
       {cart.length ? (
@@ -17,8 +17,8 @@ export default function cartComponent({ cart, handleEmptyCart, handleDeleteProdu
             </div>
             <div className="col-3">
               <button onClick={()=>handleDeleteProduct(product)}>-</button>
-              <p>cant</p>
-              <button>+</button>
+              <p>{product.cart_product.count}</p>
+              <button onClick={() => handleAddToCart(product)}>+</button>
             </div>
           </div>
         )
