@@ -17,7 +17,7 @@ export default function cartComponent({ cart, handleEmptyCart, handleDeleteProdu
               <p>${product.price}</p>
             </div>
             <div className="col-3">
-              <button onClick={()=>handleDeleteProduct(product)}>-</button>
+              <button onClick={() => handleDeleteProduct(product)}>-</button>
               <p>{product.cart_product.count}</p>
               <button onClick={() => handleAddToCart(product)}>+</button>
             </div>
