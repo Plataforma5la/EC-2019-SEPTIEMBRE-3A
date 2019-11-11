@@ -54,7 +54,6 @@ export const addToCartDbState = function(product) {
 
 export const refetchCart = function(products){
   return function(dispatch,getState){
-    console.log("SOY PRODUCTS",products)
     dispatch(setCart(products))
   }
 }
@@ -62,10 +61,6 @@ export const refetchCart = function(products){
 export const fetchCart = function() {
   return function(dispatch, getState) {
     axios.get("/api/cart").then(response => {
-<<<<<<< HEAD
-      console.log("response.data", response.data.products);
-=======
->>>>>>> de70bacc6b35b90f3031be540beeb7f68e81ae0c
       if (response.data) {
         dispatch(setCart(response.data.products));
       } else {

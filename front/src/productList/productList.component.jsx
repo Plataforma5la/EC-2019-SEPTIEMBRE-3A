@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TiThermometer } from "react-icons/ti";
 
-<<<<<<< HEAD
-
-function ProductList({ products, handleAddToCart }) {
-=======
 function ProductList({ products, handleAddToCart, renderPageNumbers }) {
->>>>>>> 7083c249ad01b2981eb03142d06e44a61d084c31
   return (
     <div className="main container">
       <div className="row">
@@ -33,15 +28,11 @@ function ProductList({ products, handleAddToCart, renderPageNumbers }) {
                 <TiThermometer />
                 <TiThermometer />
               </div>
-<<<<<<< HEAD
-              <button type="button" className="btn btn-secondary" onClick={() => handleAddToCart(product)}>
-=======
               <button
                 type="button"
                 className="btn btn-secondary"
                 onClick={() => handleAddToCart(product)}
               >
->>>>>>> 7083c249ad01b2981eb03142d06e44a61d084c31
                 Deseo
               </button>
             </div>
@@ -52,10 +43,7 @@ function ProductList({ products, handleAddToCart, renderPageNumbers }) {
           </div>
         ))}
       </div>
-<<<<<<< HEAD
-=======
       <ul className="pagination">{renderPageNumbers}</ul>
->>>>>>> 7083c249ad01b2981eb03142d06e44a61d084c31
     </div>
   );
 }
