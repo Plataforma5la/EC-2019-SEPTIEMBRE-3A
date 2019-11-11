@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function cartComponent({ cart, handleEmptyCart, handleDeleteProduct }) {
   return (
@@ -16,7 +17,7 @@ export default function cartComponent({ cart, handleEmptyCart, handleDeleteProdu
               <p>${product.price}</p>
             </div>
             <div className="col-3">
-              <button onClick={()=>handleDeleteProduct(product)}>-</button>
+              <button onClick={() => handleDeleteProduct(product)}>-</button>
               <p>cant</p>
               <button>+</button>
             </div>
@@ -24,12 +25,21 @@ export default function cartComponent({ cart, handleEmptyCart, handleDeleteProdu
         )
         )
       ) : (
-        <h3> Tu carrito está vacio, dale placer!</h3>
-      )}
-      {cart.length?
-            <button onClick={() => handleEmptyCart(cart)}>
-              Vaciar carrito
-            </button>:""
+          <h3> Tu carrito está vacio, dale placer!</h3>
+        )}
+      {cart.length ?
+        <button onClick={() => handleEmptyCart(cart)}>
+          Vaciar carrito
+            </button> : ""
+      }
+      {cart.length ?
+        <Link to="/cart/confirmar-compra">
+
+          <button >
+            Confirmar Compra
+        </button>
+        </Link>
+        : ""
       }
     </div>
   );

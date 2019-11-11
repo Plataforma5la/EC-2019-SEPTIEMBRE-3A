@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { TiThermometer } from "react-icons/ti";
 
 
-function ProductList({ products, handleAddToCart, renderPageNumbers }) {
+function ProductList({ products, handleAddToCart }) {
   return (
     <div className="main container">
       <div className="row">
@@ -30,7 +30,7 @@ function ProductList({ products, handleAddToCart, renderPageNumbers }) {
                 <TiThermometer />
                 <TiThermometer />
               </div>
-              <button type="button" className="btn btn-secondary">
+              <button type="button" className="btn btn-secondary" onClick={() => handleAddToCart(product)}>
                 Deseo
             </button>
             </div>
