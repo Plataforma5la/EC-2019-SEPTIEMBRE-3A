@@ -14,9 +14,6 @@ const setCart = function(cart) {
   };
 };
 
-<<<<<<< HEAD
-// Add products to cart when user is not logged, only add to state, not to database //
-=======
 export const fetchCartFromLocalStorage = function() {
   return function(dispatch, getState) {
     console.log("@@@LLEGO A LA ACCION");
@@ -24,7 +21,6 @@ export const fetchCartFromLocalStorage = function() {
     dispatch(setCart(cart));
   };
 };
->>>>>>> de70bacc6b35b90f3031be540beeb7f68e81ae0c
 
 export const addToCartState = function(product) {
   let existing = JSON.parse(localStorage.getItem("CART")) || [];
