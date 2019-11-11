@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Cart = require("../models/cart");
 const Product = require("../models/products");
+const Cart_product = require("../models/cart_product");
 
 router.get("/", function(req, res) {
   if (req.user) {
