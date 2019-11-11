@@ -14,7 +14,32 @@ const setCart = function(cart) {
   };
 };
 
+export const fetchCartFromLocalStorage = function() {
+  return function(dispatch, getState) {
+    console.log("@@@LLEGO A LA ACCION")
+   let cart = JSON.parse(localStorage.getItem('CART')) || []
+    dispatch(setCart(cart));
+  };
+};
+
+
 export const addToCartState = function(product) {
+  let existing = JSON.parse(localStorage.getItem('CART')) || []
+ 
+  for (let i=0; i<existing.length; i++) {
+    if (existing[i].id == product.id) { existing[i].cart_product.count +=1; 
+      console.log("@@aftercount", existing)
+      localStorage.setItem('CART', JSON.stringify(existing))
+      return function(dispatch, getState) {
+        dispatch(addToCartAction(product));
+      };
+     }
+  }
+  
+  existing.unshift(product)
+  existing[0].cart_product={}
+  existing[0].cart_product.count = 1
+  localStorage.setItem('CART', JSON.stringify(existing))
   return function(dispatch, getState) {
     dispatch(addToCartAction(product));
   };
