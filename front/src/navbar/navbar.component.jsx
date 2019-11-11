@@ -38,6 +38,10 @@ export default function MenuAppBar(props) {
               onChange={props.handleSearchtextChange}
             />
           </Form>
+          <Link to="/cart">
+
+          <button>carrito</button>
+          </Link>
         </div>
         {props.user.username ? (
           <div className="col-3 navbarLogoutContainer">
