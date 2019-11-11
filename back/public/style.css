@@ -1,3 +1,16 @@
+.cartProductPic {
+  max-height: 10vh;
+}
+
+.cartProductsContainer {
+  padding: 120px 120px;
+}
+
+.cartSingleProductBox {
+  background-color: whitesmoke;
+  margin-bottom: 5px;
+}
+
 .navbarContainer {
   margin: 0;
 }
@@ -146,7 +159,7 @@ body {
   text-align: center;
 }
 
-.navbarLogoutContainer{
+.navbarLogoutContainer {
   left: 430px;
 }
 

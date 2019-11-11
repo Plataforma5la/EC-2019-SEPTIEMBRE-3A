@@ -6,6 +6,7 @@ import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
 import SingleProductContainer from "./SingleProduct/singleProduct.container";
 import ProductListContainer from "./productList/productList.container";
+import CartContainer from "./cart/cart.container"
 import NavBar from "./navbar/navbar.container";
 import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
@@ -40,6 +41,11 @@ class Main extends React.Component {
             exact
             path="/"
             render={() => <ProductListContainer history={this.props.history} />}
+          />
+          <Route 
+            exact
+            path={"/cart"}
+            render={() => <CartContainer history={this.props.history} />}
           />
           <Redirect from="/" to="/products" />
         </Switch>

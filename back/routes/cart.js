@@ -50,4 +50,16 @@ router.post("/", function(req, res) {
   });
 });
 
+router.delete("/", function(req, res) {
+  console.log("SOY EL BACK", req.body);
+});
+
+
+
+// router.delete("/", function(req, res) {
+//   console.log("SOY EL BACK")
+//   Cart.removeProducts({ cartId: req.body })
+//   .then(res=>res.send("listo"))
+// });
+
 module.exports = router;
