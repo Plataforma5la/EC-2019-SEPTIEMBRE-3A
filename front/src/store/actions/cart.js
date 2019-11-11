@@ -16,30 +16,29 @@ const setCart = function(cart) {
 
 export const fetchCartFromLocalStorage = function() {
   return function(dispatch, getState) {
-    console.log("@@@LLEGO A LA ACCION")
-   let cart = JSON.parse(localStorage.getItem('CART')) || []
+    console.log("@@@LLEGO A LA ACCION");
+    let cart = JSON.parse(localStorage.getItem("CART")) || [];
     dispatch(setCart(cart));
   };
 };
 
-
 export const addToCartState = function(product) {
-  let existing = JSON.parse(localStorage.getItem('CART')) || []
- 
-  for (let i=0; i<existing.length; i++) {
-    if (existing[i].id == product.id) { existing[i].cart_product.count +=1; 
-      console.log("@@aftercount", existing)
-      localStorage.setItem('CART', JSON.stringify(existing))
+  let existing = JSON.parse(localStorage.getItem("CART")) || [];
+
+  for (let i = 0; i < existing.length; i++) {
+    if (existing[i].id == product.id) {
+      existing[i].cart_product.count += 1;
+      localStorage.setItem("CART", JSON.stringify(existing));
       return function(dispatch, getState) {
         dispatch(addToCartAction(product));
       };
-     }
+    }
   }
-  
-  existing.unshift(product)
-  existing[0].cart_product={}
-  existing[0].cart_product.count = 1
-  localStorage.setItem('CART', JSON.stringify(existing))
+
+  existing.unshift(product);
+  existing[0].cart_product = {};
+  existing[0].cart_product.count = 1;
+  localStorage.setItem("CART", JSON.stringify(existing));
   return function(dispatch, getState) {
     dispatch(addToCartAction(product));
   };
@@ -56,7 +55,6 @@ export const addToCartDbState = function(product) {
 export const fetchCart = function() {
   return function(dispatch, getState) {
     axios.get("/api/cart").then(response => {
-      console.log("response.data", response.data);
       if (response.data) {
         dispatch(setCart(response.data.products));
       } else {
@@ -75,7 +73,6 @@ export const emptyCart = function() {
 export const createCart = function(products) {
   return function(dispatch, getState) {
     axios.post("/api/cart", { products }).then(response => {
-      console.log("respuesta del server", response.data);
       if (response.data === true) {
         dispatch(setCart(products));
       } else {
