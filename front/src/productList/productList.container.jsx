@@ -53,16 +53,19 @@ class ProductListContainer extends Component {
         >
           {number}
         </li>
+
       );
     });
 
     return (
-      <div className="paginaprincipal">
+      <div>
         <ProductList
           products={currentProducts}
           handleAddToCart={this.handleAddToCart}
-          renderPageNumbers={renderPageNumbers}
         />
+        <ul className="pagination">
+          {renderPageNumbers}
+        </ul>
       </div>
     );
   }

@@ -11,6 +11,8 @@ import NavBar from "./navbar/navbar.container";
 import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
 import { fetchProductList } from "./store/actions/productList";
+import confirmarCompra from "./confirmarCompra/confirmarCompra.container";
+import loginContainer from "./login/login.container";
 import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 import NewProductContainer from "./newproduct/newProduct.container";
 
@@ -51,6 +53,11 @@ class Main extends React.Component {
             render={() => <CartContainer history={this.props.history} />}
           />
           <Route exact path={"/newproduct"} component={NewProductContainer} />
+          <Route
+            exact
+            path={"/cart/confirmar-compra"}
+            component={confirmarCompra}
+          />
           <Redirect from="/" to="/products" />
         </Switch>
       </div>
