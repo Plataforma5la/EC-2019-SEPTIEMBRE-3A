@@ -14,7 +14,9 @@ Cart_product.init(
 );
 
 Cart_product.prototype.addCount = function() {
-  this.count = this.count++;
+  this.update({
+    count: this.count + 1
+  }).then(() => {});
 };
 
 module.exports = Cart_product;
