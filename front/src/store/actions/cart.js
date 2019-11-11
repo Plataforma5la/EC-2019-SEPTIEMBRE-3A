@@ -16,7 +16,6 @@ const setCart = function(cart) {
 
 export const fetchCartFromLocalStorage = function() {
   return function(dispatch, getState) {
-    console.log("@@@LLEGO A LA ACCION");
     let cart = JSON.parse(localStorage.getItem("CART")) || [];
     dispatch(setCart(cart));
   };

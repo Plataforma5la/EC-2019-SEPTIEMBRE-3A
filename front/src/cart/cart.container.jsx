@@ -37,6 +37,7 @@ class Cart extends React.Component {
     
     handleEmptyCart(cart) {   //si hay user logeado borra el cart de la db, sino del state
       event.preventDefault();
+      console.log("ENTREEEEEEEE")
       !this.props.user.username ?
       this.props.emptyCart()
       :

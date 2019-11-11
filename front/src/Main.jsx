@@ -24,7 +24,6 @@ class Main extends React.Component {
       if (this.props.user.username) {
         this.props.fetchCart();
       } else {
-        console.log("@@@@ACA SIN LOGUEAR")
         this.props.fetchCartFromLocalStorage()
       }
     });
