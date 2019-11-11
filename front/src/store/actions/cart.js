@@ -14,11 +14,15 @@ const setCart = function(cart) {
   };
 };
 
+// Add products to cart when user is not logged, only add to state, not to database //
+
 export const addToCartState = function(product) {
   return function(dispatch, getState) {
     dispatch(addToCartAction(product));
   };
 };
+
+// Add products to cart when user is loogged and persiste de data on the database //
 
 export const addToCartDbState = function(product) {
   return function(dispatch, getState) {
