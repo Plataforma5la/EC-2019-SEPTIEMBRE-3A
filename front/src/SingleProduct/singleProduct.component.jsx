@@ -4,6 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
 import Youtube from "react-youtube";
 import { getThemeProps } from "@material-ui/styles";
+import { Link } from "react-router-dom";
 
 export default function ({ product, handleAddToCart, user, handleSubmit, handleChange }) {
   return (
@@ -95,7 +96,9 @@ export default function ({ product, handleAddToCart, user, handleSubmit, handleC
             </p>
           </div>
           {user.username ? (
-            <button>Editar producto</button>
+            <Link to={`/editproduct/${product.id}`}>
+              <button>Editar producto</button>
+            </Link>
           ) : ""}
 
         </div>
