@@ -4,7 +4,6 @@ import CartComponent from "./cart.component";
 import Store from "../store/index";
 import {
   emptyCart,
-  deleteCart,
   deleteProduct,
   addToCartState,
   addToCartDbState,
