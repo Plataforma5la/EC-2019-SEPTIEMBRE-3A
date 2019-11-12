@@ -9,6 +9,8 @@ class SingleProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleAddToCart(product) {
@@ -18,6 +20,21 @@ class SingleProductContainer extends React.Component {
     } else {
       this.props.addToCartDbState(product);
     }
+  }
+
+  handleChange(event) {
+    console.log("handle change")
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    connsole.log("handlesubmit")
+    /*   if (this.state.newCategory) {
+        this.props.newCategory({ name: this.state.newCategory });
+        this.setState({
+          newCategory: ""
+        });
+      } */
   }
 
   componentDidMount() {
@@ -30,6 +47,8 @@ class SingleProductContainer extends React.Component {
         <SingleProduct
           product={this.props.product}
           handleAddToCart={this.handleAddToCart}
+          user={this.props.user}
+          handleSubmit={this.props.handleSubmit}
         />
       </div>
     );
