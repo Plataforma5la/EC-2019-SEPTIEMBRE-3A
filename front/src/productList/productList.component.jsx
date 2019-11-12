@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TiThermometer } from "react-icons/ti";
+import { GoTrashcan } from "react-icons/go";
 
-function ProductList({ products, handleAddToCart, renderPageNumbers }) {
+function ProductList({
+  products,
+  handleAddToCart,
+  renderPageNumbers,
+  user,
+  handleDelete
+}) {
   return (
     <div className="main container">
       <div className="row">
@@ -28,13 +35,23 @@ function ProductList({ products, handleAddToCart, renderPageNumbers }) {
                 <TiThermometer />
                 <TiThermometer />
               </div>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => handleAddToCart(product)}
-              >
-                Deseo
-              </button>
+              {user.isAdmin ? (
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={e => handleDelete(product)}
+                >
+                  <GoTrashcan />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => handleAddToCart(product)}
+                >
+                  Deseo
+                </button>
+              )}
             </div>
             <br></br>
             <br></br>

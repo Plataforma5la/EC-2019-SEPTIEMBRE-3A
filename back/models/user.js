@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const S = require("sequelize");
 const db = require("../config/db");
+const Review = require("./reviews");
 
 class User extends S.Model {}
 
@@ -49,5 +50,7 @@ User.beforeCreate(user => {
   user.salt = user.randomSalt();
   user.password = user.hashPassword(user.password);
 });
+
+User.hasMany(Review);
 
 module.exports = User;

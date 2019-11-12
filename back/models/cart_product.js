@@ -19,4 +19,10 @@ Cart_product.prototype.addCount = function() {
   }).then(() => {});
 };
 
+Cart_product.prototype.subtractCount = function() {
+  this.update({
+    count: this.count - 1
+  }).then(() => {});
+};
+
 module.exports = Cart_product;

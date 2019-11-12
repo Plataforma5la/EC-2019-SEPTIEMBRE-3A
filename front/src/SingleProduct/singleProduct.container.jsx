@@ -4,11 +4,13 @@ import { connect } from "react-redux";
 import fetchSingleProductData from "../store/actions/singleProductData";
 import { addToCartDbState } from "../store/actions/cart";
 import { addToCartState } from "../store/actions/cart";
+import { deleteProduct } from "../store/actions/productList";
 
 class SingleProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleAddToCart(product) {
@@ -18,6 +20,11 @@ class SingleProductContainer extends React.Component {
     } else {
       this.props.addToCartDbState(product);
     }
+  }
+
+  handleDelete(product) {
+    this.props.deleteProduct(product);
+    this.props.history.push("/");
   }
 
   componentDidMount() {
@@ -30,6 +37,8 @@ class SingleProductContainer extends React.Component {
         <SingleProduct
           product={this.props.product}
           handleAddToCart={this.handleAddToCart}
+          handleDelete={this.handleDelete}
+          user={this.props.user}
         />
       </div>
     );
@@ -44,7 +53,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchSingleProductData: id => dispatch(fetchSingleProductData(id)),
   addToCartDbState: product => dispatch(addToCartDbState(product)),
-  addToCartState: product => dispatch(addToCartState(product))
+  addToCartState: product => dispatch(addToCartState(product)),
+  deleteProduct: product => dispatch(deleteProduct(product))
 });
 
 export default connect(

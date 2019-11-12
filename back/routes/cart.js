@@ -3,20 +3,52 @@ const Cart = require("../models/cart");
 const Product = require("../models/products");
 const Cart_product = require("../models/cart_product");
 
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   if (req.user) {
     Cart.findOne({
       where: { buyerId: req.user.id, status: "open" },
       include: [Product]
     }).then(cart => {
+      // console.log(cart);
       res.send(cart);
     });
   } else {
     res.sendStatus(200);
   }
 });
+router.put("/substract", function(req, res) {
+  Cart.findOrCreate({
+    where: { buyerId: req.user.id, status: "open" },
+    include: [Product]
+  }).then(cart => {
+    Cart_product.findOne({
+      where: { cartId: cart[0].id, productId: req.body.product.id }
+    }).then(instance => {
+      // console.log(instance);
+      if (instance.count > 1) {
+        instance.subtractCount();
+        res.sendStatus(201);
+      } else {
+        console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+        cart[0].removeProducts(req.body.product.id).then(() => {
+          if (
+            Cart_product.findOne({
+              where: { cartId: cart[0].id }
+            }).then(res => res === null)
+          ) {
+            console.log("DESTROYYYYYYYYY");
+            Cart.findOne({ where: { id: cart[0].id } }).then(destroyCart =>
+              destroyCart.destroy()
+            );
+          }
+        });
+      }
+    });
+  });
+});
 
-router.put("/", function (req, res) {
+router.put("/", function(req, res) {
+  console.log(req.user.id);
   Cart.findOrCreate({
     where: { buyerId: req.user.id, status: "open" },
     include: [Product]
@@ -36,7 +68,7 @@ router.put("/", function (req, res) {
   });
 });
 
-router.post("/", function (req, res) {
+router.post("/", function(req, res) {
   Cart.findOrCreate({
     where: { buyerId: req.user.id, status: "open" },
     include: [Product]

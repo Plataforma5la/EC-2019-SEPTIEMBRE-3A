@@ -1,6 +1,7 @@
 const S = require("sequelize");
 const db = require("../config/db");
 const Categorie = require("./categories");
+const Review = require("./reviews");
 
 class Product extends S.Model {}
 
@@ -42,5 +43,5 @@ Product.init(
 );
 
 Product.belongsToMany(Categorie, { through: "categorie_product" });
-
+Product.hasMany(Review);
 module.exports = Product;

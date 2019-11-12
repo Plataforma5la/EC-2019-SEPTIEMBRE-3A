@@ -32,3 +32,11 @@ export const newCategory = category => dispatch =>
   axios
     .post("/api/admin/newCategory", category)
     .then(response => dispatch(setCategories(response.data)));
+
+export const deleteCategory = category => dispatch => {
+  return axios
+
+    .delete("/api/categories", { data: { category } })
+    .then(res => res.data)
+    .then(categories => dispatch(setCategories(categories)));
+};
