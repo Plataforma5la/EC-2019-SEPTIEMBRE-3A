@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import RegisterContainer from "./register/register.container";
-import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
 import SingleProductContainer from "./SingleProduct/singleProduct.container";
@@ -12,12 +10,12 @@ import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
 import { fetchProductList } from "./store/actions/productList";
 import confirmarCompra from "./confirmarCompra/confirmarCompra.container";
-import loginContainer from "./login/login.container";
 import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 import NewProductContainer from "./newproduct/newProduct.container";
 import Users from "./users/users.container";
 import History from "./historial/historial.container";
 
+import EditProductContainer from "./editProduct/EditProducts.container"
 
 class Main extends React.Component {
   constructor(props) {
@@ -50,11 +48,8 @@ class Main extends React.Component {
             path="/"
             render={() => <ProductListContainer history={this.props.history} />}
           />
-          <Route
-            exact
-            path={"/cart"}
-            render={() => <CartContainer history={this.props.history} />}
-          />
+          <Route path="/editproduct/:productID" render={({ match }) => <EditProductContainer match={match} history={this.props.history} />} />
+          <Route exact path="/cart" render={() => <CartContainer history={this.props.history} />} />
           <Route exact path={"/newproduct"} component={NewProductContainer} />
           <Route
             exact
@@ -77,8 +72,9 @@ class Main extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ logged }) => ({
-  user: logged.user
+const mapStateToProps = (state) => ({
+  user: state.logged.user,
+  product: state.product
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -92,4 +88,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(Main)

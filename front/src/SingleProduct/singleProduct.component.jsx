@@ -4,9 +4,10 @@ import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
 import Youtube from "react-youtube";
 import { getThemeProps } from "@material-ui/styles";
+import { Link } from "react-router-dom";
 import { GoTrashcan } from "react-icons/go";
 
-export default function({ product, handleAddToCart, user, handleDelete }) {
+export default function ({ product, handleAddToCart, user, handleDelete }) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -53,13 +54,13 @@ export default function({ product, handleAddToCart, user, handleDelete }) {
             <span></span>
             {product.categories
               ? product.categories.map(category => (
-                  <span
-                    key={category.id}
-                    className="badge singleProductCategoriesTag badge-secondary"
-                  >
-                    {category.name}
-                  </span>
-                ))
+                <span
+                  key={category.id}
+                  className="badge singleProductCategoriesTag badge-secondary"
+                >
+                  {category.name}
+                </span>
+              ))
               : ""}
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
@@ -73,14 +74,14 @@ export default function({ product, handleAddToCart, user, handleDelete }) {
                     <GoTrashcan />
                   </button>
                 ) : (
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    Deseo
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      Deseo
                   </button>
-                )}
+                  )}
 
                 <p className="singleProductPrice col-5">
                   {" "}
@@ -104,6 +105,11 @@ export default function({ product, handleAddToCart, user, handleDelete }) {
               son excelentes pero es un gran producto para trabajar tranquilo y
               por el precio vale mucho la pena.{" "}
             </p>
+            {user.username ? (
+              <Link to={`/editproduct/${product.id}`}>
+                <button id="botonEditarProducto">Editar producto</button>
+              </Link>
+            ) : ""}
           </div>
           {user.isAdmin ? <button>Editar producto</button> : ""}
         </div>

@@ -5,10 +5,26 @@ const searchSingleProductData = productData => ({
   productData
 });
 
+const editSingleProductData = productData => ({
+  type: "EDIT_SINGLE_PRODUCT",
+  productData
+})
+
+
+const editSingleProduct = product => dispatch => {
+  axios
+    .put(`/api/admin/editproduct/${product.id}`, { product })
+    .then(res => res.data)//recibo la data del back //
+    .then(productData => dispatch(editSingleProductData(productData)));
+}
+
+
+
+
 const fetchSingleProductData = productid => dispatch =>
   axios
     .get(`/api/singleProduct/${productid}`)
     .then(res => res.data) //recibo la data del back //
     .then(productData => dispatch(searchSingleProductData(productData)));
 
-export default fetchSingleProductData;
+export { fetchSingleProductData, editSingleProduct }
