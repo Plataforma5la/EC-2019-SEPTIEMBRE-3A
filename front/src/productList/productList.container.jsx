@@ -3,8 +3,12 @@ import { connect } from "react-redux";
 import ProductList from "./productList.component";
 import { fetchProductList, deleteProduct } from "../store/actions/productList";
 import fetchSingleProductData from "../store/actions/singleProductData";
-import { addToCartState, addToCartDbState } from "../store/actions/cart";
-import ReactPaginate from "react-paginate";
+import {
+  addToCartState,
+  addToCartDbState,
+  substractOfCartDbState,
+  substractOfCartState
+} from "../store/actions/cart";
 
 class ProductListContainer extends Component {
   constructor(props) {
@@ -15,6 +19,7 @@ class ProductListContainer extends Component {
     };
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
+    this.handleSubstractOfCart = this.handleSubstractOfCart.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
   handleDelete(product) {
@@ -27,6 +32,15 @@ class ProductListContainer extends Component {
       this.props.addToCartState(product);
     } else {
       this.props.addToCartDbState(product);
+    }
+  }
+
+  handleSubstractOfCart(product) {
+    event.preventDefault();
+    if (!this.props.user.username) {
+      this.props.substractOfCartState(product);
+    } else {
+      this.props.substractOfCartDbState(product);
     }
   }
 
@@ -95,6 +109,8 @@ const mapDispatchToProps = dispatch => ({
   fetchSingleProductData: id => dispatch(fetchSingleProductData(id)),
   addToCartState: product => dispatch(addToCartState(product)),
   addToCartDbState: product => dispatch(addToCartDbState(product)),
+  substractOfCartState: product => dispatch(substractOfCartState(product)),
+  substractOfCartDbState: product => dispatch(substractOfCartDbState(product)),
   deleteProduct: product => dispatch(deleteProduct(product))
 });
 
