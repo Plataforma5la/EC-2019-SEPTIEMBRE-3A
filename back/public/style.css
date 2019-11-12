@@ -214,5 +214,9 @@ body {
   color: white
 }
 
+.aceptar{
+  border-radius: 10px;
+}
+
 .pagination li:hover:not(.active) {background-color: #ddd;}
 
