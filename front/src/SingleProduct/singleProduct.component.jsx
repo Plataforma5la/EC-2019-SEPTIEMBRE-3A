@@ -111,8 +111,10 @@ export default function ({ product, handleAddToCart, user, handleDelete }) {
               </Link>
             ) : ""}
           </div>
+          {user.isAdmin ? <button>Editar producto</button> : ""}
         </div>
       </div>
+
     </div>
   );
 }

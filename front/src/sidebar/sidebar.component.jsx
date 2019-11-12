@@ -25,9 +25,9 @@ export default function({
         <ul className="list-unstyled">
           {categories.map(category => {
             return (
-              <div>
+              <div key={category.id}>
                 <li
-                  key={category.id}
+                
                   className="playlist-item menu-item"
                   onClick={() => FilterbyCategory(category.id)}
                 >

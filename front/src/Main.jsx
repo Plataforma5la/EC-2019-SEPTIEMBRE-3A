@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import RegisterContainer from "./register/register.container";
-import LoginContainer from "./login/login.container";
 import { fetchUser } from "./store/actions/user";
 import { connect } from "react-redux";
 import SingleProductContainer from "./SingleProduct/singleProduct.container";
@@ -12,9 +10,11 @@ import "../../back/public/style.css";
 import Sidebar from "./sidebar/sidebar.container";
 import { fetchProductList } from "./store/actions/productList";
 import confirmarCompra from "./confirmarCompra/confirmarCompra.container";
-import loginContainer from "./login/login.container";
 import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 import NewProductContainer from "./newproduct/newProduct.container";
+import Users from "./users/users.container";
+import History from "./historial/historial.container";
+
 import EditProductContainer from "./editProduct/EditProducts.container"
 
 class Main extends React.Component {
@@ -55,6 +55,16 @@ class Main extends React.Component {
             exact
             path={"/cart/confirmar-compra"}
             component={confirmarCompra}
+          />
+          <Route
+            exact
+            path={"/users"}
+            component={Users}
+          />
+           <Route
+            exact
+            path={"/history"}
+            component={History}
           />
           <Redirect from="/" to="/products" />
         </Switch>
