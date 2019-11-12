@@ -1,3 +1,13 @@
+.addProductBox{
+  background-color: white;
+}
+
+.addProductContainer{
+  padding-top: 200px;
+  padding-left: 200px;
+ 
+}
+
 .cartProductPic {
   max-height: 10vh;
 }
@@ -207,6 +217,15 @@ body {
   width: 60%;
   display: flex;
   justify-content: center;
+}
+
+.formDireccion{
+  background-color: black;
+  color: white
+}
+
+.aceptar{
+  border-radius: 10px;
 }
 
 .pagination li:hover:not(.active) {background-color: #ddd;}

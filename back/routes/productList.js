@@ -27,4 +27,14 @@ router.get("/", function(req, res, next) {
   );
 });
 
+router.delete("/", function(req, res) {
+  Product.findByPk(req.body.product.id)
+    .then(product => product.destroy())
+    .then(() =>
+      Product.findAll({ include: [Category] }).then(products =>
+        res.send(products)
+      )
+    );
+});
+
 module.exports = router;

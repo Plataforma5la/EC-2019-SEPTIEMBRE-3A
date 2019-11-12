@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProductList from "./productList.component";
-import { fetchProductList } from "../store/actions/productList";
+import { fetchProductList, deleteProduct } from "../store/actions/productList";
 import fetchSingleProductData from "../store/actions/singleProductData";
 import {
   addToCartState,
@@ -20,6 +20,10 @@ class ProductListContainer extends Component {
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
     this.handleSubstractOfCart = this.handleSubstractOfCart.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+  handleDelete(product) {
+    this.props.deleteProduct(product);
   }
 
   handleAddToCart(product) {
@@ -83,6 +87,8 @@ class ProductListContainer extends Component {
         <ProductList
           products={currentProducts}
           handleAddToCart={this.handleAddToCart}
+          handleDelete={this.handleDelete}
+          user={this.props.user}
         />
         <ul className="pagination">{renderPageNumbers}</ul>
       </div>
@@ -104,7 +110,8 @@ const mapDispatchToProps = dispatch => ({
   addToCartState: product => dispatch(addToCartState(product)),
   addToCartDbState: product => dispatch(addToCartDbState(product)),
   substractOfCartState: product => dispatch(substractOfCartState(product)),
-  substractOfCartDbState: product => dispatch(substractOfCartDbState(product))
+  substractOfCartDbState: product => dispatch(substractOfCartDbState(product)),
+  deleteProduct: product => dispatch(deleteProduct(product))
 });
 
 export default connect(

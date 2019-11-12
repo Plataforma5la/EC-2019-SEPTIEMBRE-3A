@@ -1,8 +1,9 @@
 const S = require("sequelize");
 const db = require("../config/db");
 const Categorie = require("./categories");
+const Review = require("./reviews");
 
-class Product extends S.Model { }
+class Product extends S.Model {}
 
 Product.init(
   {
@@ -27,8 +28,7 @@ Product.init(
       allowNull: false
     },
     img2Url: {
-      type: S.TEXT,
-      allowNull: false
+      type: S.TEXT
     },
     ratingCount: {
       type: S.INTEGER,
@@ -42,7 +42,6 @@ Product.init(
   { sequelize: db, modelName: "product" }
 );
 
-
 Product.belongsToMany(Categorie, { through: "categorie_product" });
-
+Product.hasMany(Review);
 module.exports = Product;

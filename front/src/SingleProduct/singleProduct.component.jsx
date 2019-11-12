@@ -2,10 +2,16 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
+<<<<<<< HEAD
 // import Youtube from "react-youtube";
 // import { getThemeProps } from "@material-ui/styles";
+=======
+import Youtube from "react-youtube";
+import { getThemeProps } from "@material-ui/styles";
+import { GoTrashcan } from "react-icons/go";
+>>>>>>> 8a936add19a8d79ede29c9ad2fca3fe67769c14a
 
-export default function({ product, handleAddToCart }) {
+export default function({ product, handleAddToCart, user, handleDelete }) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -63,12 +69,23 @@ export default function({ product, handleAddToCart }) {
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
-                <button
-                  className="shoppingCartButton"
-                  onClick={() => handleAddToCart(product)}
-                >
-                  <FaShoppingCart className="shoppingCart" />
-                </button>
+                {user.isAdmin ? (
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={e => handleDelete(product)}
+                  >
+                    <GoTrashcan />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Deseo
+                  </button>
+                )}
 
                 <p className="singleProductPrice col-5">
                   {" "}
@@ -93,6 +110,7 @@ export default function({ product, handleAddToCart }) {
               por el precio vale mucho la pena.{" "}
             </p>
           </div>
+          {user.username ? <button>Editar producto</button> : ""}
         </div>
       </div>
     </div>
