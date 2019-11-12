@@ -16,7 +16,7 @@ class Cart extends React.Component {
 
 
 
-    componentDidUpdate(){
+    componentDidMount(){
       if (!this.props.user.username) {
         this.props.refetchCart(this.state.cart.cart)
       } else {
