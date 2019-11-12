@@ -1,7 +1,7 @@
 import React from "react";
 import SingleProduct from "./singleProduct.component";
 import { connect } from "react-redux";
-import fetchSingleProductData from "../store/actions/singleProductData";
+import { fetchSingleProductData } from "../store/actions/singleProductData";
 import { addToCartDbState } from "../store/actions/cart";
 import { addToCartState } from "../store/actions/cart";
 import { deleteProduct } from "../store/actions/productList";
