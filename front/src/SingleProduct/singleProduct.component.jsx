@@ -4,8 +4,9 @@ import { FaShoppingCart } from "react-icons/fa";
 import { TiThermometer } from "react-icons/ti";
 import Youtube from "react-youtube";
 import { getThemeProps } from "@material-ui/styles";
+import { GoTrashcan } from "react-icons/go";
 
-export default function ({ product, handleAddToCart, user, handleSubmit, handleChange }) {
+export default function({ product, handleAddToCart, user, handleDelete }) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -45,7 +46,6 @@ export default function ({ product, handleAddToCart, user, handleSubmit, handleC
                   alt="Dildo pic"
                 /> */}
               {/* </Carousel.Item> */}
-
             </Carousel>
           </div>
           <div className="col-4">
@@ -53,23 +53,34 @@ export default function ({ product, handleAddToCart, user, handleSubmit, handleC
             <span></span>
             {product.categories
               ? product.categories.map(category => (
-                <span
-                  key={category.id}
-                  className="badge singleProductCategoriesTag badge-secondary"
-                >
-                  {category.name}
-                </span>
-              ))
+                  <span
+                    key={category.id}
+                    className="badge singleProductCategoriesTag badge-secondary"
+                  >
+                    {category.name}
+                  </span>
+                ))
               : ""}
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
-                <button
-                  className="shoppingCartButton"
-                  onClick={() => handleAddToCart(product)}
-                >
-                  <FaShoppingCart className="shoppingCart" />
-                </button>
+                {user.isAdmin ? (
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={e => handleDelete(product)}
+                  >
+                    <GoTrashcan />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Deseo
+                  </button>
+                )}
 
                 <p className="singleProductPrice col-5">
                   {" "}
@@ -94,10 +105,7 @@ export default function ({ product, handleAddToCart, user, handleSubmit, handleC
               por el precio vale mucho la pena.{" "}
             </p>
           </div>
-          {user.username ? (
-            <button>Editar producto</button>
-          ) : ""}
-
+          {user.username ? <button>Editar producto</button> : ""}
         </div>
       </div>
     </div>
