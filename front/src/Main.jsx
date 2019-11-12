@@ -16,6 +16,8 @@ import loginContainer from "./login/login.container";
 import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 import NewProductContainer from "./newproduct/newProduct.container";
 import Users from "./users/users.container";
+import History from "./historial/historial.container";
+
 
 class Main extends React.Component {
   constructor(props) {
@@ -63,6 +65,11 @@ class Main extends React.Component {
             exact
             path={"/users"}
             component={Users}
+          />
+           <Route
+            exact
+            path={"/history"}
+            component={History}
           />
           <Redirect from="/" to="/products" />
         </Switch>

@@ -105,9 +105,10 @@ export default function({ product, handleAddToCart, user, handleDelete }) {
               por el precio vale mucho la pena.{" "}
             </p>
           </div>
-          {user.username ? <button>Editar producto</button> : ""}
+          {user.isAdmin ? <button>Editar producto</button> : ""}
         </div>
       </div>
+
     </div>
   );
 }

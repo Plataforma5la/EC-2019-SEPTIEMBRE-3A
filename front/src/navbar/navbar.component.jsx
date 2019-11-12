@@ -23,6 +23,9 @@ export default function MenuAppBar(props) {
             <h4 className="textoNavbar">
               BienvenidX.X.X {props.user.username}
             </h4>
+            <Link to="/history">
+          <button>Ver Historial de Compra</button>
+          </Link>
           </div>
         ) : (
           <div className="col-3">
