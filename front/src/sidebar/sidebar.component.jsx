@@ -65,6 +65,11 @@ export default function({
                 Add Product!
               </button>
             </Link>
+            <Link to={"/editcategory"}>
+              <button type="button" className="navButton btn btn-drk btn-sm">
+                Edit Category!
+              </button>
+            </Link>
           </div>
         )}
       </section>
