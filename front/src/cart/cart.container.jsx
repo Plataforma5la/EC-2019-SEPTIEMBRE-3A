@@ -16,7 +16,7 @@ class Cart extends React.Component {
 
 
 
-    componentDidMount(){
+    componentDidUpdate(){
       if (!this.props.user.username) {
         this.props.refetchCart(this.state.cart.cart)
       } else {
@@ -26,6 +26,7 @@ class Cart extends React.Component {
     
     handleAddToCart(product) {
       event.preventDefault();
+      //console.log("soy handleaddtocart",product);
       if (!this.props.user.username) {
         this.props.addToCartState(product);
         this.props.refetchCart(product)
