@@ -5,7 +5,7 @@ import { TiThermometer } from "react-icons/ti";
 import Youtube from "react-youtube";
 import { getThemeProps } from "@material-ui/styles";
 
-export default function({ product, handleAddToCart }) {
+export default function ({ product, handleAddToCart, user, handleSubmit, handleChange }) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -45,6 +45,7 @@ export default function({ product, handleAddToCart }) {
                   alt="Dildo pic"
                 /> */}
               {/* </Carousel.Item> */}
+
             </Carousel>
           </div>
           <div className="col-4">
@@ -52,13 +53,13 @@ export default function({ product, handleAddToCart }) {
             <span></span>
             {product.categories
               ? product.categories.map(category => (
-                  <span
-                    key={category.id}
-                    className="badge singleProductCategoriesTag badge-secondary"
-                  >
-                    {category.name}
-                  </span>
-                ))
+                <span
+                  key={category.id}
+                  className="badge singleProductCategoriesTag badge-secondary"
+                >
+                  {category.name}
+                </span>
+              ))
               : ""}
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
@@ -93,6 +94,10 @@ export default function({ product, handleAddToCart }) {
               por el precio vale mucho la pena.{" "}
             </p>
           </div>
+          {user.username ? (
+            <button>Editar producto</button>
+          ) : ""}
+
         </div>
       </div>
     </div>
