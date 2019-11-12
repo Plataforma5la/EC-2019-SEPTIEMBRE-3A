@@ -4,7 +4,8 @@ import SidebarComponent from "./sidebar.component";
 import {
   getCategories,
   filterCategory,
-  newCategory
+  newCategory,
+  deleteCategory
 } from "../store/actions/categories";
 import {
   fetchProductList,
@@ -21,6 +22,7 @@ class Sidebar extends React.Component {
     this.FilterbyCategory = this.FilterbyCategory.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(event) {
@@ -28,6 +30,11 @@ class Sidebar extends React.Component {
       newCategory: event.target.value
     });
   }
+
+  handleDelete(category) {
+    this.props.deleteCategory(category);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     if (this.state.newCategory) {
@@ -65,6 +72,7 @@ class Sidebar extends React.Component {
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         newCategory={this.state.newCategory}
+        handleDelete={this.handleDelete}
       />
     );
   }
@@ -84,11 +92,9 @@ const mapDispatchToProps = function(dispatch) {
     filterCategory: category => dispatch(filterCategory(category)),
     fetchFilteredProductList: catid =>
       dispatch(fetchFilteredProductList(catid)),
-    newCategory: category => dispatch(newCategory(category))
+    newCategory: category => dispatch(newCategory(category)),
+    deleteCategory: category => dispatch(deleteCategory(category))
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
