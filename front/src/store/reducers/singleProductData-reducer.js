@@ -8,6 +8,10 @@ export default (state = initialstate, action) => {
       return Object.assign({}, state, {
         singleProductData: action.productData
       });
+    case "EDIT_SINGLE_PRODUCT":
+      return Object.assign({}, state, {
+        products: action.productData
+      })
     default:
       return state;
   }
