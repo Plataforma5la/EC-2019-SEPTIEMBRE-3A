@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { connect } from "react-redux";
 import Alert from 'react-bootstrap/Alert'
 import ConfirmarCompraForm from './confirmarCompra.component'
+import { sendMail } from "../store/actions/mailer";
 
 class confirmarCompra extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             userInput: ""
         }
@@ -20,6 +21,8 @@ class confirmarCompra extends Component {
     handleSubmit(e) {
         e.preventDefault()
         console.log(this.state.userInput)
+        this.props.sendMail(this.state.userInput, this.props.cart)
+        this.props.history.push('/');
     }
     render() {
         return (
@@ -36,12 +39,14 @@ class confirmarCompra extends Component {
     }
 }
 
-const mapStateToProps = ({ logged }) => ({
-    user: logged.user
+const mapStateToProps = ({ logged, cart }) => ({
+    user: logged.user,
+    cart: cart.cart
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchUser: () => dispatch(fetchUser()),
+    sendMail: (direccion, cart) => dispatch(sendMail(direccion, cart))
 
 });
 
