@@ -8,4 +8,11 @@ router.get("/", function(req, res) {
   });
 });
 
+router.delete("/", function(req, res) {
+  console.log(req.body);
+  Category.findByPk(req.body.category.id)
+    .then(category => category.destroy())
+    .then(() => Category.findAll().then(categories => res.send(categories)));
+});
+
 module.exports = router;

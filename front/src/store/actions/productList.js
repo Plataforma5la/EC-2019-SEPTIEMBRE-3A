@@ -8,7 +8,7 @@ const searchProductList = products => ({
 export const fetchProductList = () => dispatch =>
   axios
     .get("/api/products")
-    .then(res => res.data) //recibo la data del back //
+    .then(res => res.data)
     .then(products => dispatch(searchProductList(products)));
 
 export const fetchFilteredProductList = catId => dispatch =>
@@ -26,6 +26,13 @@ export const fetchSearchedProductList = text => dispatch =>
 export const createProduct = product => dispatch => {
   axios
     .post("/api/admin/newProduct", product)
+    .then(res => res.data)
+    .then(products => dispatch(searchProductList(products)));
+};
+
+export const deleteProduct = product => dispatch => {
+  return axios
+    .delete("/api/products", { data: { product } })
     .then(res => res.data)
     .then(products => dispatch(searchProductList(products)));
 };
