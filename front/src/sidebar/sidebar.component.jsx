@@ -61,7 +61,9 @@ export default function({
               />
             </form>
             <Link to={"/newproduct"}>
-              <button>Add Product!</button>
+              <button type="button" className="navButton btn btn-drk btn-sm">
+                Add Product!
+              </button>
             </Link>
           </div>
         )}
