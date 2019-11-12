@@ -9,15 +9,46 @@ router.get("/", function(req, res) {
       where: { buyerId: req.user.id, status: "open" },
       include: [Product]
     }).then(cart => {
-      console.log(cart);
+      // console.log(cart);
       res.send(cart);
     });
   } else {
     res.sendStatus(200);
   }
 });
+router.put("/substract", function(req, res) {
+  Cart.findOrCreate({
+    where: { buyerId: req.user.id, status: "open" },
+    include: [Product]
+  }).then(cart => {
+    Cart_product.findOne({
+      where: { cartId: cart[0].id, productId: req.body.product.id }
+    }).then(instance => {
+      // console.log(instance);
+      if (instance.count > 1) {
+        instance.subtractCount();
+        res.sendStatus(201);
+      } else {
+        console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+        cart[0].removeProducts(req.body.product.id).then(() => {
+          if (
+            Cart_product.findOne({
+              where: { cartId: cart[0].id }
+            }).then(res => res === null)
+          ) {
+            console.log("DESTROYYYYYYYYY");
+            Cart.findOne({ where: { id: cart[0].id } }).then(destroyCart =>
+              destroyCart.destroy()
+            );
+          }
+        });
+      }
+    });
+  });
+});
 
 router.put("/", function(req, res) {
+  console.log(req.user.id);
   Cart.findOrCreate({
     where: { buyerId: req.user.id, status: "open" },
     include: [Product]
@@ -66,5 +97,9 @@ router.post("/", function(req, res) {
     }
   });
 });
+
+/* router.post('/confirmar-compra', function (req, res) {
+  // Grab the form data and send email
+}); */
 
 module.exports = router;

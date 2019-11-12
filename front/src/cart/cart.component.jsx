@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function cartComponent({
   cart,
   handleEmptyCart,
-  handleDeleteProduct,
+  handleSubstractOfCart,
   handleAddToCart
 }) {
   return (
@@ -21,7 +22,7 @@ export default function cartComponent({
               <p>${product.price}</p>
             </div>
             <div className="col-3">
-              <button onClick={() => handleDeleteProduct(product)}>-</button>
+              <button onClick={() => handleSubstractOfCart(product)}>-</button>
               <p>{product.cart_product.count}</p>
               <button onClick={() => handleAddToCart(product)}>+</button>
             </div>
@@ -36,9 +37,9 @@ export default function cartComponent({
         ""
       )}
       {cart.length ? (
-        <button onClick={() => handleEmptyCart(cart)}>
-          Cumplir tus fantasias
-        </button>
+        <Link to="/cart/confirmar-compra">
+          <button>Confirmar Compra</button>
+        </Link>
       ) : (
         ""
       )}

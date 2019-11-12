@@ -1,12 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import CartComponent from "./cart.component";
+import Store from "../store/index";
 import {
   emptyCart,
   deleteCart,
   deleteProduct,
   addToCartState,
   addToCartDbState,
+  substractOfCartState,
+  substractOfCartDbState,
   fetchCart,
   refetchCart
 } from "../store/actions/cart";
@@ -14,28 +17,29 @@ import {
 class Cart extends React.Component {
   constructor(props) {
     super(props);
+    this.state = Store.getState();
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleEmptyCart = this.handleEmptyCart.bind(this);
-    this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
-  }
-
-  componentDidUpdate() {
-    console.log("SE UPDATEEO");
-    if (!this.props.user.username) {
-      this.props.refetchCart(this.props.cart);
-    } else {
-      this.props.fetchCart(product);
-    }
+    this.handleSubstractOfCart = this.handleSubstractOfCart.bind(this);
   }
 
   handleAddToCart(product) {
     event.preventDefault();
     if (!this.props.user.username) {
       this.props.addToCartState(product);
-      this.props.refetchCart(this.props.cart);
+      this.props.refetchCart(product);
     } else {
       this.props.addToCartDbState(product);
       this.props.fetchCart(product);
+    }
+  }
+
+  handleSubstractOfCart(product) {
+    event.preventDefault();
+    if (!this.props.user.username) {
+      this.props.substractOfCartState(product);
+    } else {
+      this.props.substractOfCartDbState(product);
     }
   }
 
@@ -47,20 +51,6 @@ class Cart extends React.Component {
       : this.props.deleteCart(cart);
   }
 
-  handleDeleteProduct(product) {
-    event.preventDefault();
-    this.props.deleteProduct(product);
-  }
-
-  handleAddToCart(product) {
-    event.preventDefault();
-    if (!this.props.user.username) {
-      this.props.addToCartState(product);
-    } else {
-      this.props.addToCartDbState(product);
-    }
-  }
-
   render() {
     return (
       <div className="container">
@@ -69,11 +59,13 @@ class Cart extends React.Component {
           handleEmptyCart={this.handleEmptyCart}
           handleDeleteProduct={this.handleDeleteProduct}
           handleAddToCart={this.handleAddToCart}
+          handleSubstractOfCart={this.handleSubstractOfCart}
         />
       </div>
     );
   }
 }
+
 const mapStateToProps = state => ({
   cart: state.cart.cart,
   user: state.logged.user
@@ -86,10 +78,9 @@ const mapDispatchToProps = dispatch => ({
   refetchCart: cart => dispatch(refetchCart(cart)),
   emptyCart: () => dispatch(emptyCart()),
   addToCartState: product => dispatch(addToCartState(product)),
-  addToCartDbState: product => dispatch(addToCartDbState(product))
+  addToCartDbState: product => dispatch(addToCartDbState(product)),
+  substractOfCartState: product => dispatch(substractOfCartState(product)),
+  substractOfCartDbState: product => dispatch(substractOfCartDbState(product))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

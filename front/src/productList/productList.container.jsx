@@ -3,19 +3,23 @@ import { connect } from "react-redux";
 import ProductList from "./productList.component";
 import { fetchProductList } from "../store/actions/productList";
 import fetchSingleProductData from "../store/actions/singleProductData";
-import { addToCartState, addToCartDbState } from "../store/actions/cart";
-import ReactPaginate from 'react-paginate'
-
+import {
+  addToCartState,
+  addToCartDbState,
+  substractOfCartDbState,
+  substractOfCartState
+} from "../store/actions/cart";
 
 class ProductListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentPage: 1,
-      productsPerPage: 6,
-    }
+      productsPerPage: 6
+    };
     this.handleAddToCart = this.handleAddToCart.bind(this);
-    this.handlePageClick = this.handlePageClick.bind(this)
+    this.handlePageClick = this.handlePageClick.bind(this);
+    this.handleSubstractOfCart = this.handleSubstractOfCart.bind(this);
   }
 
   handleAddToCart(product) {
@@ -27,26 +31,44 @@ class ProductListContainer extends Component {
     }
   }
 
+  handleSubstractOfCart(product) {
+    event.preventDefault();
+    if (!this.props.user.username) {
+      this.props.substractOfCartState(product);
+    } else {
+      this.props.substractOfCartDbState(product);
+    }
+  }
+
   handlePageClick(event) {
     this.setState({
       currentPage: Number(event.target.id)
     });
   }
 
-
   render() {
-    const indexLastProduct = this.state.currentPage * this.state.productsPerPage
-    const indexFirstProduct = indexLastProduct - this.state.productsPerPage
-    const currentProducts = this.props.productList.slice(indexFirstProduct, indexLastProduct)
+    const indexLastProduct =
+      this.state.currentPage * this.state.productsPerPage;
+    const indexFirstProduct = indexLastProduct - this.state.productsPerPage;
+    const currentProducts = this.props.productList.slice(
+      indexFirstProduct,
+      indexLastProduct
+    );
     const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(this.props.productList.length / this.state.productsPerPage); i++) {
+    for (
+      let i = 1;
+      i <=
+      Math.ceil(this.props.productList.length / this.state.productsPerPage);
+      i++
+    ) {
       pageNumbers.push(i);
     }
 
     const renderPageNumbers = pageNumbers.map(number => {
       return (
-        <li className="numeros"
+        <li
+          className="numeros"
           key={number}
           id={number}
           onClick={this.handlePageClick}
@@ -57,12 +79,12 @@ class ProductListContainer extends Component {
     });
 
     return (
-      <div className="paginaprincipal">
+      <div>
         <ProductList
           products={currentProducts}
           handleAddToCart={this.handleAddToCart}
-          renderPageNumbers={renderPageNumbers}
         />
+        <ul className="pagination">{renderPageNumbers}</ul>
       </div>
     );
   }
@@ -80,7 +102,9 @@ const mapDispatchToProps = dispatch => ({
   fetchProductList: () => dispatch(fetchProductList()),
   fetchSingleProductData: id => dispatch(fetchSingleProductData(id)),
   addToCartState: product => dispatch(addToCartState(product)),
-  addToCartDbState: product => dispatch(addToCartDbState(product))
+  addToCartDbState: product => dispatch(addToCartDbState(product)),
+  substractOfCartState: product => dispatch(substractOfCartState(product)),
+  substractOfCartDbState: product => dispatch(substractOfCartDbState(product))
 });
 
 export default connect(
