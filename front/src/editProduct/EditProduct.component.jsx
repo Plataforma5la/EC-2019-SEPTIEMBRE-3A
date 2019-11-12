@@ -7,10 +7,11 @@ export default ({ handleChange, handleSubmit, product }) => {
         <form onSubmit={(e) => handleSubmit(e)}>
             <div className="container addProductContainer">
                 <div className="addProductBox">
-                    {console.log("productooo " + JSON.stringify(product))}
+                    <br />
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-4">
                             <label>
+                                Name: &nbsp; &nbsp;
                                 <input
                                     //poner default placeholder la info del producto pasada por props desde single product
                                     name="name"
@@ -19,24 +20,12 @@ export default ({ handleChange, handleSubmit, product }) => {
                                     onChange={e => handleChange(e)}
                                 />
                             </label>
-                            <label>
-                                Description:
-              <textarea value={product.description} name="description" onChange={e => handleChange(e)} />
-                            </label>
                         </div>
-                        <div className="col-6">
-                            <label>
-                                Image 1 Url:
-              <textarea name="img1Url" onChange={e => handleChange(e)} value={product.img1Url} />
-                            </label>
-                            <label>
-                                Image 2 Url:
-              <textarea name="img2Url" onChange={e => handleChange(e)} value={product.img2Url} />
-                            </label>
-                        </div>
+
+                        <br />
                         <div className="col-4">
                             <label>
-                                Stock:
+                                Stock: &nbsp; &nbsp;
               <input
                                     name="stock"
                                     value={product.stock}
@@ -44,12 +33,12 @@ export default ({ handleChange, handleSubmit, product }) => {
                                     onChange={e => handleChange(e)}
                                 />
                             </label>
+
+
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-6">
+                        <div className="col-4">
                             <label>
-                                Price:
+                                Price: &nbsp; &nbsp;
               <input
                                     name="price"
                                     value={product.price}
@@ -57,12 +46,37 @@ export default ({ handleChange, handleSubmit, product }) => {
                                     onChange={e => handleChange(e)}
                                 />
                             </label>
+
                         </div>
-                        <div className="col-6">
-                        </div>
+
                     </div>
+                    <br />
+                    <div className="row">
+
+                        <div className="col-4">
+                            <label>
+                                Description: &nbsp; &nbsp;
+                                    <textarea value={product.description} name="description" onChange={e => handleChange(e)} />
+                            </label>
+                        </div>
+                        <div className="col-4">
+                            <label>
+                                Image 1 Url: &nbsp; &nbsp;
+              <textarea name="img1Url" onChange={e => handleChange(e)} value={product.img1Url} />
+                            </label>
+                        </div>
+                        <div className="col-4">
+                            <label>
+                                Image 2 Url: &nbsp; &nbsp;
+              <textarea name="img2Url" onChange={e => handleChange(e)} value={product.img2Url} />
+                            </label>
+                        </div>
+
+                    </div>
+                    <br />
                 </div>
-                <Link to="/"> <button type="submit"> Submit </button> </Link>
+                <br />
+                <Link to="/"> <button className="botonesEditarCrear" type="submit"> Submit </button> </Link>
             </div>
         </form >
     );
