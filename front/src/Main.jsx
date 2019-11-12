@@ -15,7 +15,8 @@ import confirmarCompra from "./confirmarCompra/confirmarCompra.container";
 import loginContainer from "./login/login.container";
 import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 import NewProductContainer from "./newproduct/newProduct.container";
-import EditProductContainer from "./editProduct/EditProducts.container"
+import EditProductContainer from "./editProduct/EditProducts.container";
+import editCategoryContainer from "./editcategory/editCategory.container";
 
 class Main extends React.Component {
   constructor(props) {
@@ -48,9 +49,26 @@ class Main extends React.Component {
             path="/"
             render={() => <ProductListContainer history={this.props.history} />}
           />
-          <Route path="/editproduct/:productID" render={({ match }) => <EditProductContainer match={match} history={this.props.history} />} />
-          <Route exact path="/cart" render={() => <CartContainer history={this.props.history} />} />
+          <Route
+            path="/editproduct/:productID"
+            render={({ match }) => (
+              <EditProductContainer
+                match={match}
+                history={this.props.history}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/cart"
+            render={() => <CartContainer history={this.props.history} />}
+          />
           <Route exact path={"/newproduct"} component={NewProductContainer} />
+          <Route
+            exact
+            path={"/editcategory"}
+            component={editCategoryContainer}
+          />
           <Route
             exact
             path={"/cart/confirmar-compra"}
@@ -62,7 +80,7 @@ class Main extends React.Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.logged.user,
   product: state.product
 });
@@ -75,7 +93,4 @@ const mapDispatchToProps = dispatch => ({
   fetchCartFromLocalStorage: () => dispatch(fetchCartFromLocalStorage())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main)
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

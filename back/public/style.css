@@ -1,8 +1,8 @@
-.addProductBox{
+.addProductBox {
   background-color: white;
 }
 
-.addProductContainer{
+.addProductContainer {
   padding-top: 200px;
   padding-left: 200px;
 }
@@ -186,7 +186,6 @@ body {
   color: white !important;
 }
 
-
 .pagination {
   width: 100%;
   background-color: black;
@@ -202,15 +201,15 @@ body {
   padding: 8px 16px;
   text-decoration: none;
   border-radius: 5px;
-  background-color:  #600624;
+  background-color: #600624;
   margin-right: 10px;
 }
 
-.paginaprincipal{
+.paginaprincipal {
   position: sticky;
 }
 
-.confirmarCompra{
+.confirmarCompra {
   padding-top: 200px;
   padding-left: 200px;
   width: 60%;
@@ -218,14 +217,20 @@ body {
   justify-content: center;
 }
 
-.formDireccion{
+.formDireccion {
   background-color: black;
-  color: white
+  color: white;
 }
 
-.aceptar{
+.aceptar {
   border-radius: 10px;
 }
 
-.pagination li:hover:not(.active) {background-color: #ddd;}
+.pagination li:hover:not(.active) {
+  background-color: #ddd;
+}
 
+.categoryList {
+  padding-top: 200px;
+  padding-left: 200px;
+}

@@ -3,12 +3,10 @@ import { connect } from "react-redux";
 import ProductList from "./productList.component";
 import { fetchSingleProductData } from "../store/actions/singleProductData";
 import { addToCartState, addToCartDbState } from "../store/actions/cart";
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from "react-paginate";
 import { fetchProductList, deleteProduct } from "../store/actions/productList";
-import fetchSingleProductData from "../store/actions/singleProductData";
+
 import {
-  addToCartState,
-  addToCartDbState,
   substractOfCartDbState,
   substractOfCartState
 } from "../store/actions/cart";
