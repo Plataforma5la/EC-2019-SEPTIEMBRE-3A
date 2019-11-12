@@ -4,14 +4,12 @@ import CartComponent from "./cart.component";
 import Store from "../store/index";
 import {
   emptyCart,
-  deleteCart,
   deleteProduct,
   addToCartState,
   addToCartDbState,
   substractOfCartState,
   substractOfCartDbState,
-  fetchCart,
-  refetchCart
+  fetchCart
 } from "../store/actions/cart";
 
 class Cart extends React.Component {
@@ -19,18 +17,16 @@ class Cart extends React.Component {
     super(props);
     this.state = Store.getState();
     this.handleAddToCart = this.handleAddToCart.bind(this);
-    this.handleEmptyCart = this.handleEmptyCart.bind(this);
     this.handleSubstractOfCart = this.handleSubstractOfCart.bind(this);
+    this.totalCalculator = this.totalCalculator.bind(this);
   }
 
   handleAddToCart(product) {
     event.preventDefault();
     if (!this.props.user.username) {
       this.props.addToCartState(product);
-      this.props.refetchCart(product);
     } else {
       this.props.addToCartDbState(product);
-      this.props.fetchCart(product);
     }
   }
 
@@ -43,12 +39,13 @@ class Cart extends React.Component {
     }
   }
 
-  handleEmptyCart(cart) {
-    //si hay user logeado borra el cart de la db, sino del state
-    event.preventDefault();
-    !this.props.user.username
-      ? this.props.emptyCart()
-      : this.props.deleteCart(cart);
+
+  totalCalculator(){
+    let total=0
+    this.props.cart.forEach(element => {
+      total += element.price*element.cart_product.count
+    });
+    return total
   }
 
   render() {
@@ -56,10 +53,11 @@ class Cart extends React.Component {
       <div className="container">
         <CartComponent
           cart={this.props.cart}
-          handleEmptyCart={this.handleEmptyCart}
           handleDeleteProduct={this.handleDeleteProduct}
           handleAddToCart={this.handleAddToCart}
           handleSubstractOfCart={this.handleSubstractOfCart}
+          totalCalculator={this.totalCalculator}
+
         />
       </div>
     );
@@ -73,9 +71,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteProduct: product => dispatch(deleteProduct(product)),
-  deleteCart: cart => dispatch(deleteCart(cart)),
   fetchCart: () => dispatch(fetchCart()),
-  refetchCart: cart => dispatch(refetchCart(cart)),
   emptyCart: () => dispatch(emptyCart()),
   addToCartState: product => dispatch(addToCartState(product)),
   addToCartDbState: product => dispatch(addToCartDbState(product)),

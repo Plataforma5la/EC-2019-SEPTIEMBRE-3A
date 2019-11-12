@@ -105,14 +105,16 @@ export default function ({ product, handleAddToCart, user, handleDelete }) {
               son excelentes pero es un gran producto para trabajar tranquilo y
               por el precio vale mucho la pena.{" "}
             </p>
+            {user.username ? (
+              <Link to={`/editproduct/${product.id}`}>
+                <button id="botonEditarProducto">Editar producto</button>
+              </Link>
+            ) : ""}
           </div>
-          {user.username ? (
-            <Link to={`/editproduct/${product.id}`}>
-              <button>Editar producto</button>
-            </Link>
-          ) : ""}
+          {user.isAdmin ? <button>Editar producto</button> : ""}
         </div>
       </div>
+
     </div>
   );
 }

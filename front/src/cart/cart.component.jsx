@@ -5,12 +5,14 @@ export default function cartComponent({
   cart,
   handleEmptyCart,
   handleSubstractOfCart,
-  handleAddToCart
+  handleAddToCart,
+  totalCalculator
 }) {
   return (
     <div className="container cartProductsContainer">
       {cart.length ? (
-        cart.map(product => (
+        <div>
+      {cart.map(product => (
           <div key={product.id} className="row cartSingleProductBox">
             <div className="col-3">
               <img className="cartProductPic " src={product.img1Url} />
@@ -24,17 +26,14 @@ export default function cartComponent({
             <div className="col-3">
               <button onClick={() => handleSubstractOfCart(product)}>-</button>
               <p>{product.cart_product.count}</p>
-              <button onClick={() => handleAddToCart(product)}>+</button>
+            <button onClick={() =>  handleAddToCart(product) }>+</button>
             </div>
           </div>
-        ))
+        ))}
+        {totalCalculator()}
+        </div>
       ) : (
         <h3> Tu carrito está vacio, dale placer!</h3>
-      )}
-      {cart.length ? (
-        <button onClick={() => handleEmptyCart(cart)}>Vaciar carrito</button>
-      ) : (
-        ""
       )}
       {cart.length ? (
         <Link to="/cart/confirmar-compra">

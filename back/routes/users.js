@@ -23,4 +23,27 @@ router.get("/logout", function(req, res) {
   res.sendStatus(200);
 });
 
+
+router.get("/", function(req, res) {
+  User.findAll({}).then(users => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json(users);
+  });
+});
+
+router.put("/:id", function(req, res) {
+  User.findByPk(req.params.id)
+  .then(user => {
+    user.update({
+      isAdmin: true
+    })
+    .then((user)=>{
+      User.findAll({})
+      .then(users=>res.send(users))
+    })
+  });
+});
+
+
 module.exports = router;

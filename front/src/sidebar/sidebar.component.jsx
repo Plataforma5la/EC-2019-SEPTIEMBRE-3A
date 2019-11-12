@@ -26,9 +26,8 @@ export default function({
           {categories &&
             categories.map(category => {
               return (
-                <div>
+                <div key={category.id}>
                   <li
-                    key={category.id}
                     className="playlist-item menu-item"
                     onClick={() => FilterbyCategory(category.id)}
                   >
