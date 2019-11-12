@@ -27,11 +27,11 @@ export default function cartComponent({ cart, handleEmptyCart, handleDeleteProdu
       ) : (
           <h3> Tu carrito está vacio, dale placer!</h3>
         )}
-      {cart.length ?
+      {/* {cart.length ?
         <button onClick={() => handleEmptyCart(cart)}>
           Vaciar carrito
             </button> : ""
-      }
+      } */}
       {cart.length ?
         <Link to="/cart/confirmar-compra">
 

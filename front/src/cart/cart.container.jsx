@@ -26,6 +26,7 @@ class Cart extends React.Component {
     
     handleAddToCart(product) {
       event.preventDefault();
+      //console.log("soy handleaddtocart",product);
       if (!this.props.user.username) {
         this.props.addToCartState(product);
         this.props.refetchCart(product)
@@ -37,6 +38,7 @@ class Cart extends React.Component {
     
     handleEmptyCart(cart) {   //si hay user logeado borra el cart de la db, sino del state
       event.preventDefault();
+      console.log("ENTREEEEEEEE")
       !this.props.user.username ?
       this.props.emptyCart()
       :
