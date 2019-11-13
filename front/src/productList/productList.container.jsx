@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProductList from "./productList.component";
 import { fetchProductList, deleteProduct } from "../store/actions/productList";
-import fetchSingleProductData from "../store/actions/singleProductData";
+import {fetchSingleProductData} from "../store/actions/singleProductData";
 import { addToCartState, addToCartDbState } from "../store/actions/cart";
 import ReactPaginate from "react-paginate";
 

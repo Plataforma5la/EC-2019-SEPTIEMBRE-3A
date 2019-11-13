@@ -37,7 +37,7 @@ export default function({
                     </button>
                   </Link>
                 </li>
-                {user.isAdmin && (
+                {!user.isAdmin && (
                   <button
                     onClick={e => handleDelete(category)}
                     type="button"
