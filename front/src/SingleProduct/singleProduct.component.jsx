@@ -78,7 +78,10 @@ export default function({
                 ))}
               </select>
             </form>
+            
             <button onClick={e => handleAddCategory()}>+</button>
+            <button onClick={e => handleAddCategory()}>+</button>
+            }
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
