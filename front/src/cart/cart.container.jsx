@@ -4,7 +4,6 @@ import CartComponent from "./cart.component";
 import Store from "../store/index";
 import {
   emptyCart,
-  deleteProduct,
   addToCartState,
   addToCartDbState,
   substractOfCartState,
@@ -39,13 +38,12 @@ class Cart extends React.Component {
     }
   }
 
-
-  totalCalculator(){
-    let total=0
+  totalCalculator() {
+    let total = 0;
     this.props.cart.forEach(element => {
-      total += element.price*element.cart_product.count
+      total += element.price * element.cart_product.count;
     });
-    return total
+    return total;
   }
 
   render() {
@@ -57,7 +55,6 @@ class Cart extends React.Component {
           handleAddToCart={this.handleAddToCart}
           handleSubstractOfCart={this.handleSubstractOfCart}
           totalCalculator={this.totalCalculator}
-
         />
       </div>
     );

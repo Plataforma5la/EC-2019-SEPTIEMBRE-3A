@@ -51,6 +51,6 @@ User.beforeCreate(user => {
   user.password = user.hashPassword(user.password);
 });
 
-User.hasMany(Review, {as:'review'});
+User.hasMany(Review, { as: "reviews" });
 
 module.exports = User;

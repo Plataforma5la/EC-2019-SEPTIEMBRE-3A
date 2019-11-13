@@ -3,7 +3,7 @@ const db = require("../config/db");
 const Categorie = require("./categories");
 const Review = require("./reviews");
 
-class Product extends S.Model {}
+class Product extends S.Model { }
 
 Product.init(
   {
@@ -13,7 +13,7 @@ Product.init(
     },
     description: {
       type: S.TEXT,
-      allowNull: false
+      allowNull: false,
     },
     price: {
       type: S.INTEGER,

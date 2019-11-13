@@ -23,32 +23,31 @@ export default function({
           </button>
         </Link>
         <ul className="list-unstyled">
-          {categories &&
-            categories.map(category => {
-              return (
-                <div key={category.id}>
-                  <li
-                    className="playlist-item menu-item"
-                    onClick={() => FilterbyCategory(category.id)}
-                  >
-                    <Link to={`/`}>
-                      <button type="button" className="btn btn-secondary">
-                        {category.name}
-                      </button>
-                    </Link>
-                  </li>
-                  {user.isAdmin && (
-                    <button
-                      onClick={e => handleDelete(category)}
-                      type="button"
-                      className="btn btn-secondary"
-                    >
-                      <GoTrashcan />
+          {categories.map(category => {
+            return (
+              <div key={category.id}>
+                <li
+                  className="playlist-item menu-item"
+                  onClick={() => FilterbyCategory(category.id)}
+                >
+                  <Link to={`/`}>
+                    <button type="button" className="btn btn-secondary">
+                      {category.name}
                     </button>
-                  )}
-                </div>
-              );
-            })}
+                  </Link>
+                </li>
+                {user.isAdmin && (
+                  <button
+                    onClick={e => handleDelete(category)}
+                    type="button"
+                    className="btn btn-secondary"
+                  >
+                    <GoTrashcan />
+                  </button>
+                )}
+              </div>
+            );
+          })}
         </ul>
         {!user.isAdmin && (
           <div>

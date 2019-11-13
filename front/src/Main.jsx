@@ -16,6 +16,8 @@ import EditProductContainer from "./editProduct/EditProducts.container";
 import editCategoryContainer from "./editcategory/editCategory.container";
 import Users from "./users/users.container";
 import History from "./historial/historial.container";
+import Orders from "./orders/orders.container";
+import Order from "./singleorder/singleOrder.container";
 
 class Main extends React.Component {
   constructor(props) {
@@ -75,6 +77,9 @@ class Main extends React.Component {
           />
           <Route exact path={"/users"} component={Users} />
           <Route exact path={"/history"} component={History} />
+          <Route exact path={"/orders"} component={Orders} />
+          <Route exact path={"/order/:orderId"} component={Order} />
+
           <Redirect from="/" to="/products" />
         </Switch>
       </div>

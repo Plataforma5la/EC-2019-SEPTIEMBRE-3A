@@ -2,17 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProductList from "./productList.component";
 import { fetchSingleProductData } from "../store/actions/singleProductData";
-import { addToCartState, addToCartDbState } from "../store/actions/cart";
 import {
-  fetchProductList,
-  deleteProduct,
-  displayProduct
-} from "../store/actions/productList";
-
-import {
+  addToCartState,
+  addToCartDbState,
   substractOfCartDbState,
   substractOfCartState
 } from "../store/actions/cart";
+import { fetchProductList, displayProduct } from "../store/actions/productList";
 
 class ProductListContainer extends Component {
   constructor(props) {

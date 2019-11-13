@@ -45,3 +45,4 @@ export const deleteCategory = category => dispatch => {
     .then(res => res.data)
     .then(categories => dispatch(setCategories(categories)));
 };
+
