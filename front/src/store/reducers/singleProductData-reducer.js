@@ -11,7 +11,7 @@ export default (state = initialstate, action) => {
     case "EDIT_SINGLE_PRODUCT":
       return Object.assign({}, state, {
         products: action.productData
-      })
+      });
     default:
       return state;
   }
