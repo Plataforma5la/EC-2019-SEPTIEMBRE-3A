@@ -1,11 +1,30 @@
 .addProductBox{
+  background-color: grey;
+  border: solid white 10px;
+  border-radius: 6px;
+  padding-left: 25px;
+}
+
+.addProductBox textarea{
+  background-color:white;
+  border: solid white 10px;
+  border-radius: 6px;
+}
+
+.addProductBox input{
   background-color: white;
+  border: solid white 10px;
+  border-radius: 6px;
+}
+
+.botonesEditarCrear{
+  border: solid white 10px;
+  border-radius: 6px;
 }
 
 .addProductContainer{
   padding-top: 200px;
   padding-left: 200px;
- 
 }
 
 .cartProductPic {
@@ -178,6 +197,13 @@ body {
   background-color: black;
   color: white !important;
   border: solid black;
+}
+
+#botonEditarProducto{
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  margin-top: 50px;
 }
 
 .productTitle {

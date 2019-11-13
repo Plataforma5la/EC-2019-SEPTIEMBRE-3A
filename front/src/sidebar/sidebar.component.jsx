@@ -25,9 +25,9 @@ export default function({
         <ul className="list-unstyled">
           {categories.map(category => {
             return (
-              <div>
+              <div key={category.id}>
                 <li
-                  key={category.id}
+                
                   className="playlist-item menu-item"
                   onClick={() => FilterbyCategory(category.id)}
                 >
@@ -61,11 +61,51 @@ export default function({
               />
             </form>
             <Link to={"/newproduct"}>
-              <button>Add Product!</button>
+              <button type="button" className="navButton btn btn-drk btn-sm">
+                Add Product!
+              </button>
             </Link>
           </div>
         )}
       </section>
     </div>
   );
+}
+
+{
+  /* <div>
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>BOOTSTRAP SIDEBAR</h3>
+  </div>
+
+  <ul class="list-unstyled components">
+    <p>Dummy Heading</p>
+
+    <li>
+      <a href="#">About</a>
+    </li>
+
+    <li>
+      <a href="#">Services</a>
+    </li>
+    <li>
+      <a href="#">Contact Us</a>
+    </li>
+  </ul>
+
+  <ul class="list-unstyled CTAs">
+    <li>
+      <a href="#" class="download">
+        Download code
+      </a>
+    </li>
+    <li>
+      <a href="#" class="article">
+        article
+      </a>
+    </li>
+  </ul>
+</nav>
+</div> */
 }
