@@ -14,8 +14,14 @@ const setCategory = function(category) {
   };
 };
 
+export const changeCategoryName = categoryName => dispatch =>
+  axios.put("/api/categories", categoryName).then(categories => {
+    dispatch(setCategories(categories.data));
+  });
+
 export const getCategories = function() {
   return function(dispatch, getState) {
+    console.log("se dispara")
     axios.get("/api/categories").then(response => {
       dispatch(setCategories(response.data));
     });

@@ -27,7 +27,6 @@ export default function({
             return (
               <div key={category.id}>
                 <li
-                
                   className="playlist-item menu-item"
                   onClick={() => FilterbyCategory(category.id)}
                 >
@@ -37,7 +36,7 @@ export default function({
                     </button>
                   </Link>
                 </li>
-                {!user.isAdmin && (
+                {user.isAdmin && (
                   <button
                     onClick={e => handleDelete(category)}
                     type="button"
@@ -63,6 +62,11 @@ export default function({
             <Link to={"/newproduct"}>
               <button type="button" className="navButton btn btn-drk btn-sm">
                 Add Product!
+              </button>
+            </Link>
+            <Link to={"/editcategory"}>
+              <button type="button" className="navButton btn btn-drk btn-sm">
+                Edit Category!
               </button>
             </Link>
           </div>

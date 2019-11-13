@@ -1,28 +1,28 @@
-.addProductBox{
+.addProductBox {
   background-color: grey;
   border: solid white 10px;
   border-radius: 6px;
   padding-left: 25px;
 }
 
-.addProductBox textarea{
-  background-color:white;
-  border: solid white 10px;
-  border-radius: 6px;
-}
-
-.addProductBox input{
+.addProductBox textarea {
   background-color: white;
   border: solid white 10px;
   border-radius: 6px;
 }
 
-.botonesEditarCrear{
+.addProductBox input {
+  background-color: white;
   border: solid white 10px;
   border-radius: 6px;
 }
 
-.addProductContainer{
+.botonesEditarCrear {
+  border: solid white 10px;
+  border-radius: 6px;
+}
+
+.addProductContainer {
   padding-top: 200px;
   padding-left: 200px;
 }
@@ -199,7 +199,7 @@ body {
   border: solid black;
 }
 
-#botonEditarProducto{
+#botonEditarProducto {
   border-radius: 10px;
   background-color: white;
   color: black;
@@ -212,7 +212,6 @@ body {
 #titulo {
   color: white !important;
 }
-
 
 .pagination {
   width: 100%;
@@ -229,27 +228,16 @@ body {
   padding: 8px 16px;
   text-decoration: none;
   border-radius: 5px;
-  background-color:  #600624;
+  background-color: #600624;
   margin-right: 10px;
 }
 
-.pagination ul{
-  margin: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
 
-
-.paginaprincipal{
+.paginaprincipal {
   position: sticky;
 }
 
-.confirmarCompra{
+.confirmarCompra {
   padding-top: 200px;
   padding-left: 200px;
   width: 60%;
@@ -257,14 +245,20 @@ body {
   justify-content: center;
 }
 
-.formDireccion{
+.formDireccion {
   background-color: black;
-  color: white
+  color: white;
 }
 
-.aceptar{
+.aceptar {
   border-radius: 10px;
 }
 
-.pagination li:hover:not(.active) {background-color: #ddd;}
+.pagination li:hover:not(.active) {
+  background-color: #ddd;
+}
 
+.categoryList {
+  padding-top: 200px;
+  padding-left: 200px;
+}

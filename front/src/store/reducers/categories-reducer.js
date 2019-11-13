@@ -13,7 +13,6 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         category: action.category
       });
-
     default:
       return state;
   }
