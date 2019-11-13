@@ -14,8 +14,10 @@ export default function({
   user,
   handleDelete,
   handleAddCategory,
+  handleSubstractCategory,
   submitCategory,
-  selectedCategory
+  selectedCategory,
+  existingCategories
 }) {
   return (
     <div className="container">
@@ -68,6 +70,7 @@ export default function({
                   className="badge singleProductCategoriesTag badge-secondary"
                 >
                   {category.name}
+                  
                 </span>
               ))
               : ""}
@@ -78,10 +81,16 @@ export default function({
                 ))}
               </select>
             </form>
+            {console.log("existing",existingCategories)}
+            {console.log("selected", selectedCategory) }
+            {console.log("indexOf", (existingCategories.indexOf(selectedCategory)))}
+            {existingCategories.indexOf(selectedCategory) == -1?
+            <button onClick={e => handleAddCategory()}>+</button>
+            :
+            <button onClick={e => handleSubstractCategory()}>-</button>}
             
-            <button onClick={e => handleAddCategory()}>+</button>
-            <button onClick={e => handleAddCategory()}>+</button>
-            }
+            
+            
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
