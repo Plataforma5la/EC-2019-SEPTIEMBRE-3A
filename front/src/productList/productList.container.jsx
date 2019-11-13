@@ -2,17 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProductList from "./productList.component";
 import { fetchSingleProductData } from "../store/actions/singleProductData";
-
-import { fetchProductList, deleteProduct } from "../store/actions/productList";
-
-import ReactPaginate from "react-paginate";
-
 import {
   addToCartState,
   addToCartDbState,
   substractOfCartDbState,
   substractOfCartState
 } from "../store/actions/cart";
+import { fetchProductList, displayProduct } from "../store/actions/productList";
 
 class ProductListContainer extends Component {
   constructor(props) {
@@ -25,9 +21,20 @@ class ProductListContainer extends Component {
     this.handlePageClick = this.handlePageClick.bind(this);
     this.handleSubstractOfCart = this.handleSubstractOfCart.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleDisplay = this.handleDisplay.bind(this);
   }
   handleDelete(product) {
     this.props.deleteProduct(product);
+  }
+
+  handleDisplay(product) {
+    if (product.display) {
+      product.display = false;
+    } else {
+      product.display = true;
+    }
+
+    this.props.displayProduct(product);
   }
 
   handleAddToCart(product) {
@@ -93,6 +100,7 @@ class ProductListContainer extends Component {
           handleAddToCart={this.handleAddToCart}
           handleDelete={this.handleDelete}
           user={this.props.user}
+          handleDisplay={this.handleDisplay}
         />
         <ul className="pagination">{renderPageNumbers}</ul>
       </div>
@@ -115,7 +123,8 @@ const mapDispatchToProps = dispatch => ({
   addToCartDbState: product => dispatch(addToCartDbState(product)),
   substractOfCartState: product => dispatch(substractOfCartState(product)),
   substractOfCartDbState: product => dispatch(substractOfCartDbState(product)),
-  deleteProduct: product => dispatch(deleteProduct(product))
+  deleteProduct: product => dispatch(deleteProduct(product)),
+  displayProduct: product => dispatch(displayProduct(product))
 });
 
 export default connect(

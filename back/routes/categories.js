@@ -14,4 +14,12 @@ router.delete("/", function(req, res) {
     .then(() => Category.findAll().then(categories => res.send(categories)));
 });
 
+router.put("/", (req, res) => {
+  Category.findByPk(req.body.id)
+    .then(cat => cat.update({ name: req.body.categoryName }))
+    .then(categoriaUpdateada => {
+      Category.findAll().then(categories => res.send(categories));
+    });
+});
+
 module.exports = router;
