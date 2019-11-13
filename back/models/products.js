@@ -37,6 +37,10 @@ Product.init(
     ratingValue: {
       type: S.INTEGER,
       defaultValue: null
+    },
+    display: {
+      type: S.BOOLEAN,
+      defaultValue: true
     }
   },
   { sequelize: db, modelName: "product" }
