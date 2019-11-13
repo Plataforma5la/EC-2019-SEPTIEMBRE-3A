@@ -7,6 +7,7 @@ import {
   cancelOrder,
   filterOrders
 } from "../store/actions/orders";
+import { sendMailAccept, sendMailCancel } from "../store/actions/mailer";
 
 class OrdersContainer extends React.Component {
   constructor(props) {
@@ -16,6 +17,19 @@ class OrdersContainer extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleAccept = this.handleAccept.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+
+  }
+
+  handleCancel(order) {
+    this.props.sendMailCancel(order.buyer.email)
+    this.props.cancelOrder(order.id)
+  }
+
+  handleAccept(order) {
+    this.props.sendMailAccept(order.buyer.email)
+    this.props.acceptOrder(order.id)
   }
 
   componentDidMount() {
@@ -28,12 +42,15 @@ class OrdersContainer extends React.Component {
     });
   }
 
+
+
   render() {
     return (
       <div>
         <OrderComponent
           orders={this.props.orders}
-          acceptOrder={this.props.acceptOrder}
+          handleAccept={this.handleAccept}
+          handleCancel={this.handleCancel}
           cancelOrder={this.props.cancelOrder}
           handleChange={this.handleChange}
           filterOrders={this.props.filterOrders}
@@ -52,7 +69,9 @@ const mapDispatchToProps = dispatch => ({
   fetchOrders: () => dispatch(fetchOrders()),
   acceptOrder: id => dispatch(acceptOrder(id)),
   cancelOrder: id => dispatch(cancelOrder(id)),
-  filterOrders: status => dispatch(filterOrders(status))
+  filterOrders: status => dispatch(filterOrders(status)),
+  sendMailAccept: email => dispatch(sendMailAccept(email)),
+  sendMailCancel: email => dispatch(sendMailCancel(email))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrdersContainer);

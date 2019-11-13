@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function({
+export default function ({
   orders,
-  acceptOrder,
-  cancelOrder,
+  handleAccept,
+  handleCancel,
   handleChange,
   filterOrders,
   selectedStatus
@@ -27,12 +27,15 @@ export default function({
 
             <div>
               <p>Status: {order.status}</p>
+              <p>EMAIL: {order.buyer.email}</p>
+
+
               {order.status === "processing" && (
                 <div>
-                  <button onClick={() => acceptOrder(order.id)}>
+                  <button onClick={() => handleAccept(order)}>
                     Accept Order
                   </button>
-                  <button onClick={() => cancelOrder(order.id)}>
+                  <button onClick={() => handleCancel(order)}>
                     Cancel Order
                   </button>
                 </div>
