@@ -50,7 +50,7 @@ export default ({ handleChange, handleSubmit }) => {
             <div className="col-4">
               <label>
                 Description:
-              <textarea name="description" onChange={e => handleChange(e)} />
+              <textarea minLength="30" maxLength="50" name="description" onChange={e => handleChange(e)} />
               </label>
             </div>
             <div className="col-4">

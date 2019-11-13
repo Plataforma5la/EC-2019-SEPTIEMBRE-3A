@@ -40,6 +40,7 @@ class NewProductContainer extends React.Component {
       <NewProduct
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+
       />
     );
   }
