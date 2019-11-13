@@ -12,7 +12,7 @@ class OrdersContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedStatus: ""
+      selectedStatus: "open"
     };
 
     this.handleChange = this.handleChange.bind(this);

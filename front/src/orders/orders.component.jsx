@@ -15,7 +15,7 @@ export default function({
         <select onChange={handleChange}>
           <option value="open">open</option>
           <option value="processing">processing</option>
-          <option value="closed">closed</option>
+          <option value="open">open</option>
           <option value="cancelled">cancelled</option>
         </select>
       </form>
