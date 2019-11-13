@@ -36,3 +36,10 @@ export const deleteProduct = product => dispatch => {
     .then(res => res.data)
     .then(products => dispatch(searchProductList(products)));
 };
+
+export const displayProduct = product => dispatch => {
+  return axios
+    .put("/api/admin/downProduct", product)
+    .then(res => res.data)
+    .then(products => dispatch(searchProductList(products)));
+};

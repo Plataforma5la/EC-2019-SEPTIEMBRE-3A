@@ -23,9 +23,15 @@ export default function MenuAppBar(props) {
             <h4 className="textoNavbar">
               BienvenidX.X.X {props.user.username}
             </h4>
-            <Link to="/history">
-          <button>Ver Historial de Compra</button>
-          </Link>
+            {props.user.isAdmin ? (
+              <Link to="orders">
+                <button>Ver órdenes</button>
+              </Link>
+            ) : (
+              <Link to="/history">
+                <button>Ver Historial de Compra</button>
+              </Link>
+            )}
           </div>
         ) : (
           <div className="col-3">
@@ -41,14 +47,22 @@ export default function MenuAppBar(props) {
               onChange={props.handleSearchtextChange}
             />
           </Form>
-          <Link to="/cart">
-
-          <button>carrito</button>
-          </Link>
+          {props.user.isAdmin ? (
+            <Link to="/users">
+              <button>Ver usuarios</button>
+            </Link>
+          ) : (
+            <Link to="/cart">
+              <button>carrito</button>
+            </Link>
+          )}
         </div>
         {props.user.username ? (
           <div className="col-3 navbarLogoutContainer">
-            <button className="navButton btn btn-drk btn-sm" onClick={props.handleLogOut}>
+            <button
+              className="navButton btn btn-drk btn-sm"
+              onClick={props.handleLogOut}
+            >
               Logout
             </button>
           </div>

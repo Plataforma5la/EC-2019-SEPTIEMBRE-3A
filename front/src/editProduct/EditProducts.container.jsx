@@ -16,10 +16,10 @@ class EditProductContainer extends React.Component {
             img1Url: "",
             img2Url: "",
             product: "",
-
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDescription = this.handleDescription.bind(this);
     }
 
     componentDidMount() {
@@ -33,10 +33,22 @@ class EditProductContainer extends React.Component {
         });
     }
 
+
+    handleDescription(event) {
+        event.preventDefault()
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-        let newProduct = { ...this.state, id: this.props.match.params.productID }
-        this.props.editSingleProduct(newProduct)
+        if (this.state.description.length < 30) {
+            console.log("length " + this.state.description.length)
+            alert("Mas de 30 caracteres por fa");
+        }
+        else {
+            let newProduct = { ...this.state, id: this.props.match.params.productID }
+            this.props.editSingleProduct(newProduct)
+            this.props.history.push('/')
+        }
     }
 
 
@@ -47,6 +59,7 @@ class EditProductContainer extends React.Component {
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 product={this.props.product}
+                handleDescription={this.handleDescription}
             />
         );
     }

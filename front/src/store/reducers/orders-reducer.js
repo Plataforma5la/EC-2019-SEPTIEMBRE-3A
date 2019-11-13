@@ -1,18 +1,19 @@
 const initialState = {
-  categories: [],
-  category: ""
+  orders: [],
+  order: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "SET_CATEGORIES":
+    case "SET_ORDERS":
       return Object.assign({}, state, {
-        categories: action.categories
+        orders: action.orders
       });
-    case "SET_CATEGORY":
+    case "SET_ORDER":
       return Object.assign({}, state, {
-        category: action.category
+        order: action.order
       });
+
     default:
       return state;
   }
