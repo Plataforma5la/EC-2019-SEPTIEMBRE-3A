@@ -1,4 +1,5 @@
 import React from "react";
+import ReviewContainer from "../review/review.container";
 
 export default function({ history }) {
   return (
@@ -10,7 +11,7 @@ export default function({ history }) {
             {cart.products.map(product => (
               <div key={product.id}>
                 <p>Producto: {product.name}</p>
-                <button>Dejar Review</button>
+                <ReviewContainer productId={product.id}/>
               </div>
             ))}
           </div>
