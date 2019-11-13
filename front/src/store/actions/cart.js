@@ -64,7 +64,6 @@ export const substractOfCartState = function(product) {
     if (existing[i].id == product.id && existing[i].cart_product.count > 1) {
       existing[i].cart_product.count -= 1;
       localStorage.setItem("CART", JSON.stringify(existing));
-    
     } else if (
       existing[i].id == product.id &&
       existing[i].cart_product.count == 1
@@ -97,7 +96,6 @@ export const substractOfCartDbState = function(product) {
   };
 };
 
-
 export const fetchCart = function() {
   return function(dispatch, getState) {
     axios.get("/api/cart").then(response => {
@@ -128,13 +126,6 @@ export const createCart = function(products) {
   };
 };
 
-export const deleteProduct = function(product) {
-  return function(dispatch, getState) {
-    console.log("PRODUCT EN EL FRONT", product.id), axios.delete(`/api/cart/`);
-  };
-};
-
-
 export const confirmPurchase = function(total) {
   return function(dispatch, getState) {
     axios.put("/api/cart/confirm", { total }).then(response => {
@@ -143,17 +134,17 @@ export const confirmPurchase = function(total) {
   };
 };
 
-
 export const fetchHistory = function() {
   return function(dispatch, getState) {
-    axios.get("/api/cart/closed")
-    .then(res => res.data)
-    .then(carts => {
-      if (carts) {   dispatch(setHistory(carts)) }
-      else{
-        dispatch(setHistory([]));
-      }
-    
-    })
+    axios
+      .get("/api/cart/closed")
+      .then(res => res.data)
+      .then(carts => {
+        if (carts) {
+          dispatch(setHistory(carts));
+        } else {
+          dispatch(setHistory([]));
+        }
+      });
   };
 };

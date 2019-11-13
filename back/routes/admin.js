@@ -29,7 +29,6 @@ router.put("/editproduct/:id", function (req, res) {
 
 
 router.post("/newCategory", function (req, res) {
-  console.log(req.body);
   Category.create(req.body).then(() => {
     Category.findAll().then(categories => res.send(categories));
   });
