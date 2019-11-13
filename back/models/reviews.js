@@ -1,5 +1,8 @@
 const S = require("sequelize");
 const db = require("../config/db");
+const User = require("./user");
+
+
 class Review extends S.Model {}
 
 Review.init(
@@ -14,5 +17,7 @@ Review.init(
   },
   { sequelize: db, modelName: "review" }
 );
+
+Review.belongsTo(User)
 
 module.exports = Review;
