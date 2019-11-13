@@ -2,15 +2,14 @@ const router = require("express").Router();
 const Cart = require("../models/cart");
 const Product = require("../models/products");
 const Cart_product = require("../models/cart_product");
-
+const S = require("sequelize");
 
 router.get("/closed", function(req, res) {
   if (req.user) {
     Cart.findAll({
-      where: { buyerId: req.user.id, status: "closed" },
+      where: { buyerId: req.user.id, status: { [S.Op.not]: "open" } },
       include: [Product]
     }).then(cart => {
-      // console.log(cart);
       res.send(cart);
     });
   } else {
@@ -24,7 +23,6 @@ router.get("/", function(req, res) {
       where: { buyerId: req.user.id, status: "open" },
       include: [Product]
     }).then(cart => {
-      // console.log(cart);
       res.send(cart);
     });
   } else {
@@ -33,20 +31,19 @@ router.get("/", function(req, res) {
 });
 
 router.put("/confirm", function(req, res) {
-    Cart.findOne({
-      where: { buyerId: req.user.id, status: "open" },
-    }).then(cart => {
-      cart.update({
-        status:"closed",
+  Cart.findOne({
+    where: { buyerId: req.user.id, status: "open" }
+  }).then(cart => {
+    cart
+      .update({
+        status: "processing",
         preciototalalcomprar: req.body.total
       })
-      .then(()=>{
-         res.sendStatus(200);
-      })
-     
-    });
+      .then(() => {
+        res.sendStatus(200);
+      });
+  });
 });
-
 
 router.put("/substract", function(req, res) {
   Cart.findOne({
@@ -56,31 +53,23 @@ router.put("/substract", function(req, res) {
     Cart_product.findOne({
       where: { cartId: cart.id, productId: req.body.product.id }
     }).then(instance => {
-      // console.log(instance);
       if (instance.count > 1) {
         instance.subtractCount();
         res.sendStatus(201);
       } else {
-        console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
         cart.removeProducts(req.body.product.id).then(() => {
-        
-            Cart_product.findOne({
-              where: { cartId: cart.id }
-            }).then(responseX => {
-                if (responseX === null) {
-                  console.log("DESTROYYYYYYYYY");
-                  Cart.findOne({ where: { id: cart.id } }).then(destroyCart => {
-                    destroyCart.destroy()
-                    res.sendStatus(201);
-                  });
-                }
-                else{
-                  res.sendStatus(201);
-                }
-            })
-         
-
-          
+          Cart_product.findOne({
+            where: { cartId: cart.id }
+          }).then(responseX => {
+            if (responseX === null) {
+              Cart.findOne({ where: { id: cart.id } }).then(destroyCart => {
+                destroyCart.destroy();
+                res.sendStatus(201);
+              });
+            } else {
+              res.sendStatus(201);
+            }
+          });
         });
       }
     });
@@ -88,7 +77,6 @@ router.put("/substract", function(req, res) {
 });
 
 router.put("/", function(req, res) {
-  console.log(req.user.id);
   Cart.findOrCreate({
     where: { buyerId: req.user.id, status: "open" },
     include: [Product]
@@ -138,8 +126,6 @@ router.post("/", function(req, res) {
   });
 });
 
-/* router.post('/confirmar-compra', function (req, res) {
-  // Grab the form data and send email
-}); */
+
 
 module.exports = router;
