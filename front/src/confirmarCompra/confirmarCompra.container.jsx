@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Alert from 'react-bootstrap/Alert'
 import ConfirmarCompraForm from './confirmarCompra.component'
 import { confirmPurchase } from "../store/actions/cart";
-import { sendMail, sendMail2 } from "../store/actions/mailer";
+import { sendMail } from "../store/actions/mailer";
 
 class confirmarCompra extends Component {
     constructor(props) {
@@ -24,17 +24,16 @@ class confirmarCompra extends Component {
         e.preventDefault()
         this.props.sendMail(this.state.userInput, this.props.cart)
         this.props.confirmPurchase(total)
-        setTimeout(this.props.sendMail2, 5000)
         this.props.history.push('/');
     }
 
-    totalCalculator(){
-        let total=0
+    totalCalculator() {
+        let total = 0
         this.props.cart.forEach(element => {
-          total += element.price*element.cart_product.count
+            total += element.price * element.cart_product.count
         });
         return total
-      }
+    }
 
     render() {
         return (
@@ -42,9 +41,9 @@ class confirmarCompra extends Component {
                 {this.props.user.username ?
                     (
                         <ConfirmarCompraForm user={this.props.user}
-                                            handleUserInput={this.handleUserInput}
-                                            handleSubmit={this.handleSubmit}
-                                            totalCalculator={this.totalCalculator} />
+                            handleUserInput={this.handleUserInput}
+                            handleSubmit={this.handleSubmit}
+                            totalCalculator={this.totalCalculator} />
                     ) :
                     (
                         <Alert variant="danger"> Por favor inicia sesion para poder confirmar tu compra</Alert>
@@ -54,16 +53,16 @@ class confirmarCompra extends Component {
     }
 }
 
-const mapStateToProps = ({ logged, cart }) => ({
+const mapStateToProps = ({ logged, cart, products }) => ({
     user: logged.user,
-    cart: cart.cart
+    cart: cart.cart,
+    products: products.productList
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchUser: () => dispatch(fetchUser()),
     sendMail: (direccion, cart) => dispatch(sendMail(direccion, cart)),
-    confirmPurchase: (total) => dispatch(confirmPurchase(total)),
-    sendMail2: () => dispatch(sendMail2())
+    confirmPurchase: (total) => dispatch(confirmPurchase(total))
 
 });
 
