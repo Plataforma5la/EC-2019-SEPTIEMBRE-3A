@@ -25,14 +25,20 @@ class NewProductContainer extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    this.props.createProduct({
-      name: this.state.name,
-      description: this.state.description,
-      price: this.state.price,
-      stock: this.state.stock,
-      img1Url: this.state.img1Url,
-      img2Url: this.state.img2Url
-    });
+
+    if (this.state.description.length < 30) {
+      alert("Mas de 30 caracteres por fa");
+    }
+    else {
+      this.props.createProduct({
+        name: this.state.name,
+        description: this.state.description,
+        price: this.state.price,
+        stock: this.state.stock,
+        img1Url: this.state.img1Url,
+        img2Url: this.state.img2Url
+      });
+    }
   }
 
   render() {

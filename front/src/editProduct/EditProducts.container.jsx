@@ -41,7 +41,6 @@ class EditProductContainer extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         if (this.state.description.length < 30) {
-            console.log("length " + this.state.description.length)
             alert("Mas de 30 caracteres por fa");
         }
         else {
