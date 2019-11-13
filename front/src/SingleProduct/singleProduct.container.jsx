@@ -11,7 +11,7 @@ class SingleProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-      selectedCategory: this.props.selectedCategory,
+      selectedCategory: this.props.selectedCategory || this.props.categories[0].id,
     }
     this.setCategory = this.setCategory.bind(this)
     this.handleAddToCart = this.handleAddToCart.bind(this);
@@ -27,17 +27,18 @@ class SingleProductContainer extends React.Component {
       this.props.addToCartDbState(product);
     }
   }
-
+  
+  
   handleAddCategory(){
-    console.log("soy la accion Y EL SELECTEDCATEGORY ES:", this.state.selectedCategory)
-    this.props.addCategoryToProduct(this.state.selectedCategory)//this.props.match.params.productID)
+    console.log("SELECTED:",this.state.selectedCategory )
+    this.props.addCategoryToProduct( {productID: this.props.match.params.productID, categoryID:this.state.selectedCategory })//this.props.match.params.productID)
   }
-
+  
   handleDelete(product) {
     this.props.deleteProduct(product);
     this.props.history.push("/");
   }
-
+  
   componentDidMount() {
     this.props.fetchSingleProductData(this.props.match.params.productID);
   }
@@ -75,7 +76,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 SingleProductContainer.prototype.setCategory= function (category){
-  console.log("CATEGORY EN EL SETCATEGORY",category)
   this.setState({selectedCategory:category})
 }
 

@@ -72,13 +72,12 @@ export default function({
               ))
               : ""}
             <form>
-              <select onChange={e => submitCategory(e.target.value)}>
-                {categories.map(category => (
+              <select  onChange={e => submitCategory(e.target.value)}>
+                {categories.map((category) => (
                   <option key={category.id} value={category.id} > {category.name} </option>
                 ))}
               </select>
             </form>
-            {console.log("seleccionado:", selectedCategory)}
             <button onClick={e => handleAddCategory()}>+</button>
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
