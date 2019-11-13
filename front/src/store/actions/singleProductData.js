@@ -27,7 +27,6 @@ const addCategoryToProduct = idsObject => dispatch =>
   axios
     .put("/api/singleProduct/", idsObject)
     .then(res => res.data)
-
     .then(productData => dispatch(searchSingleProductData(productData)));
 
 export { fetchSingleProductData, editSingleProduct, addCategoryToProduct };
