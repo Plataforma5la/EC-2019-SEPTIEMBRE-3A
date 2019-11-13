@@ -14,8 +14,10 @@ import { fetchCart, fetchCartFromLocalStorage } from "./store/actions/cart";
 import NewProductContainer from "./newproduct/newProduct.container";
 import Users from "./users/users.container";
 import History from "./historial/historial.container";
+import Orders from "./orders/orders.container";
+import Order from "./singleorder/singleOrder.container";
 
-import EditProductContainer from "./editProduct/EditProducts.container"
+import EditProductContainer from "./editProduct/EditProducts.container";
 
 class Main extends React.Component {
   constructor(props) {
@@ -48,31 +50,38 @@ class Main extends React.Component {
             path="/"
             render={() => <ProductListContainer history={this.props.history} />}
           />
-          <Route path="/editproduct/:productID" render={({ match }) => <EditProductContainer match={match} history={this.props.history} />} />
-          <Route exact path="/cart" render={() => <CartContainer history={this.props.history} />} />
+          <Route
+            path="/editproduct/:productID"
+            render={({ match }) => (
+              <EditProductContainer
+                match={match}
+                history={this.props.history}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/cart"
+            render={() => <CartContainer history={this.props.history} />}
+          />
           <Route exact path={"/newproduct"} component={NewProductContainer} />
           <Route
             exact
             path={"/cart/confirmar-compra"}
             component={confirmarCompra}
           />
-          <Route
-            exact
-            path={"/users"}
-            component={Users}
-          />
-           <Route
-            exact
-            path={"/history"}
-            component={History}
-          />
+          <Route exact path={"/users"} component={Users} />
+          <Route exact path={"/history"} component={History} />
+          <Route exact path={"/orders"} component={Orders} />
+          <Route exact path={"/order/:orderId"} component={Order} />
+
           <Redirect from="/" to="/products" />
         </Switch>
       </div>
     );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.logged.user,
   product: state.product
 });
@@ -85,7 +94,4 @@ const mapDispatchToProps = dispatch => ({
   fetchCartFromLocalStorage: () => dispatch(fetchCartFromLocalStorage())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main)
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

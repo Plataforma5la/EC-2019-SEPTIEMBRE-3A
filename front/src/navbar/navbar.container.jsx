@@ -34,7 +34,6 @@ export class NavbarContainer extends Component {
   handleSearch(event) {
     event.preventDefault();
     if (!this.state.text || this.state.text.replace(/\s+/g, "") == "") return;
-    console.log(this.state.text);
     this.props.fetchSearchedProductList(this.state.text);
     this.props.history.push("/");
   }
@@ -65,7 +64,4 @@ const mapDispatchToProps = dispatch => ({
   emptyCart: () => dispatch(emptyCart())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NavbarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);

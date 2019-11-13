@@ -8,8 +8,8 @@ export default (state = initialState, action) => {
       for (let i = 0; i < state.cart.length; i++) {
         if (state.cart[i].id == action.product.id) {
           state.cart[i].cart_product.count += 1;
-         return Object.assign({}, state, {
-          cart: [...state.cart]
+          return Object.assign({}, state, {
+            cart: [...state.cart]
           });
         }
       }
@@ -22,18 +22,21 @@ export default (state = initialState, action) => {
 
     case "SUBSTRACT_OFCART":
       for (let i = 0; i < state.cart.length; i++) {
-        if ( state.cart[i].id == action.product.id && state.cart[i].cart_product.count > 1) {
+        if (
+          state.cart[i].id == action.product.id &&
+          state.cart[i].cart_product.count > 1
+        ) {
           state.cart[i].cart_product.count -= 1;
-          console.log("@@CART+1", state.cart)
           return Object.assign({}, state, {
             cart: [...state.cart]
-            });
-          }
+          });
+        }
 
-
-        if ( state.cart[i].id == action.product.id && state.cart[i].cart_product.count == 1) {
-          state.cart = state.cart.filter((item, index) => index !== i)
-          console.log("@@CART0", state.cart)
+        if (
+          state.cart[i].id == action.product.id &&
+          state.cart[i].cart_product.count == 1
+        ) {
+          state.cart = state.cart.filter((item, index) => index !== i);
           return Object.assign({}, state, {
             cart: [...state.cart]
           });
@@ -45,10 +48,10 @@ export default (state = initialState, action) => {
         cart: action.cart
       });
 
-      case "SET_HISTORY":
-        return Object.assign({}, state, {
-          history: action.history
-        });
+    case "SET_HISTORY":
+      return Object.assign({}, state, {
+        history: action.history
+      });
 
     default:
       return state;
