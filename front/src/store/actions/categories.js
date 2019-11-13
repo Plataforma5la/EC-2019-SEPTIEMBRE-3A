@@ -16,6 +16,7 @@ const setCategory = function(category) {
 
 export const getCategories = function() {
   return function(dispatch, getState) {
+    console.log("se dispara")
     axios.get("/api/categories").then(response => {
       dispatch(setCategories(response.data));
     });
