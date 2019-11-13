@@ -7,7 +7,16 @@ import { getThemeProps } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import { GoTrashcan } from "react-icons/go";
 
-export default function ({ product, handleAddToCart, user, handleDelete }) {
+export default function({
+  product,
+  categories,
+  handleAddToCart,
+  user,
+  handleDelete,
+  handleAddCategory,
+  submitCategory,
+  selectedCategory
+}) {
   return (
     <div className="container">
       <div className="singleProductContainer">
@@ -62,10 +71,18 @@ export default function ({ product, handleAddToCart, user, handleDelete }) {
                 </span>
               ))
               : ""}
+            <form>
+              <select  onChange={e => submitCategory(e.target.value)}>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id} > {category.name} </option>
+                ))}
+              </select>
+            </form>
+            <button onClick={e => handleAddCategory()}>+</button>
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
-                {user.isAdmin ? (
+                {!user.isAdmin ? (
                   <button
                     type="button"
                     className="btn btn-secondary"
