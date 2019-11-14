@@ -49,7 +49,7 @@ export default function({
             );
           })}
         </ul>
-        {!user.isAdmin && (
+        {user.isAdmin && (
           <div>
             <form onSubmit={handleSubmit}>
               <input
