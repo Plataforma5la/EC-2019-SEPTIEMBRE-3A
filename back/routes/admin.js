@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { Product } = require("../models");
-const { Category } = require("../models");
+const Product = require("../models/products");
+const Category = require("../models/categories");
+const User = require("../models/user.js");
 
 router.post("/newProduct", function(req, res) {
   Product.create(req.body).then(() => {
@@ -41,10 +42,17 @@ router.put("/downProduct", function(req, res) {
     });
 });
 
-router.put("/", function(req, res) {
+router.delete("/deleteuser", function(req, res) {
+  User.findByPk(req.body.id)
+    .then(user => user.destroy())
+    .then(() => User.findAll())
+    .then(asd => res.status(200).send(asd));
+});
+
+router.put("/addcategorytoproduct", function(req, res) {
   Product.findOne({ where: { id: req.body.productID } })
     .then(product => product.addCategories(req.body.categoryID))
-    .then(()=>
+    .then(() =>
       Product.findOne({
         where: { id: req.body.productID },
         include: [{ all: true }]
@@ -56,19 +64,19 @@ router.put("/", function(req, res) {
     .catch(err => console.log(err));
 });
 
-router.delete("/", function(req,res){
-  Product.findOne({where:{id:req.body.productID } })
-  .then(product=> product.removeCategories(req.body.categoryID))
-  .then(()=>
-  Product.findOne({
-    where: { id: req.body.productID },
-    include: [{ all: true }]
-  })
-)
-.then(productData => {
-  res.send(productData);
-})
-.catch(err => console.log(err));
+router.delete("/", function(req, res) {
+  Product.findOne({ where: { id: req.body.productID } })
+    .then(product => product.removeCategories(req.body.categoryID))
+    .then(() =>
+      Product.findOne({
+        where: { id: req.body.productID },
+        include: [{ all: true }]
+      })
+    )
+    .then(productData => {
+      res.send(productData);
+    })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

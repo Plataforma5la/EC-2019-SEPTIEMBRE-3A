@@ -74,7 +74,7 @@ export default function({
                 ))
               : ""}
 
-              {user.isAdmin?  
+              
                 <div>
 
             <form>
@@ -92,7 +92,7 @@ export default function({
             :
             <button onClick={e => handleAddCategory()}>+</button>}
               
-                </div>:""}
+                </div>
               
             
             
