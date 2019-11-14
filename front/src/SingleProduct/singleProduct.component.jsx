@@ -73,30 +73,49 @@ export default function({
                   </span>
                 ))
               : ""}
-
-              
-                <div>
-
-            <form>
-              <select onChange={e => submitCategory(e.target.value)}>
-                {categories.map(category => (
-                  <option key={category.id} value={category.id}>
+            {user.isAdmin ? (
+              <div className="container">
+                <div className="row">
+                  <div className="col-4">
                     {" "}
-                    {category.name}{" "}
-                  </option>
-                ))}
-              </select>
-            </form>
-            {existingCategories.includes(parseInt(selectedCategory)) ?
-            <button onClick={e => handleSubstractCategory()}>-</button>
-            :
-            <button onClick={e => handleAddCategory()}>+</button>}
-              
+                    <form>
+                      <select onChange={e => submitCategory(e.target.value)}>
+                        {categories.map(category => (
+                          <option key={category.id} value={category.id}>
+                            {" "}
+                            {category.name}{" "}
+                          </option>
+                        ))}
+                      </select>
+                    </form>{" "}
+                  </div>
+                  <div className="col-2">
+                    {" "}
+                    {existingCategories.includes(parseInt(selectedCategory)) ? (
+                      <button onClick={e => handleSubstractCategory()}>
+                        -
+                      </button>
+                    ) : (
+                      <button onClick={e => handleAddCategory()}>+</button>
+                    )}
+                  </div>
+                  <div className="col-6">
+                    {" "}
+                    {user.isAdmin ? (
+                      <Link to={`/editproduct/${product.id}`}>
+                        <button id="botonEditarProducto">
+                          Editar producto
+                        </button>
+                      </Link>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
-              
-            
-            
-            
+              </div>
+            ) : (
+              ""
+            )}
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
@@ -117,7 +136,6 @@ export default function({
                     Deseo
                   </button>
                 )}
-
                 <p className="singleProductPrice col-5">
                   {" "}
                   Precio: ${product.price}
@@ -140,15 +158,7 @@ export default function({
               son excelentes pero es un gran producto para trabajar tranquilo y
               por el precio vale mucho la pena.{" "}
             </p>
-            {user.username ? (
-              <Link to={`/editproduct/${product.id}`}>
-                <button id="botonEditarProducto">Editar producto</button>
-              </Link>
-            ) : (
-              ""
-            )}
           </div>
-          {user.isAdmin ? <button>Editar producto</button> : ""}
         </div>
       </div>
     </div>

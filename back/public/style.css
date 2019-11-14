@@ -1,8 +1,8 @@
-.oneLessToCart{
-border-radius: 50%;
+.oneLessToCart {
+  border-radius: 50%;
 }
 
-.oneMoreToCart{
+.oneMoreToCart {
   border-radius: 50%;
 }
 
@@ -45,7 +45,7 @@ border-radius: 50%;
 
 .cartSingleProductBox {
   background-color: whitesmoke;
-  display:flex;
+  display: flex;
   margin-bottom: 5px;
 }
 
@@ -90,7 +90,7 @@ border-radius: 50%;
 }
 
 .singleProductPic {
-  max-height: 50vh;
+  max-height: 55vh;
   object-fit: contain;
   height: 2%;
 }
@@ -212,7 +212,7 @@ body {
   border-radius: 10px;
   background-color: white;
   color: black;
-  margin-top: 50px;
+  margin:0
 }
 
 .productTitle {
@@ -240,7 +240,6 @@ body {
   background-color: #600624;
   margin-right: 10px;
 }
-
 
 .paginaprincipal {
   position: sticky;
@@ -272,8 +271,6 @@ body {
   padding-left: 200px;
 }
 
-
-
 /* Slider Style */
 
 .slidecontainer {
@@ -288,8 +285,8 @@ body {
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .slider:hover {
@@ -302,7 +299,7 @@ body {
   width: 70px;
   height: 70px;
   border: 0;
-  background: url('fire.png');
+  background: url("fire.png");
   cursor: pointer;
 }
 
@@ -310,6 +307,6 @@ body {
   width: 70px;
   height: 70px;
   border: 0;
-  background: url('fire.png');
+  background: url("fire.png");
   cursor: pointer;
 }
