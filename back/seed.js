@@ -1,5 +1,5 @@
-const Category = require("./models/categories");
-const Product = require("./models/products");
+const { Category } = require("./models/");
+const { Product } = require("./models/");
 const db = require("./config/db");
 const User = require("./models/user");
 const Review = require("./models/reviews");

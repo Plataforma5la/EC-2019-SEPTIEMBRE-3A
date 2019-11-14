@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Cart = require("../models/cart");
-const Product = require("../models/products");
+const { Product } = require("../models/");
 const Cart_product = require("../models/cart_product");
 const S = require("sequelize");
 
@@ -125,7 +125,5 @@ router.post("/", function(req, res) {
     }
   });
 });
-
-
 
 module.exports = router;
