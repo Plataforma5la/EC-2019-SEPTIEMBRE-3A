@@ -32,11 +32,11 @@ Product.init(
     },
     ratingCount: {
       type: S.INTEGER,
-      defaultValue: null
+      defaultValue: 0
     },
     ratingValue: {
       type: S.INTEGER,
-      defaultValue: null
+      defaultValue: 0
     },
     display: {
       type: S.BOOLEAN,
