@@ -4,7 +4,13 @@ const db = require("./config/db");
 const User = require("./models/user");
 const Review = require("./models/reviews");
 
-db.sync({ force: true }).then(() => {
+db.sync().then(() => {
+  User.create({
+    username: "isAdmin",
+    password: "asd",
+    email: "isAdmin@p5.com"
+  }).then(user => user.update({ isAdmin: true }));
+
   Category.create({
     name: "Anal"
   }).then(category => {
