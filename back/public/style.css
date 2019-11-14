@@ -159,7 +159,7 @@ body {
   text-align: center;
   display: inline-flex;
   margin: 5px;
-  height: 400px;
+  height: 450px;
   border-radius: 25px;
 }
 .img {
@@ -299,17 +299,25 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
+<<<<<<< HEAD
   background: url("fire.png");
+=======
+  background: url('fire.gif');
+>>>>>>> f8118205f1f0c1ae90c2865c4f454381c83fb759
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
+<<<<<<< HEAD
   background: url("fire.png");
+=======
+  background: url('fire.gif');
+>>>>>>> f8118205f1f0c1ae90c2865c4f454381c83fb759
   cursor: pointer;
 }

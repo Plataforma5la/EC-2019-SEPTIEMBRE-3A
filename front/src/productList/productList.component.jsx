@@ -5,6 +5,8 @@ import { GoTrashcan } from "react-icons/go";
 import { IoIosEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
+
 function ProductList({
   products,
   handleAddToCart,
@@ -39,13 +41,17 @@ function ProductList({
                     <TiThermometer />
                     <TiThermometer />
                   </div>
-                  <button
+                  <SnackbarProvider position="bottom">
+                    <Container handleAddToCart={handleAddToCart} product={product} message='Agregado al carrito!'/>
+                  </SnackbarProvider>
+                  {/* <button
                     type="button"
                     className="btn btn-secondary"
                     onClick={() => handleAddToCart(product)}
                   >
                     Deseo
-                  </button>
+                  </button> */}
+                 
                 </div>
                 <br></br>
                 <br></br>
@@ -119,3 +125,25 @@ function ProductList({
 }
 
 export default ProductList;
+
+
+const Container = wrapComponent(function({ createSnackbar, handleAddToCart, product, message }) {
+  function showSnackbar() {
+    createSnackbar({
+      message: message,
+      dismissable: false,
+      pauseOnHover: false,
+      progressBar: false,
+      sticky: false,
+      theme: 'success',
+      timeout: 2000
+    });
+  }
+
+  return (
+    <div>
+      <button type="button" className="btn btn-secondary"
+      onClick={()=>{showSnackbar(); handleAddToCart(product)}}>Lo deseo!</button>
+    </div>
+  );
+});
