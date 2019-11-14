@@ -17,16 +17,19 @@ export default function cartComponent({
             <div className="col-3">
               <img className="cartProductPic " src={product.img1Url} />
             </div>
-            <div className="col-3">
+            <div className="col-3 my-auto">
               <h4>{product.name}</h4>
             </div>
-            <div className="col-3">
+            <div className="col-3 my-auto">
               <p>${product.price}</p>
             </div>
-            <div className="col-3">
-              <button onClick={() => handleSubstractOfCart(product)}>-</button>
+            <div className="col-3 my-auto">
+            <div className="row">
+              <button className="oneLessToCart" onClick={() => handleSubstractOfCart(product)}>-</button>
               <p>{product.cart_product.count}</p>
-            <button onClick={() =>  handleAddToCart(product) }>+</button>
+            <button className="oneMoreToCart" onClick={() =>  handleAddToCart(product) }>+</button>
+
+            </div>
             </div>
           </div>
         ))}
