@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { Table } from "react-bootstrap";
 export default function({
   orders,
   handleAccept,
@@ -21,38 +21,47 @@ export default function({
             <select onChange={handleChange}>
               <option value="open">open</option>
               <option value="processing">processing</option>
-              <option value="open">open</option>
+              <option value="closed">closed</option>
               <option value="cancelled">cancelled</option>
             </select>
           </form>
           <button onClick={() => filterOrders(selectedStatus)}>Filter</button>
         </div>
       )}
-      {orders &&
-        orders.map(order => (
-          <div key={order.id} className="cartSingleProductBox">
-            <h3>Order ID: {order.id}</h3>
-
-            <div>
-              <p>Status: {order.status}</p>
-              <p>EMAIL: {order.buyer.email}</p>
-
-              {order.status === "processing" && (
-                <div>
-                  <button onClick={() => handleAccept(order)}>
-                    Accept Order
-                  </button>
-                  <button onClick={() => handleCancel(order)}>
-                    Cancel Order
-                  </button>
-                </div>
-              )}
-              <Link to={`/order/${order.id}`}>
-                <button>See detail</button>
-              </Link>
-            </div>
-          </div>
-        ))}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Buyer Email</th>
+            <th>Total</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders &&
+            orders.map(order => (
+              <tr key={order.id}>
+                <td>{order.id}</td>
+                <td>{order.buyer.email}</td>
+                <td>${order.preciototalalcomprar}</td>
+                <td>
+                  {order.status}
+                  {order.status === "processing" && (
+                    <div>
+                      <button onClick={() => handleAccept(order)}>
+                        Accept
+                      </button>
+                      <button onClick={() => handleCancel(order)}>
+                        Cancel
+                      </button>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
+      ;
     </div>
   );
 }

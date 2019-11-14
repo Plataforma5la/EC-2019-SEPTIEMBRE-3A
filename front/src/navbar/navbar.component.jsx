@@ -20,9 +20,15 @@ export default function MenuAppBar(props) {
         </div>
         {props.user.username ? (
           <div className="col-3">
-            <h4 className="textoNavbar">
-              BienvenidX.X.X {props.user.username}
-            </h4>
+            {props.user.isAdmin ? (
+              <h4 className="textoNavbarAdmin">
+                Hello Master {props.user.username}
+              </h4>
+            ) : (
+              <h4 className="textoNavbar">
+                BienvenidX.X.X {props.user.username}
+              </h4>
+            )}
             {props.user.isAdmin ? (
               <Link to="orders">
                 <button>Ver órdenes</button>
