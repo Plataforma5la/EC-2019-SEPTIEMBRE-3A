@@ -4,7 +4,7 @@ const Product = require("../models/products");
 
 router.post("/:id", function(req, res) {
   Review.findOne({
-    where: { /*userId: req.user.id,*/ productId: req.params.id }
+    where: { userId: req.user.id, productId: req.params.id }
   }).then(review => {
   if (review) res.sendStatus(403)
     else {
@@ -19,7 +19,7 @@ router.post("/:id", function(req, res) {
 
             Product.findOne(({ where: { id: req.params.id } }))
             .then(product =>{
-            product.increment({'ratingCount':1, 'ratingValue': req.body.score})
+            product.increment({ratingCount:1, ratingValue: req.body.score})
             })
             .then(product =>{
                 res.send(review)
