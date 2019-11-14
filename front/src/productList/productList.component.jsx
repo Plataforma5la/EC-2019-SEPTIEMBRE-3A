@@ -29,18 +29,15 @@ function ProductList({
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
                   <h5 className="card-title">US$ {product.price}</h5>
-                  <h5 className="card-title">{product.ratingValue}</h5>
+                  {(product.ratingCount>0) ? <TiThermometer /> : ' '}
+                  <h5 className="card-title">{(product.ratingCount>0) ? (product.ratingValue/product.ratingCount,2).toFixed(1) : ' '}</h5>
+                
                   {product.categories.map(category => (
                     <i key={category.id} className="card-title">
                       #{category.name}
                     </i>
                   ))}
                   <br></br>
-                  <div>
-                    <TiThermometer />
-                    <TiThermometer />
-                    <TiThermometer />
-                  </div>
                   <SnackbarProvider position="bottom">
                     <Container handleAddToCart={handleAddToCart} product={product} message='Agregado al carrito!'/>
                   </SnackbarProvider>
