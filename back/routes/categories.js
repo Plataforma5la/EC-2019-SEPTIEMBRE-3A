@@ -1,10 +1,16 @@
 const router = require("express").Router();
-const Category = require("../models/categories");
+const { Category } = require("../models/");
+const { Product } = require("../models/");
 
 router.get("/", function(req, res) {
-  Category.findAll({}).then(categories => {
-    res.status(200);
-    res.json(categories);
+  Category.findAll({ include: [Product] }).then(categories => {
+    if (req.isAuthenticated() && req.user.isAdmin) {
+      res.status(200);
+      res.json(categories);
+    } else {
+      res.status(200);
+      res.json(categories.filter(cat => cat.products.length));
+    }
   });
 });
 

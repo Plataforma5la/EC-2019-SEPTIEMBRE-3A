@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Product = require("../models/products");
-const Category = require("../models/categories");
+const { Product } = require("../models");
+const { Category } = require("../models");
 
 router.post("/newProduct", function(req, res) {
   Product.create(req.body).then(() => {
@@ -39,6 +39,36 @@ router.put("/downProduct", function(req, res) {
         res.status(201).send(prodDown)
       );
     });
+});
+
+router.put("/", function(req, res) {
+  Product.findOne({ where: { id: req.body.productID } })
+    .then(product => product.addCategories(req.body.categoryID))
+    .then(()=>
+      Product.findOne({
+        where: { id: req.body.productID },
+        include: [{ all: true }]
+      })
+    )
+    .then(productData => {
+      res.send(productData);
+    })
+    .catch(err => console.log(err));
+});
+
+router.delete("/", function(req,res){
+  Product.findOne({where:{id:req.body.productID } })
+  .then(product=> product.removeCategories(req.body.categoryID))
+  .then(()=>
+  Product.findOne({
+    where: { id: req.body.productID },
+    include: [{ all: true }]
+  })
+)
+.then(productData => {
+  res.send(productData);
+})
+.catch(err => console.log(err));
 });
 
 module.exports = router;
