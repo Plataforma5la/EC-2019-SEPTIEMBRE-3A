@@ -156,7 +156,7 @@ body {
   text-align: center;
   display: inline-flex;
   margin: 5px;
-  height: 400px;
+  height: 450px;
   border-radius: 25px;
 }
 .img {
@@ -299,17 +299,17 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
-  background: url('fire.png');
+  background: url('fire.gif');
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
-  background: url('fire.png');
+  background: url('fire.gif');
   cursor: pointer;
 }
