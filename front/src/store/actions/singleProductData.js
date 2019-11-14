@@ -29,4 +29,15 @@ const addCategoryToProduct = idsObject => dispatch =>
     .then(res => res.data)
     .then(productData => dispatch(searchSingleProductData(productData)));
 
-export { fetchSingleProductData, editSingleProduct, addCategoryToProduct };
+const substractCategoryToProduct = idsObject => dispatch =>
+  axios
+    .delete("/api/admin", { data: idsObject })
+    .then(res => res.data)
+    .then(productData => dispatch(searchSingleProductData(productData)));
+
+export {
+  fetchSingleProductData,
+  editSingleProduct,
+  addCategoryToProduct,
+  substractCategoryToProduct
+};

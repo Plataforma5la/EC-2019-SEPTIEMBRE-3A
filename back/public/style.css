@@ -1,3 +1,11 @@
+.oneLessToCart{
+border-radius: 50%;
+}
+
+.oneMoreToCart{
+  border-radius: 50%;
+}
+
 .addProductBox {
   background-color: grey;
   border: solid white 10px;
@@ -37,6 +45,7 @@
 
 .cartSingleProductBox {
   background-color: whitesmoke;
+  display:flex;
   margin-bottom: 5px;
 }
 
