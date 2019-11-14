@@ -6,7 +6,9 @@ import { fetchUsers, setUserAsAdmin, deleteUser } from "../store/actions/users";
 class Users extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = Store.getState()
+    this.state = {
+      unAuthorized: true
+    };
     this.handleEditUserAdmin = this.handleEditUserAdmin.bind(this);
     // this.handleEmptyCart = this.handleEmptyCart.bind(this);
     // this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
@@ -14,6 +16,16 @@ class Users extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.user.isAdmin) {
+      this.setState({
+        unAuthorized: false
+      });
+    } else {
+      this.setState({
+        unAuthorized: true
+      });
+    }
+
     this.props.fetchUsers();
   }
 
@@ -32,6 +44,7 @@ class Users extends React.Component {
     return (
       <div className="container">
         <UsersComponent
+          unAuthorized={this.state.unAuthorized}
           users={this.props.users}
           setUserAsAdmin={this.handleEditUserAdmin}
           deleteUser={this.handleDeleteUser}
@@ -41,7 +54,8 @@ class Users extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  users: state.users.users
+  users: state.users.users,
+  user: state.logged.user
 });
 
 const mapDispatchToProps = dispatch => ({
