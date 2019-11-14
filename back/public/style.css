@@ -262,3 +262,13 @@ body {
   padding-top: 200px;
   padding-left: 200px;
 }
+
+.mail{
+  border: black solid 2px
+}
+
+.mailPic{
+  max-height: 50vh;
+  object-fit: contain;
+  height: 2%;
+}
