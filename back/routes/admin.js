@@ -49,7 +49,7 @@ router.delete("/deleteuser", function(req, res) {
     .then(asd => res.status(200).send(asd));
 });
 
-router.put("/", function(req, res) {
+router.put("/addcategorytoproduct", function(req, res) {
   Product.findOne({ where: { id: req.body.productID } })
     .then(product => product.addCategories(req.body.categoryID))
     .then(() =>
