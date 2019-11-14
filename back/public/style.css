@@ -73,7 +73,7 @@
   overflow: hidden;
   flex-direction: row;
   background-color: rgb(87, 64, 82);
-  border-radius: 100px;
+  border-radius: 85px;
 }
 
 .singleProductDescription {
@@ -156,7 +156,7 @@ body {
   text-align: center;
   display: inline-flex;
   margin: 5px;
-  height: 400px;
+  height: 450px;
   border-radius: 25px;
 }
 .img {
@@ -210,8 +210,10 @@ body {
 
 #botonEditarProducto {
   border-radius: 10px;
-  background-color: white;
-  color: black;
+  background-color: grey;
+  border: solid grey;
+  border: 0;
+  color: white;
   margin:0
 }
 
@@ -296,17 +298,49 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
-  background: url("fire.png");
+  background: url('fire.gif');
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
-  background: url("fire.png");
+  background: url('fire.gif');
   cursor: pointer;
+}
+
+.singleProductCategoriesTag{
+  margin-right: 3px;
+}
+
+.categoriesTagContainer{
+padding-left: 0px;
+padding-top: 5px;
+}
+
+.addOrDeleteCategoryButton{
+  border-radius: 80px;
+  border: hidden;
+  background-color: grey;
+  color: white
+}
+
+.BackgroundcolorGrayWhiteFont{
+  border: solid grey;
+  background-color:grey;
+  color: white
+}
+
+#sinPuntuar{
+  font-size: 20px;
+  color:white
+}
+
+#sinPuntuarList{
+  font-size: 10px;
+  color:white
 }

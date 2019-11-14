@@ -11,6 +11,9 @@ export const fetchUsers = () => dispatch =>
     .then(res => res.data)
     .then(users => {
       dispatch(receiveUsers(users));
+    })
+    .catch(err => {
+      throw err;
     });
 
 export const setUserAsAdmin = user => dispatch =>

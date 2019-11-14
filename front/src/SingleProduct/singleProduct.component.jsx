@@ -6,6 +6,7 @@ import Youtube from "react-youtube";
 import { getThemeProps } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import { GoTrashcan } from "react-icons/go";
+import _ from "lodash";
 
 export default function({
   product,
@@ -42,25 +43,9 @@ export default function({
                   alt="Dildo pic"
                 />
               </Carousel.Item>
-
-              {/* INTENTOS DE VIDEO, POR AHORA NO BORRAR  */}
-
-              {/* <Carousel.Item> */}
-              {/* <iframe id="ytplayer" type="text/html" 
-  src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-  frameborder="0"/> */}
-              {/* <Youtube    className="d-block w-100 singleProductVideo"
-                 videoId="IPfG4OdGEyI"
-              /> */}
-              {/* <img
-                  className="d-block w-100 singleProductPic"
-                  src={product.img2Url}
-                  alt="Dildo pic"
-                /> */}
-              {/* </Carousel.Item> */}
             </Carousel>
           </div>
-          <div className="col-4">
+          <div className="col-4 ">
             <h1 className="singleProductDescription">{product.name}</h1>
             <span></span>
             {product.categories
@@ -76,10 +61,13 @@ export default function({
             {user.isAdmin ? (
               <div className="container">
                 <div className="row">
-                  <div className="col-4">
+                  <div className="col-4 categoriesTagContainer">
                     {" "}
                     <form>
-                      <select onChange={e => submitCategory(e.target.value)}>
+                      <select
+                        className="BackgroundcolorGrayWhiteFont"
+                        onChange={e => submitCategory(e.target.value)}
+                      >
                         {categories.map(category => (
                           <option key={category.id} value={category.id}>
                             {" "}
@@ -92,11 +80,19 @@ export default function({
                   <div className="col-2">
                     {" "}
                     {existingCategories.includes(parseInt(selectedCategory)) ? (
-                      <button onClick={e => handleSubstractCategory()}>
+                      <button
+                        className="addOrDeleteCategoryButton"
+                        onClick={e => handleSubstractCategory()}
+                      >
                         -
                       </button>
                     ) : (
-                      <button onClick={e => handleAddCategory()}>+</button>
+                      <button
+                        className="addOrDeleteCategoryButton"
+                        onClick={e => handleAddCategory()}
+                      >
+                        +
+                      </button>
                     )}
                   </div>
                   <div className="col-6">
@@ -145,19 +141,17 @@ export default function({
           </div>
           <div className="col-4">
             <h4 className="singleProductDescription">
-              Rating: <TiThermometer />
-              <TiThermometer />
-              <TiThermometer />
-              {product.rating}
+              Rating:
+              {product.ratingCount ? (
+                _.range(
+                  Math.ceil(product.ratingValue / product.ratingCount)
+                ).map(() => <TiThermometer key={Math.random()} />)
+              ) : (
+                <p id="sinPuntuar"> Este preducto aún no ha sido puntuado.</p>
+              )}
             </h4>
-            <p className="singleProductDescription">
-              Robusto: Buen producto para lo que vale, se ve que el motor es
-              bueno porque tiene buena potencia. Trae un juego de carbones de
-              repuesto. Lo probé con mechas de copa y normales para madera y va
-              perfecto. El mandril es un poco tosco, en general los acabados no
-              son excelentes pero es un gran producto para trabajar tranquilo y
-              por el precio vale mucho la pena.{" "}
-            </p>
+            {}
+            <p className="singleProductDescription"> </p>
           </div>
         </div>
       </div>
