@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import RegisterContainer from "../register/register.container";
 import LoginContainer from "../login/login.container";
+
 export default function MenuAppBar(props) {
   return (
     <div>
@@ -28,16 +29,16 @@ export default function MenuAppBar(props) {
                 <button>Ver órdenes</button>
               </Link>
             ) : (
-              <Link to="/history">
-                <button>Ver Historial de Compra</button>
-              </Link>
-            )}
+                <Link to="/history">
+                  <button>Ver Historial de Compra</button>
+                </Link>
+              )}
           </div>
         ) : (
-          <div className="col-3">
-            <span></span>
-          </div>
-        )}
+            <div className="col-3">
+              <span></span>
+            </div>
+          )}
         <div className="col-3">
           <Form onSubmit={props.handleSearch}>
             <FormControl
@@ -52,10 +53,10 @@ export default function MenuAppBar(props) {
               <button>Ver usuarios</button>
             </Link>
           ) : (
-            <Link to="/cart">
-              <button>carrito</button>
-            </Link>
-          )}
+              <Link to="/cart">
+                <button>carrito</button>
+              </Link>
+            )}
         </div>
         {props.user.username ? (
           <div className="col-3 navbarLogoutContainer">
@@ -67,13 +68,14 @@ export default function MenuAppBar(props) {
             </button>
           </div>
         ) : (
-          <div className="col-3 loginRegisterContainer">
-            <LoginContainer />
-            <span> </span>
-            <span> </span>
-            <RegisterContainer />
-          </div>
-        )}
+            <div className="col-3 loginRegisterContainer">
+              <LoginContainer />
+              <span> </span>
+              <span> </span>
+              <RegisterContainer />
+              <a href="/auth/facebook/callback" className="btn btn-primary"><span className="fa fa-facebook"></span>Facebook Login</a>
+            </div>
+          )}
       </Navbar>
     </div>
   );

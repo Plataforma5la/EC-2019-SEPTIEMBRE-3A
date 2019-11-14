@@ -2,13 +2,19 @@ const crypto = require("crypto");
 const S = require("sequelize");
 const db = require("../config/db");
 
-class User extends S.Model {}
+class User extends S.Model { }
 
 User.init(
   {
     username: {
       type: S.STRING,
       allowNull: false
+    },
+    token: {
+      type: S.STRING,
+    },
+    fbID: {
+      type: S.STRING,
     },
     password: {
       type: S.STRING,
@@ -32,16 +38,16 @@ User.init(
   { sequelize: db, modelName: "user" }
 );
 
-User.prototype.hashPassword = function(password) {
+User.prototype.hashPassword = function (password) {
   return crypto
     .createHmac("sha1", this.salt)
     .update(password)
     .digest("hex");
 };
-User.prototype.randomSalt = function() {
+User.prototype.randomSalt = function () {
   return crypto.randomBytes(20).toString("hex");
 };
-User.prototype.validatePassword = function(password) {
+User.prototype.validatePassword = function (password) {
   let newPassword = this.hashPassword(password);
   return newPassword === this.password;
 };

@@ -11,12 +11,13 @@ export const fetchUsers = () => dispatch =>
     .then(res => res.data)
     .then(users => {
       dispatch(receiveUsers(users));
-});
+    });
+
 
 export const setUserAsAdmin = (user) => dispatch =>
   axios
     .put(`/api/users/${user.id}`)
-    .then((res)=> res.data)
-    .then(users=> {
-        dispatch(receiveUsers(users))
+    .then((res) => res.data)
+    .then(users => {
+      dispatch(receiveUsers(users))
     })
