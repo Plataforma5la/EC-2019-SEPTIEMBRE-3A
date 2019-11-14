@@ -13,26 +13,35 @@ class OrdersContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedStatus: "open"
+      selectedStatus: "open",
+      unAuthorized: true
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleAccept = this.handleAccept.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
-
   }
 
   handleCancel(order) {
-    this.props.sendMailCancel(order.buyer.email)
-    this.props.cancelOrder(order.id)
+    this.props.sendMailCancel(order.buyer.email);
+    this.props.cancelOrder(order.id);
   }
 
   handleAccept(order) {
-    this.props.sendMailAccept(order.buyer.email)
-    this.props.acceptOrder(order.id)
+    this.props.sendMailAccept(order.buyer.email);
+    this.props.acceptOrder(order.id);
   }
 
   componentDidMount() {
+    if (this.props.user.isAdmin) {
+      this.setState({
+        unAuthorized: false
+      });
+    } else {
+      this.setState({
+        unAuthorized: true
+      });
+    }
     this.props.fetchOrders();
   }
 
@@ -42,12 +51,11 @@ class OrdersContainer extends React.Component {
     });
   }
 
-
-
   render() {
     return (
       <div>
         <OrderComponent
+          unAuthorized={this.state.unAuthorized}
           orders={this.props.orders}
           handleAccept={this.handleAccept}
           handleCancel={this.handleCancel}
@@ -62,7 +70,8 @@ class OrdersContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  orders: state.orders.orders
+  orders: state.orders.orders,
+  user: state.logged.user
 });
 
 const mapDispatchToProps = dispatch => ({
