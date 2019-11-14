@@ -17,10 +17,7 @@ router.post("/:id", function(req, res) {
       }).then(review => {
         Product.findOne({ where: { id: req.params.id } })
           .then(product => {
-            product.update({
-              ratingCount: product.ratingCount + 1,
-              ratingValue: product.ratingValue + req.body.score
-            });
+            product.increment({ ratingCount: 1, ratingValue: req.body.score });
           })
           .then(product => {
             res.send(review);
