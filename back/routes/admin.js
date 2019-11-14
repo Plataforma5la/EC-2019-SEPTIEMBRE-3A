@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Product = require("../models/products");
-const Category = require("../models/categories");
+const { Product } = require("../models");
+const { Category } = require("../models");
 
 router.post("/newProduct", function(req, res) {
   Product.create(req.body).then(() => {

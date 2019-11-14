@@ -65,19 +65,21 @@ export default function({
             <span></span>
             {product.categories
               ? product.categories.map(category => (
-                <span
-                  key={category.id}
-                  className="badge singleProductCategoriesTag badge-secondary"
-                >
-                  {category.name}
-                  
-                </span>
-              ))
+                  <span
+                    key={category.id}
+                    className="badge singleProductCategoriesTag badge-secondary"
+                  >
+                    {category.name}
+                  </span>
+                ))
               : ""}
             <form>
-              <select  onChange={e => submitCategory(e.target.value)}>
-                {categories.map((category) => (
-                  <option key={category.id} value={category.id} > {category.name} </option>
+              <select onChange={e => submitCategory(e.target.value)}>
+                {categories.map(category => (
+                  <option key={category.id} value={category.id}>
+                    {" "}
+                    {category.name}{" "}
+                  </option>
                 ))}
               </select>
             </form>
@@ -94,7 +96,7 @@ export default function({
             <p className="singleProductDescription">{product.description}</p>
             <div className="container">
               <div className="row">
-                {!user.isAdmin ? (
+                {user.isAdmin ? (
                   <button
                     type="button"
                     className="btn btn-secondary"
@@ -103,14 +105,14 @@ export default function({
                     <GoTrashcan />
                   </button>
                 ) : (
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      onClick={() => handleAddToCart(product)}
-                    >
-                      Deseo
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Deseo
                   </button>
-                  )}
+                )}
 
                 <p className="singleProductPrice col-5">
                   {" "}
@@ -138,12 +140,13 @@ export default function({
               <Link to={`/editproduct/${product.id}`}>
                 <button id="botonEditarProducto">Editar producto</button>
               </Link>
-            ) : ""}
+            ) : (
+              ""
+            )}
           </div>
           {user.isAdmin ? <button>Editar producto</button> : ""}
         </div>
       </div>
-
     </div>
   );
 }

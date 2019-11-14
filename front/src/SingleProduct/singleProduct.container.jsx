@@ -67,7 +67,8 @@ class SingleProductContainer extends React.Component {
   componentDidMount() {
     this.props.fetchSingleProductData(this.props.match.params.productID)
     .then(()=> 
-    this.setState({selectedCategory:this.props.categories[0].id,  existingCategories: this.idsArrayMaker() }) )
+    this.setState({selectedCategory:this.props.categories[0].id,  existingCategories:  this.idsArrayMaker() 
+    }) )
     
   }
   
