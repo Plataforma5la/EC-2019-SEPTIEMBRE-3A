@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Product = require("../models/products");
 const Category = require("../models/categories");
+const User = require("../models/user.js");
 
 router.post("/newProduct", function(req, res) {
   Product.create(req.body).then(() => {
@@ -39,6 +40,14 @@ router.put("/downProduct", function(req, res) {
         res.status(201).send(prodDown)
       );
     });
+});
+
+router.delete("/deleteuser", function(req, res) {
+  console.log(req.body);
+  User.findByPk(req.body.id)
+    .then(user => user.destroy())
+    .then(() => User.findAll())
+    .then(asd => res.status(200).send(asd));
 });
 
 module.exports = router;
