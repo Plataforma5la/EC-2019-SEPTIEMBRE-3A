@@ -43,7 +43,6 @@ router.put("/downProduct", function(req, res) {
 });
 
 router.delete("/deleteuser", function(req, res) {
-  console.log(req.body);
   User.findByPk(req.body.id)
     .then(user => user.destroy())
     .then(() => User.findAll())
