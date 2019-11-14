@@ -49,7 +49,7 @@ export default function({
             );
           })}
         </ul>
-        {!user.isAdmin && (
+        {user.isAdmin && (
           <div>
             <form onSubmit={handleSubmit}>
               <input
@@ -76,40 +76,4 @@ export default function({
   );
 }
 
-{
-  /* <div>
-<nav id="sidebar">
-  <div class="sidebar-header">
-    <h3>BOOTSTRAP SIDEBAR</h3>
-  </div>
 
-  <ul class="list-unstyled components">
-    <p>Dummy Heading</p>
-
-    <li>
-      <a href="#">About</a>
-    </li>
-
-    <li>
-      <a href="#">Services</a>
-    </li>
-    <li>
-      <a href="#">Contact Us</a>
-    </li>
-  </ul>
-
-  <ul class="list-unstyled CTAs">
-    <li>
-      <a href="#" class="download">
-        Download code
-      </a>
-    </li>
-    <li>
-      <a href="#" class="article">
-        article
-      </a>
-    </li>
-  </ul>
-</nav>
-</div> */
-}

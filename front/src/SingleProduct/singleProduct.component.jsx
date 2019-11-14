@@ -73,6 +73,10 @@ export default function({
                   </span>
                 ))
               : ""}
+
+              {user.isAdmin?  
+                <div>
+
             <form>
               <select onChange={e => submitCategory(e.target.value)}>
                 {categories.map(category => (
@@ -83,13 +87,13 @@ export default function({
                 ))}
               </select>
             </form>
-            {console.log("existing",existingCategories)}
-            {console.log("selected", selectedCategory) }
-            {console.log("indexOf", (existingCategories.indexOf(selectedCategory)))}
-            {existingCategories.indexOf(selectedCategory) == -1?
-            <button onClick={e => handleAddCategory()}>+</button>
+            {existingCategories.includes(parseInt(selectedCategory)) ?
+            <button onClick={e => handleSubstractCategory()}>-</button>
             :
-            <button onClick={e => handleSubstractCategory()}>-</button>}
+            <button onClick={e => handleAddCategory()}>+</button>}
+              
+                </div>:""}
+              
             
             
             

@@ -25,6 +25,7 @@ class SingleProductContainer extends React.Component {
     this.handleSubstractCategory = this.handleSubstractCategory.bind(this)
     this.idsArrayMaker = this.idsArrayMaker.bind(this)
   }
+
   handleAddToCart(product) {
     event.preventDefault();
     if (!this.props.user.username) {
@@ -37,22 +38,24 @@ class SingleProductContainer extends React.Component {
   
   
   handleAddCategory(){
-    console.log("SELECTED:",this.state.selectedCategory )
     this.props.addCategoryToProduct( {productID: this.props.match.params.productID, categoryID:this.state.selectedCategory })
+    .then(()=> this.setState({selectedCategory: this.state.selectedCategory,  existingCategories:  this.idsArrayMaker()}))
   }
 
   handleSubstractCategory(){
-    console.log("container",this.state.selectedCategory)
     this.props.substractCategoryToProduct( {productID: this.props.match.params.productID, categoryID:this.state.selectedCategory })
+    .then(()=> this.setState({selectedCategory: this.state.selectedCategory,  existingCategories:  this.idsArrayMaker()}))
+    //this.setState({selectedCategory:this.state.selectedCategory ,  existingCategories:  this.idsArrayMaker()})
   }
   
+
+
   setCategory(category){
-    this.setState({selectedCategory:category})
-    
-    
+    this.setState({selectedCategory:category,  existingCategories:  this.idsArrayMaker()})
   }
 
   idsArrayMaker(){
+    console.log("entra al array maker")
     let arr = [];
     this.props.product.categories.map(category=>
       arr.push(category.id))
@@ -69,7 +72,6 @@ class SingleProductContainer extends React.Component {
     .then(()=> 
     this.setState({selectedCategory:this.props.categories[0].id,  existingCategories:  this.idsArrayMaker() 
     }) )
-    
   }
   
   render() {
