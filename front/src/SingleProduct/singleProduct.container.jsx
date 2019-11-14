@@ -25,6 +25,7 @@ class SingleProductContainer extends React.Component {
     this.handleSubstractCategory = this.handleSubstractCategory.bind(this);
     this.idsArrayMaker = this.idsArrayMaker.bind(this);
   }
+
   handleAddToCart(product) {
     event.preventDefault();
     if (!this.props.user.username) {
@@ -33,27 +34,28 @@ class SingleProductContainer extends React.Component {
       this.props.addToCartDbState(product);
     }
   }
-
-  handleAddCategory() {
-    this.props.addCategoryToProduct({
-      productID: this.props.match.params.productID,
-      categoryID: this.state.selectedCategory
-    });
+  
+  
+  
+  handleAddCategory(){
+    this.props.addCategoryToProduct( {productID: this.props.match.params.productID, categoryID:this.state.selectedCategory })
+    .then(()=> this.setState({selectedCategory: this.state.selectedCategory,  existingCategories:  this.idsArrayMaker()}))
   }
 
-  handleSubstractCategory() {
-    console.log("container", this.state.selectedCategory);
-    this.props.substractCategoryToProduct({
-      productID: this.props.match.params.productID,
-      categoryID: this.state.selectedCategory
-    });
+  handleSubstractCategory(){
+    this.props.substractCategoryToProduct( {productID: this.props.match.params.productID, categoryID:this.state.selectedCategory })
+    .then(()=> this.setState({selectedCategory: this.state.selectedCategory,  existingCategories:  this.idsArrayMaker()}))
+    //this.setState({selectedCategory:this.state.selectedCategory ,  existingCategories:  this.idsArrayMaker()})
+  }
+  
+
+
+  setCategory(category){
+    this.setState({selectedCategory:category,  existingCategories:  this.idsArrayMaker()})
   }
 
-  setCategory(category) {
-    this.setState({ selectedCategory: category });
-  }
-
-  idsArrayMaker() {
+  idsArrayMaker(){
+    console.log("entra al array maker")
     let arr = [];
     this.props.product.categories.map(category => arr.push(category.id));
     return arr;
@@ -65,14 +67,10 @@ class SingleProductContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props
-      .fetchSingleProductData(this.props.match.params.productID)
-      .then(() =>
-        this.setState({
-          selectedCategory: this.props.categories[0].id,
-          existingCategories: this.idsArrayMaker()
-        })
-      );
+    this.props.fetchSingleProductData(this.props.match.params.productID)
+    .then(()=> 
+    this.setState({selectedCategory:this.props.categories[0].id,  existingCategories:  this.idsArrayMaker() 
+    }) )
   }
 
   render() {
@@ -105,7 +103,7 @@ const mapDispatchToProps = dispatch => ({
   idsArrayMaker: () => dispatch(idsArrayMaker()),
   getCategories: () => dispatch(getCategories()),
   substractCategoryToProduct: category =>
-    dispatch(substractCategoryToProduct(category)),
+  dispatch(substractCategoryToProduct(category)),
   addCategoryToProduct: category => dispatch(addCategoryToProduct(category)),
   fetchSingleProductData: id => dispatch(fetchSingleProductData(id)),
   addToCartDbState: product => dispatch(addToCartDbState(product)),

@@ -2,8 +2,9 @@ const router = require("express").Router();
 const Cart = require("../models/cart");
 const Product = require("../models/products");
 const User = require("../models/user");
+const checkAdmin = require("./authenticate");
 
-router.get("/", function(req, res) {
+router.get("/", checkAdmin, function(req, res) {
   Cart.findAll({ include: [{ model: User, as: "buyer" }] }).then(orders => {
     res.send(orders);
   });
