@@ -1,7 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import UsersComponent from "./users.component";
-import { fetchUsers, setUserAsAdmin, deleteUser } from "../store/actions/users";
+import {
+  fetchUsers,
+  setUserAsAdmin,
+  deleteUser,
+  removeAdmin
+} from "../store/actions/users";
 
 class Users extends React.Component {
   constructor(props) {
@@ -10,8 +15,8 @@ class Users extends React.Component {
       unAuthorized: true
     };
     this.handleEditUserAdmin = this.handleEditUserAdmin.bind(this);
-    // this.handleEmptyCart = this.handleEmptyCart.bind(this);
-    // this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
+    this.handleRemoveUserAdmin = this.handleRemoveUserAdmin.bind(this);
+
     this.handleDeleteUser = this.handleDeleteUser.bind(this);
   }
 
@@ -34,6 +39,11 @@ class Users extends React.Component {
     this.props.setUserAsAdmin(user);
   }
 
+  handleRemoveUserAdmin(user, trueorfalse) {
+    event.preventDefault();
+    this.props.removeAdmin(user);
+  }
+
   handleDeleteUser(user) {
     event.preventDefault();
     // console.log(user);
@@ -48,6 +58,7 @@ class Users extends React.Component {
           users={this.props.users}
           setUserAsAdmin={this.handleEditUserAdmin}
           deleteUser={this.handleDeleteUser}
+          removeAdmin={this.handleRemoveUserAdmin}
         />
       </div>
     );
@@ -61,7 +72,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchUsers: () => dispatch(fetchUsers()),
   setUserAsAdmin: user => dispatch(setUserAsAdmin(user)),
-  deleteUser: user => dispatch(deleteUser(user))
+  deleteUser: user => dispatch(deleteUser(user)),
+  removeAdmin: user => dispatch(removeAdmin(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);
