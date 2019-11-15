@@ -4,6 +4,17 @@
   padding-right: 10px;
 }
 
+.reviewButtonBox{
+  padding: 0px;
+}
+
+#reviewButton{
+  width: 120px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-bottom: 5px;
+}
+
 .oneMoreToCart {
   border-radius: 50%;
   padding-left: 10px;
