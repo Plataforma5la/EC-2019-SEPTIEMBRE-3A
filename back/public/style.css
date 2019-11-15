@@ -430,17 +430,38 @@ body {
   padding: 0;
 }
 
-.verCarrito{
-margin-top: 5px;
+.editCategoryNames {
+  padding-top: 200px;
+  padding-left: 200px;
+  color: white;
 }
 
-.verUsuarios{
+.columCategoryEditTable {
+  color: white;
+}
+
+.categoriesNameColor {
+  color: white;
+}
+.verCarrito {
   margin-top: 5px;
 }
 
-.adminButton{
+.verUsuarios {
+  margin-top: 5px;
+}
+
+.adminButton {
   border-radius: 10px;
   background-color: gold;
   color: black !important;
   border: solid gold;
+}
+
+.ordersColumns {
+  color: #d3d3d3;
+}
+
+.whiteLetter {
+  color: white;
 }

@@ -6,9 +6,11 @@ import Youtube from "react-youtube";
 import { getThemeProps } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import { GoTrashcan } from "react-icons/go";
+import { SnackbarProvider, wrapComponent } from "react-snackbar-alert";
+
 import _ from "lodash";
 
-export default function({
+function SingleProduct({
   product,
   categories,
   handleAddToCart,
@@ -119,18 +121,18 @@ export default function({
                   <button
                     type="button"
                     className="btn btn-secondary"
-                    onClick={e => handleDelete(product)}
+                    onClick={e => {alert('Producto eliminado!');handleDelete(product)}}
                   >
                     <GoTrashcan />
                   </button>
                 ) : (
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    Deseo
-                  </button>
+                  <SnackbarProvider position="bottom">
+                    <Container
+                      handleAddToCart={handleAddToCart}
+                      product={product}
+                      message="Agregado al carrito!"
+                    />
+                  </SnackbarProvider>
                 )}
                 <p className="singleProductPrice col-5">
                   {" "}
@@ -155,14 +157,17 @@ export default function({
             {product.reviews && product.reviews.length ? (
               product.reviews.map(review => (
                 <p className="singleReview" key={Math.random()}>
-                {_.range(
-                  Math.ceil(review.score)
-                ).map(() => <TiThermometer key={Math.random()} />)}
+                  {_.range(Math.ceil(review.score)).map(() => (
+                    <TiThermometer key={Math.random()} />
+                  ))}
                   {review.content}
                 </p>
               ))
             ) : (
-              <p className="singleReview"> No hay comentarios. Se el primero!</p>
+              <p className="singleReview">
+                {" "}
+                No hay comentarios. Se el primero!
+              </p>
             )}
 
             <p className="singleProductDescription"> </p>
@@ -172,3 +177,39 @@ export default function({
     </div>
   );
 }
+
+export default SingleProduct;
+
+const Container = wrapComponent(function({
+  createSnackbar,
+  handleAddToCart,
+  product,
+  message
+}) {
+  function showSnackbar() {
+    createSnackbar({
+      message: message,
+      dismissable: false,
+      pauseOnHover: false,
+      progressBar: false,
+      sticky: false,
+      theme: "success",
+      timeout: 2000
+    });
+  }
+
+  return (
+    <div>
+      <button
+        type="button"
+        className="btn btn-secondary"
+        onClick={() => {
+          showSnackbar();
+          handleAddToCart(product);
+        }}
+      >
+        Lo deseo!
+      </button>
+    </div>
+  );
+});
