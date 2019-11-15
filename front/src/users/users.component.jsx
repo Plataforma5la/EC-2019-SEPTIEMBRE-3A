@@ -5,7 +5,13 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { Table } from "react-bootstrap";
 
-export default function({ users, setUserAsAdmin, deleteUser, unAuthorized }) {
+export default function({
+  users,
+  setUserAsAdmin,
+  deleteUser,
+  unAuthorized,
+  removeAdmin
+}) {
   return (
     <div className="container cartProductsContainer">
       {unAuthorized ? (
@@ -36,7 +42,10 @@ export default function({ users, setUserAsAdmin, deleteUser, unAuthorized }) {
                     <MdCheckBoxOutlineBlank />
                   </button>
                 ) : (
-                  <button className="btn btn-secondary">
+                  <button
+                    onClick={() => removeAdmin(user)}
+                    className="btn btn-secondary"
+                  >
                     <IoMdCheckboxOutline />
                   </button>
                 )}
