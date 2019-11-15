@@ -75,7 +75,7 @@ export default function MenuAppBar(props) {
             </button>
           </div>
         ) : (
-            <div className="col-3 loginRegisterContainer">
+            <div className="col-6 loginRegisterContainer">
               <FbLogin registerUser={props.registerUser} />
               <span> </span>
               <LoginContainer />
