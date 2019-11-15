@@ -103,7 +103,7 @@ function ProductList({
                   <button
                     type="button"
                     className="btn btn-secondary"
-                    onClick={e => handleDelete(product)}
+                    onClick={e => {alert('Producto eliminado!'); handleDelete(product)}}
                   >
                     <GoTrashcan />
                   </button>
