@@ -115,7 +115,6 @@ router.post("/", function(req, res) {
           });
         });
       });
-      console.log("3");
       res.send(true);
     } else {
       Cart.findAll({

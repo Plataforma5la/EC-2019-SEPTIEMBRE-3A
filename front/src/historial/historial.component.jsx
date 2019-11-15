@@ -9,6 +9,7 @@ export default function({ history }) {
           <div key={cart.id} className="row cartSingleProductBox">
             <div className="col-3">
               <h5>Número de orden: {cart.id}</h5>
+              <h5>Estado: {cart.status}</h5>
             </div>
 
             {cart.products.map(product => (

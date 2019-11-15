@@ -129,7 +129,6 @@ export const createCart = function (products) {
 export const confirmPurchase = function (total) {
   return function (dispatch, getState) {
     axios.put("/api/cart/confirm", { total }).then(response => {
-      console.log("responseee" + response)
       dispatch(setCart([]));
     });
   };

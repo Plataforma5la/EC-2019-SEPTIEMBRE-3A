@@ -45,7 +45,6 @@ router.put("/:id", function(req, res) {
 });
 
 router.put("/noadmin/:id", function(req, res) {
-  console.log("req params", req.params.id);
   User.findByPk(req.params.id).then(user => {
     user
       .update({

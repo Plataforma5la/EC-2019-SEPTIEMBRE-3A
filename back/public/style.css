@@ -4,15 +4,15 @@
   padding-right: 10px;
 }
 
-.reviewButtonBox{
+.reviewButtonBox {
   padding: 0px;
 }
 
-#reviewButton{
+#reviewButton {
   width: 120px;
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-bottom: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-bottom: 5px;
 }
 
 .oneMoreToCart {
@@ -21,27 +21,26 @@
   padding-right: 10px;
 }
 
-#productCount{
-padding-top: 0px;
-border-top-width: 0px;
-margin-top: 6px;
-margin-bottom: 6px;
-margin-left: 6px;
-margin-right: 6px;
-width: 20px;
-text-align: center;
+#productCount {
+  padding-top: 0px;
+  border-top-width: 0px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  width: 20px;
+  text-align: center;
 }
 
-.cartTotal{
+.cartTotal {
   color: white;
   padding-left: 55px;
   padding-top: 17px;
   height: 62px;
 }
 
-#confirmarCompra{
+#confirmarCompra {
   padding-left: 0px;
-
 }
 
 .addProductBox {
@@ -359,8 +358,7 @@ body {
   cursor: pointer;
 }
 
-
-.fbLoginButton{
+.fbLoginButton {
   border-radius: 10px;
   box-shadow: none;
   font-size: 16px;
@@ -375,8 +373,8 @@ body {
   border-color: #3b5998;
 }
 
-.fbLoginButton:hover{
-  color: #ccc
+.fbLoginButton:hover {
+  color: #ccc;
 }
 .singleProductCategoriesTag {
   margin-right: 3px;
