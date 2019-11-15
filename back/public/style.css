@@ -367,3 +367,18 @@ body {
   margin-bottom: 6px;
   padding: 0;
 }
+
+.verCarrito{
+margin-top: 5px;
+}
+
+.verUsuarios{
+  margin-top: 5px;
+}
+
+.adminButton{
+  border-radius: 10px;
+  background-color: gold;
+  color: black !important;
+  border: solid gold;
+}
