@@ -217,7 +217,7 @@ body {
   border: solid grey;
   border: 0;
   color: white;
-  margin:0
+  margin: 0;
 }
 
 .productTitle {
@@ -304,7 +304,7 @@ body {
   width: 47px;
   height: 70px;
   border: 0;
-  background: url('fire.gif');
+  background: url("fire.gif");
   cursor: pointer;
 }
 
@@ -312,38 +312,57 @@ body {
   width: 47px;
   height: 70px;
   border: 0;
-  background: url('fire.gif');
+  background: url("fire.gif");
   cursor: pointer;
 }
 
-.singleProductCategoriesTag{
+.singleProductCategoriesTag {
   margin-right: 3px;
 }
 
-.categoriesTagContainer{
-padding-left: 0px;
-padding-top: 5px;
+.categoriesTagContainer {
+  padding-left: 0px;
+  padding-top: 5px;
 }
 
-.addOrDeleteCategoryButton{
+.addOrDeleteCategoryButton {
   border-radius: 80px;
   border: hidden;
   background-color: grey;
-  color: white
+  color: white;
 }
 
-.BackgroundcolorGrayWhiteFont{
+.BackgroundcolorGrayWhiteFont {
   border: solid grey;
-  background-color:grey;
-  color: white
+  background-color: grey;
+  color: white;
 }
 
-#sinPuntuar{
+#sinPuntuar {
   font-size: 15px;
-  color:white
+  color: white;
 }
 
-#sinPuntuarList{
+#sinPuntuarList {
   font-size: 10px;
-  color:white
+  margin-bottom: 7px;
+  color: white;
+}
+
+.singleProductReviewsBox {
+  border-left: solid grey;
+}
+
+.singleReview {
+  color: white;
+}
+
+.opiniones {
+  padding-top: 37px;
+}
+
+.trashSidebar {
+  margin-top: 8px;
+  margin-bottom: 6px;
+  padding: 0;
 }

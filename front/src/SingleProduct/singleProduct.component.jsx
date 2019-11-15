@@ -139,9 +139,9 @@ export default function({
               </div>
             </div>
           </div>
-          <div className="col-4">
+          <div className="col-4 singleProductReviewsBox">
             <h4 className="singleProductDescription">
-              Rating:
+              Calificación:
               {product.ratingCount ? (
                 _.range(
                   Math.ceil(product.ratingValue / product.ratingCount)
@@ -150,12 +150,17 @@ export default function({
                 <p id="sinPuntuar"> Este producto aún no ha sido puntuado.</p>
               )}
             </h4>
-            {product.reviews
-              ? 
-                  product.reviews.map(review => <p key={Math.random()}>{review.content}</p>)
-                
-              : ""}
-            {/* <p>{review.content}</p>)}  */}
+            <h4 className="singleProductDescription opiniones">Opiniones:</h4>
+            {product.reviews ? (
+              product.reviews.map(review => (
+                <p className="singleReview" key={Math.random()}>
+                  {review.content}
+                </p>
+              ))
+            ) : (
+              <p className="singleReview"> No hay comentarios. Se el primero!</p>
+            )}
+
             <p className="singleProductDescription"> </p>
           </div>
         </div>
