@@ -1,9 +1,36 @@
 .oneLessToCart {
   border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .oneMoreToCart {
   border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#productCount{
+padding-top: 0px;
+border-top-width: 0px;
+margin-top: 6px;
+margin-bottom: 6px;
+margin-left: 6px;
+margin-right: 6px;
+width: 20px;
+text-align: center;
+}
+
+.cartTotal{
+  color: white;
+  padding-left: 55px;
+  padding-top: 17px;
+  height: 62px;
+}
+
+#confirmarCompra{
+  padding-left: 0px;
+
 }
 
 .addProductBox {
@@ -36,6 +63,7 @@
 }
 
 .cartProductPic {
+  padding-left: 35px;
   max-height: 10vh;
 }
 
@@ -44,7 +72,9 @@
 }
 
 .cartSingleProductBox {
-  background-color: whitesmoke;
+  background-color: rgb(87, 64, 82);
+  border-radius: 10px;
+  color: white;
   display: flex;
   margin-bottom: 5px;
 }
@@ -54,7 +84,8 @@
 }
 
 .loginRegisterContainer {
-  left: 340px;
+  left: 250px;
+  display: inline-flex;
 }
 
 .textoNavbar {
@@ -209,6 +240,7 @@ body {
   background-color: black;
   color: white !important;
   border: solid black;
+  margin-right: 10px;
 }
 
 #botonEditarProducto {
@@ -316,23 +348,17 @@ body {
   cursor: pointer;
 }
 
-.fbLoginWrapper{ 
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 
 .fbLoginButton{
-  border-radius: 4px;
+  border-radius: 10px;
   box-shadow: none;
   font-size: 16px;
   font-weight: 400;
-  margin: 5px 0;
   padding: 0.75rem;
   text-align: center;
   text-shadow: none;
   cursor: pointer;
-  width: 250px;
+  display: inline-flex;
   color: white !important;
   background: #3b5998;
   border-color: #3b5998;
@@ -393,17 +419,38 @@ body {
   padding: 0;
 }
 
-.verCarrito{
-margin-top: 5px;
+.editCategoryNames {
+  padding-top: 200px;
+  padding-left: 200px;
+  color: white;
 }
 
-.verUsuarios{
+.columCategoryEditTable {
+  color: white;
+}
+
+.categoriesNameColor {
+  color: white;
+}
+.verCarrito {
   margin-top: 5px;
 }
 
-.adminButton{
+.verUsuarios {
+  margin-top: 5px;
+}
+
+.adminButton {
   border-radius: 10px;
   background-color: gold;
   color: black !important;
   border: solid gold;
+}
+
+.ordersColumns {
+  color: #d3d3d3;
+}
+
+.whiteLetter {
+  color: white;
 }

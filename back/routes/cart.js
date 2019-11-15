@@ -103,18 +103,20 @@ router.post("/", function(req, res) {
   }).then(cart => {
     if (cart[1]) {
       req.body.products.forEach(product => {
-        Cart_product.findOne({
-          where: { cartId: cart[0].id, productId: product.id }
-        })
-          .then(instance => {
-            if (instance) {
+        return cart[0].addProducts(product.id).then(() => {
+          return Cart_product.findOne({
+            where: { cartId: cart[0].id, productId: product.id }
+          }).then(instance => {
+            while (product.cart_product.count > 1) {
               instance.addCount();
-            } else {
-              cart[0].addProducts(product.id);
+              product.cart_product.count--;
             }
-          })
-          .then(() => res.send(true));
+            return "o";
+          });
+        });
       });
+      console.log("3");
+      res.send(true);
     } else {
       Cart.findAll({
         where: { buyerId: req.user.id },

@@ -17,10 +17,10 @@ export default function({
       {unAuthorized ? (
         <h3>No podés pasar acá chanchuni</h3>
       ) : (
-        <h3>Ver Usuarios</h3>
+        <h3 className="whiteLetter">Ver Usuarios</h3>
       )}
       <Table striped bordered hover>
-        <thead>
+        <thead className="whiteLetter">
           <tr>
             <th>#</th>
             <th>Username</th>
@@ -31,13 +31,14 @@ export default function({
         <tbody>
           {users.map(user => (
             <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.username}</td>
-              <td>
+              <td className="whiteLetter">{user.id}</td>
+              <td className="whiteLetter">{user.username}</td>
+              <td className="whiteLetter">
                 {!user.isAdmin ? (
                   <button
                     onClick={() => setUserAsAdmin(user)}
                     className="btn btn-secondary"
+                    className="adminButton"
                   >
                     <MdCheckBoxOutlineBlank />
                   </button>
@@ -45,6 +46,7 @@ export default function({
                   <button
                     onClick={() => removeAdmin(user)}
                     className="btn btn-secondary"
+                    className="adminButton"
                   >
                     <IoMdCheckboxOutline />
                   </button>
@@ -54,6 +56,7 @@ export default function({
                 <button
                   className="btn btn-secondary"
                   onClick={() => deleteUser(user)}
+                  className="adminButton"
                 >
                   <GoTrashcan />
                 </button>

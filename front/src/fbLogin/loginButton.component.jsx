@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaFacebookSquare } from 'react-icons/fa'
 
 
 export default function loginButton({ registerUser }) {
@@ -35,10 +36,10 @@ export default function loginButton({ registerUser }) {
     }
 
     return (
-        <div className="fbLoginWrapper">
-            <a onClick={facebookLogin} className="fbLoginButton">
-                <span>Login with Facebook</span>
-            </a>
+        <div >
+            <button onClick={facebookLogin} className="fbLoginButton navButton">
+                <span><FaFacebookSquare /></span>
+            </button>
         </div>
     )
 }
