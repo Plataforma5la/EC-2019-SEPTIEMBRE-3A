@@ -46,7 +46,6 @@ class Users extends React.Component {
 
   handleDeleteUser(user) {
     event.preventDefault();
-    // console.log(user);
     this.props.deleteUser(user);
   }
 

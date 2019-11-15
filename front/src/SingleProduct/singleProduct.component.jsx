@@ -153,7 +153,6 @@ function SingleProduct({
               )}
             </h4>
             <h4 className="singleProductDescription opiniones">Opiniones:</h4>
-            {console.log(product.reviews)}
             {product.reviews && product.reviews.length ? (
               product.reviews.map(review => (
                 <p className="singleReview" key={Math.random()}>

@@ -28,7 +28,6 @@ class EditCategoryContainer extends Component {
   }
 
   render() {
-    console.log(this.state.categoryName);
     return (
       <div>
         <EditCategoryComponent

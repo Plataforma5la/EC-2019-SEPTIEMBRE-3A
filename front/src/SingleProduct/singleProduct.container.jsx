@@ -55,7 +55,6 @@ class SingleProductContainer extends React.Component {
   }
 
   idsArrayMaker(){
-    console.log("entra al array maker")
     let arr = [];
     this.props.product.categories.map(category => arr.push(category.id));
     return arr;

@@ -22,7 +22,6 @@ class confirmarCompra extends Component {
     }
     handleSubmit(e, total) {
         e.preventDefault()
-        console.log(this.props.carts)
         this.props.sendMail(this.state.userInput, this.props.cart)
         this.props.confirmPurchase(total)
         this.props.history.push('/');

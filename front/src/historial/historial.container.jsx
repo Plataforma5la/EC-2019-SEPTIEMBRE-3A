@@ -6,8 +6,6 @@ import { fetchHistory } from "../store/actions/cart";
 class HistoryContainer extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleAddToCart = this.handleAddToCart.bind(this);
-    // this.handleDelete = this.handleDelete.bind(this);
   }
 
 

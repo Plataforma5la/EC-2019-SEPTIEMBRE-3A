@@ -19,7 +19,6 @@ export default function loginButton({ registerUser }) {
     const facebookLoginHandler = (response) => {
         if (response.status === "connected") {
             window.FB.api('/me?fields=id,name,email', userData => {
-                console.log(userData)
                 const user = {
                     fbID: userData.id,
                     email: userData.email,
