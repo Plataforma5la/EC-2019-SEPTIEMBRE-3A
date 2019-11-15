@@ -12,7 +12,7 @@ function EditCategoryComponent({ categories, handleChange, handleSubmit }) {
           <tr>
             <th>Actual category name</th>
             <th>New category name</th>
-            <th>Change category name</th>
+            <th>Edit category name</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@ function EditCategoryComponent({ categories, handleChange, handleSubmit }) {
               <td>
                 {" "}
                 <input
-                  placeholder="change category name"
+                  placeholder="New category name"
                   name="name"
                   type="text"
                   onChange={e => handleChange(e)}
@@ -33,7 +33,7 @@ function EditCategoryComponent({ categories, handleChange, handleSubmit }) {
                 <Link to={"/"}>
                   <button
                     type="button"
-                    className="btn btn-success"
+                    className="btn btn-warning"
                     onClick={event => {
                       event.id = cat.id;
                       handleSubmit(event);
