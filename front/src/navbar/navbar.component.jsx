@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import RegisterContainer from "../register/register.container";
 import LoginContainer from "../login/login.container";
+import FbLogin from "../fbLogin/loginButton.component"
+
 export default function MenuAppBar(props) {
   return (
     <div>
@@ -25,25 +27,25 @@ export default function MenuAppBar(props) {
                 Hello Master {props.user.username}
               </h4>
             ) : (
-              <h4 className="textoNavbar">
-                BienvenidX.X.X {props.user.username}
-              </h4>
-            )}
+                <h4 className="textoNavbar">
+                  Bienvenidx.x.x {props.user.username}
+                </h4>
+              )}
             {props.user.isAdmin ? (
               <Link to="orders">
-                <button>Ver órdenes</button>
+                <button className="adminButton">Ver órdenes</button>
               </Link>
             ) : (
-              <Link to="/history">
-                <button>Ver Historial de Compra</button>
-              </Link>
-            )}
+                <Link to="/history">
+                  <button className="navButton">Ver Historial de Compra</button>
+                </Link>
+              )}
           </div>
         ) : (
-          <div className="col-3">
-            <span></span>
-          </div>
-        )}
+            <div className="col-3">
+              <span></span>
+            </div>
+          )}
         <div className="col-3">
           <Form onSubmit={props.handleSearch}>
             <FormControl
@@ -55,13 +57,13 @@ export default function MenuAppBar(props) {
           </Form>
           {props.user.isAdmin ? (
             <Link to="/users">
-              <button>Ver usuarios</button>
+              <button className=" adminButton verUsuarios">Ver usuarios</button>
             </Link>
           ) : (
-            <Link to="/cart">
-              <button>carrito</button>
-            </Link>
-          )}
+              <Link to="/cart">
+                <button className="navButton verCarrito">carrito</button>
+              </Link>
+            )}
         </div>
         {props.user.username ? (
           <div className="col-3 navbarLogoutContainer">
@@ -73,35 +75,19 @@ export default function MenuAppBar(props) {
             </button>
           </div>
         ) : (
-          <div className="col-3 loginRegisterContainer">
-            <LoginContainer />
-            <span> </span>
-            <span> </span>
-            <RegisterContainer />
-          </div>
-        )}
+            <div className="col-3 loginRegisterContainer">
+              <FbLogin registerUser={props.registerUser} />
+              <span> </span>
+              <LoginContainer />
+              <span> </span>
+              <span> </span>
+              <RegisterContainer />
+            </div>
+          )}
       </Navbar>
-    </div>
+
+    </div >
   );
 }
 
-{
-  /* {props.user.username ? (
-                  <div id="bienvenido" className="textoNavbar">
-                    <Button className="navButton" onClick={props.handleLogOut}>
-                      Logout
-                    </Button>
-                  </div>
-                ) : (
-                  <div>
-                    <LoginContainer />
-                    <span> </span>
-                    <RegisterContainer />
-                  </div>
-                )}
-                {props.user.username ? (
-                  <h1 className="textoNavbar">
-                    BienvenidX.X.X {props.user.username}
-                  </h1>
-                ) : null} */
-}
+

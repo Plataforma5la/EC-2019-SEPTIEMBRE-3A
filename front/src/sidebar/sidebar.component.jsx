@@ -60,12 +60,12 @@ export default function({
               />
             </form>
             <Link to={"/newproduct"}>
-              <button type="button" className="navButton btn btn-drk btn-sm">
+              <button type="button" className="adminButton btn btn-drk btn-sm">
                 Agregar roducto
               </button>
             </Link>
             <Link to={"/editcategory"}>
-              <button type="button" className="navButton btn btn-drk btn-sm">
+              <button type="button" className="adminButton btn btn-drk btn-sm">
                 Editar categoría
               </button>
             </Link>

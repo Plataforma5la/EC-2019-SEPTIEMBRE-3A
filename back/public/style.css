@@ -316,6 +316,31 @@ body {
   cursor: pointer;
 }
 
+.fbLoginWrapper{ 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.fbLoginButton{
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px 0;
+  padding: 0.75rem;
+  text-align: center;
+  text-shadow: none;
+  cursor: pointer;
+  width: 250px;
+  color: white !important;
+  background: #3b5998;
+  border-color: #3b5998;
+}
+
+.fbLoginButton:hover{
+  color: #ccc
+}
 .singleProductCategoriesTag {
   margin-right: 3px;
 }
@@ -366,4 +391,19 @@ body {
   margin-top: 8px;
   margin-bottom: 6px;
   padding: 0;
+}
+
+.verCarrito{
+margin-top: 5px;
+}
+
+.verUsuarios{
+  margin-top: 5px;
+}
+
+.adminButton{
+  border-radius: 10px;
+  background-color: gold;
+  color: black !important;
+  border: solid gold;
 }

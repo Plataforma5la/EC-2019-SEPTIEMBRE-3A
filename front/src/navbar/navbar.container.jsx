@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { fetchSearchedProductList } from "../store/actions/productList";
 import { fetchProductList } from "../store/actions/productList";
 import { emptyCart } from "../store/actions/cart";
+import { registerUser } from "../store/actions/user";
 import { getCategories } from "../store/actions/categories";
 
 export class NavbarContainer extends Component {
@@ -49,6 +50,7 @@ export class NavbarContainer extends Component {
           handleSearchtextChange={this.handleSearchtextChange}
           handleSearch={this.handleSearch}
           FetchProductList={this.FetchProductList}
+          registerUser={this.props.registerUser}
         />
       </div>
     );
@@ -64,6 +66,8 @@ const mapDispatchToProps = dispatch => ({
   fetchSearchedProductList: text => dispatch(fetchSearchedProductList(text)),
   fetchProductList: () => dispatch(fetchProductList()),
   emptyCart: () => dispatch(emptyCart()),
+  registerUser: ({ username, email, password }) =>
+    dispatch(registerUser({ username, email, password })),
   getCategories: () => dispatch(getCategories())
 });
 
