@@ -1,9 +1,36 @@
 .oneLessToCart {
   border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .oneMoreToCart {
   border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#productCount{
+padding-top: 0px;
+border-top-width: 0px;
+margin-top: 6px;
+margin-bottom: 6px;
+margin-left: 6px;
+margin-right: 6px;
+width: 20px;
+text-align: center;
+}
+
+.cartTotal{
+  color: white;
+  padding-left: 55px;
+  padding-top: 17px;
+  height: 62px;
+}
+
+#confirmarCompra{
+  padding-left: 0px;
+
 }
 
 .addProductBox {
@@ -36,6 +63,7 @@
 }
 
 .cartProductPic {
+  padding-left: 35px;
   max-height: 10vh;
 }
 
@@ -44,7 +72,9 @@
 }
 
 .cartSingleProductBox {
-  background-color: whitesmoke;
+  background-color: rgb(87, 64, 82);
+  border-radius: 10px;
+  color: white;
   display: flex;
   margin-bottom: 5px;
 }
