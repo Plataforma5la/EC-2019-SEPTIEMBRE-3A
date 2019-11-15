@@ -92,7 +92,7 @@ function ProductList({
                 <TiThermometer key={Math.random()} />
                 ))
                 :
-                <p id="sinPuntuarList"> Este preducto aún no ha sido puntuado.</p>
+                <p id="sinPuntuarList"> Este producto aún no ha sido puntuado.</p>
                 }
 
                 </div>
