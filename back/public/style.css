@@ -354,6 +354,7 @@ body {
 }
 
 .singleReview {
+  border-bottom: solid;
   color: white;
 }
 
