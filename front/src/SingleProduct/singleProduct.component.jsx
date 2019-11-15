@@ -147,10 +147,15 @@ export default function({
                   Math.ceil(product.ratingValue / product.ratingCount)
                 ).map(() => <TiThermometer key={Math.random()} />)
               ) : (
-                <p id="sinPuntuar"> Este preducto aún no ha sido puntuado.</p>
+                <p id="sinPuntuar"> Este producto aún no ha sido puntuado.</p>
               )}
             </h4>
-            {}
+            {product.reviews
+              ? 
+                  product.reviews.map(review => <p key={Math.random()}>{review.content}</p>)
+                
+              : ""}
+            {/* <p>{review.content}</p>)}  */}
             <p className="singleProductDescription"> </p>
           </div>
         </div>

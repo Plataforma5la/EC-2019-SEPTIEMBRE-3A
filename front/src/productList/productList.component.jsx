@@ -31,6 +31,10 @@ function ProductList({
                   <h5 className="card-title">{product.name}</h5>
                   <h5 className="card-title">$ {product.price}</h5>
 
+                  {/* <h5 className="card-title">US$ {product.price}</h5>
+                  {(product.ratingCount>0) ? <TiThermometer /> : ' '}
+                  <h5 className="card-title">{(product.ratingCount>0) ? (product.ratingValue/product.ratingCount,2).toFixed(1) : ' '}</h5> */}
+                
                   {product.categories.map(category => (
                     <i key={category.id} className="card-title badge singleProductCategoriesTag badge-secondary">
                       {category.name}
@@ -42,7 +46,7 @@ function ProductList({
                 <TiThermometer key={Math.random()} />
                 ))
                 :
-                <p id="sinPuntuarList"> Este preducto aún no ha sido puntuado.</p>
+                <p id="sinPuntuarList"> Este producto aún no ha sido puntuado.</p>
                 }
                   </div>
                   <SnackbarProvider position="bottom">
