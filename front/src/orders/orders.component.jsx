@@ -13,7 +13,7 @@ export default function({
   return (
     <div className="container cartProductsContainer">
       {unAuthorized ? (
-        <h3>No podés pasar acá chanchuni</h3>
+        <h3>No podés pasar acá</h3>
       ) : (
         <div>
           <h3>Ver órdenes</h3>

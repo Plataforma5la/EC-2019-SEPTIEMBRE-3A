@@ -76,7 +76,7 @@
   overflow: hidden;
   flex-direction: row;
   background-color: rgb(87, 64, 82);
-  border-radius: 100px;
+  border-radius: 85px;
 }
 
 .singleProductDescription {
@@ -93,7 +93,7 @@
 }
 
 .singleProductPic {
-  max-height: 50vh;
+  max-height: 55vh;
   object-fit: contain;
   height: 2%;
 }
@@ -213,9 +213,11 @@ body {
 
 #botonEditarProducto {
   border-radius: 10px;
-  background-color: white;
-  color: black;
-  margin-top: 50px;
+  background-color: grey;
+  border: solid grey;
+  border: 0;
+  color: white;
+  margin: 0;
 }
 
 .productTitle {
@@ -302,11 +304,7 @@ body {
   width: 47px;
   height: 70px;
   border: 0;
-<<<<<<< HEAD
-  background: url("fire.png");
-=======
-  background: url('fire.gif');
->>>>>>> f8118205f1f0c1ae90c2865c4f454381c83fb759
+  background: url("fire.gif");
   cursor: pointer;
 }
 
@@ -314,10 +312,57 @@ body {
   width: 47px;
   height: 70px;
   border: 0;
-<<<<<<< HEAD
-  background: url("fire.png");
-=======
-  background: url('fire.gif');
->>>>>>> f8118205f1f0c1ae90c2865c4f454381c83fb759
+  background: url("fire.gif");
   cursor: pointer;
+}
+
+.singleProductCategoriesTag {
+  margin-right: 3px;
+}
+
+.categoriesTagContainer {
+  padding-left: 0px;
+  padding-top: 5px;
+}
+
+.addOrDeleteCategoryButton {
+  border-radius: 80px;
+  border: hidden;
+  background-color: grey;
+  color: white;
+}
+
+.BackgroundcolorGrayWhiteFont {
+  border: solid grey;
+  background-color: grey;
+  color: white;
+}
+
+#sinPuntuar {
+  font-size: 15px;
+  color: white;
+}
+
+#sinPuntuarList {
+  font-size: 10px;
+  margin-bottom: 7px;
+  color: white;
+}
+
+.singleProductReviewsBox {
+  border-left: solid grey;
+}
+
+.singleReview {
+  color: white;
+}
+
+.opiniones {
+  padding-top: 37px;
+}
+
+.trashSidebar {
+  margin-top: 8px;
+  margin-bottom: 6px;
+  padding: 0;
 }
