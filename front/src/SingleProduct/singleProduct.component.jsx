@@ -151,9 +151,13 @@ export default function({
               )}
             </h4>
             <h4 className="singleProductDescription opiniones">Opiniones:</h4>
-            {product.reviews ? (
+            {console.log(product.reviews)}
+            {product.reviews && product.reviews.length ? (
               product.reviews.map(review => (
                 <p className="singleReview" key={Math.random()}>
+                {_.range(
+                  Math.ceil(review.score)
+                ).map(() => <TiThermometer key={Math.random()} />)}
                   {review.content}
                 </p>
               ))
