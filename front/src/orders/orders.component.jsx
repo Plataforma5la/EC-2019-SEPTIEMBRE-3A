@@ -21,14 +21,22 @@ export default function({
         <div>
           <h3>Ver órdenes</h3>
           <form>
-            <select onChange={handleChange}>
+            <select
+              className="BackgroundcolorGrayWhiteFont"
+              onChange={handleChange}
+            >
               <option value="open">open</option>
               <option value="processing">processing</option>
               <option value="closed">closed</option>
               <option value="cancelled">cancelled</option>
             </select>
           </form>
-          <button onClick={() => filterOrders(selectedStatus)}>Filter</button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => filterOrders(selectedStatus)}
+          >
+            Filter
+          </button>
         </div>
       )}
       <Table striped bordered hover>
