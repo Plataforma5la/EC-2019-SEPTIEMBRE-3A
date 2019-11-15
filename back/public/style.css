@@ -302,11 +302,7 @@ body {
   width: 47px;
   height: 70px;
   border: 0;
-<<<<<<< HEAD
-  background: url("fire.png");
-=======
-  background: url('fire.gif');
->>>>>>> f8118205f1f0c1ae90c2865c4f454381c83fb759
+  background: url("fire.gif");
   cursor: pointer;
 }
 
@@ -314,10 +310,6 @@ body {
   width: 47px;
   height: 70px;
   border: 0;
-<<<<<<< HEAD
-  background: url("fire.png");
-=======
-  background: url('fire.gif');
->>>>>>> f8118205f1f0c1ae90c2865c4f454381c83fb759
+  background: url("fire.gif");
   cursor: pointer;
 }
