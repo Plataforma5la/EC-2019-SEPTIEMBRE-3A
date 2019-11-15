@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
+import { MdCancel } from "react-icons/md";
+import { FaCheck } from "react-icons/fa";
+
 export default function({
   orders,
   handleAccept,
@@ -13,7 +16,7 @@ export default function({
   return (
     <div className="container cartProductsContainer">
       {unAuthorized ? (
-        <h3>No podés pasar acá chanchuni</h3>
+        <h3>No podés pasar acá</h3>
       ) : (
         <div>
           <h3>Ver órdenes</h3>
@@ -35,6 +38,7 @@ export default function({
             <th>Buyer Email</th>
             <th>Total</th>
             <th>Status</th>
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody>
@@ -48,14 +52,25 @@ export default function({
                   {order.status}
                   {order.status === "processing" && (
                     <div>
-                      <button onClick={() => handleAccept(order)}>
-                        Accept
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => handleAccept(order)}
+                      >
+                        <FaCheck />
                       </button>
-                      <button onClick={() => handleCancel(order)}>
-                        Cancel
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => handleCancel(order)}
+                      >
+                        <MdCancel />
                       </button>
                     </div>
                   )}
+                </td>
+                <td>
+                  <Link to={`/order/${order.id}`}>
+                    <button className="btn btn-secondary">See more!</button>
+                  </Link>
                 </td>
               </tr>
             ))}

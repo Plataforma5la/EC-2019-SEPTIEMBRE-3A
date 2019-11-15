@@ -8,7 +8,7 @@ import {
   substractOfCartDbState,
   substractOfCartState
 } from "../store/actions/cart";
-import { fetchProductList, displayProduct } from "../store/actions/productList";
+import { fetchProductList, displayProduct, deleteProduct } from "../store/actions/productList";
 
 class ProductListContainer extends Component {
   constructor(props) {

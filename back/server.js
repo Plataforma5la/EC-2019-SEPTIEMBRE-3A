@@ -19,7 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 
-db.sync().then(() =>
+db.sync(/*{force:true}*/).then(() =>
   app.listen(6969, function() {
     console.log("Example app listening on port 6969!");
   })
