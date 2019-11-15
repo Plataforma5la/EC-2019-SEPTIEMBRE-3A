@@ -366,3 +366,17 @@ body {
   margin-bottom: 6px;
   padding: 0;
 }
+
+.editCategoryNames {
+  padding-top: 200px;
+  padding-left: 200px;
+  color: white;
+}
+
+.columCategoryEditTable {
+  color: white;
+}
+
+.categoriesNameColor {
+  color: white;
+}
