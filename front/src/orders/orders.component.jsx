@@ -14,7 +14,7 @@ export default function({
   unAuthorized
 }) {
   return (
-    <div className="container cartProductsContainer">
+    <div className="container cartProductsContainer columCategoryEditTable">
       {unAuthorized ? (
         <h3>No podés pasar acá</h3>
       ) : (
@@ -32,9 +32,9 @@ export default function({
         </div>
       )}
       <Table striped bordered hover>
-        <thead>
+        <thead className="columCategoryEditTable">
           <tr>
-            <th>#</th>
+            <th>Order Id</th>
             <th>Buyer Email</th>
             <th>Total</th>
             <th>Status</th>
@@ -45,10 +45,12 @@ export default function({
           {orders &&
             orders.map(order => (
               <tr key={order.id}>
-                <td>{order.id}</td>
-                <td>{order.buyer.email}</td>
-                <td>${order.preciototalalcomprar}</td>
-                <td>
+                <td className="columCategoryEditTable">{order.id}</td>
+                <td className="columCategoryEditTable">{order.buyer.email}</td>
+                <td className="columCategoryEditTable">
+                  ${order.preciototalalcomprar}
+                </td>
+                <td className="columCategoryEditTable">
                   {order.status}
                   {order.status === "processing" && (
                     <div>
@@ -76,7 +78,6 @@ export default function({
             ))}
         </tbody>
       </Table>
-      ;
     </div>
   );
 }

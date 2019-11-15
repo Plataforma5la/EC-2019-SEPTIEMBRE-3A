@@ -11,9 +11,9 @@ export default function({ history }) {
             {cart.products.map(product => (
               <div key={product.id}>
                 <p>Producto: {product.name}</p>
-                {cart.status==='closed'&&
-                <ReviewContainer productId={product.id}/>
-              }
+                {cart.status === "closed" && (
+                  <ReviewContainer productId={product.id} />
+                )}
               </div>
             ))}
           </div>
