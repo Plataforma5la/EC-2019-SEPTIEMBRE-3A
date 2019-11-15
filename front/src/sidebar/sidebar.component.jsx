@@ -25,7 +25,7 @@ export default function({
         <ul className="list-unstyled">
           {categories.map(category => {
             return (
-              <div key={category.id}>
+              <div key={category.id} style={{marginLeft:0}} className="row">
                 <li
                   className="playlist-item menu-item"
                   onClick={() => FilterbyCategory(category.id)}
@@ -40,7 +40,7 @@ export default function({
                   <button
                     onClick={e => handleDelete(category)}
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn trashSidebar btn-secondary"
                   >
                     <GoTrashcan />
                   </button>
@@ -54,19 +54,19 @@ export default function({
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
-                placeholder="Category"
+                placeholder="Agregar categoría"
                 value={newCategory}
                 onChange={e => handleChange(e)}
               />
             </form>
             <Link to={"/newproduct"}>
               <button type="button" className="navButton btn btn-drk btn-sm">
-                Add Product!
+                Agregar roducto
               </button>
             </Link>
             <Link to={"/editcategory"}>
               <button type="button" className="navButton btn btn-drk btn-sm">
-                Edit Category!
+                Editar categoría
               </button>
             </Link>
           </div>
