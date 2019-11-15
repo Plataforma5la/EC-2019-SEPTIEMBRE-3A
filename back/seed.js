@@ -4,7 +4,7 @@ const db = require("./config/db");
 const User = require("./models/user");
 const Review = require("./models/reviews");
 
-db.sync().then(() => {
+db.sync({force:true}).then(() => {
   User.create({
     username: "isAdmin",
     password: "asd",
