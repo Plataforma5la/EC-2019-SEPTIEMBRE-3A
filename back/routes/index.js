@@ -9,7 +9,7 @@ const adminRouter = require("./admin");
 const mailerRouter = require("./mailer");
 const orderRouter = require("./orders");
 const reviewsRouter = require("./reviews");
-const fbRouter = require("./fbLogin")
+
 
 router.use("/users", userRouter);
 router.use("/me", meRouter);
@@ -21,6 +21,6 @@ router.use("/admin", adminRouter);
 router.use("/mailer", mailerRouter);
 router.use("/orders", orderRouter);
 router.use("/reviews", reviewsRouter);
-router.use("/auth/facebook", fbRouter)
+
 
 module.exports = router;

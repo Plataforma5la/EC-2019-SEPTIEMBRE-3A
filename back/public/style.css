@@ -313,3 +313,29 @@ body {
   background: url('fire.png');
   cursor: pointer;
 }
+
+.fbLoginWrapper{ 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.fbLoginButton{
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px 0;
+  padding: 0.75rem;
+  text-align: center;
+  text-shadow: none;
+  cursor: pointer;
+  width: 250px;
+  color: white !important;
+  background: #3b5998;
+  border-color: #3b5998;
+}
+
+.fbLoginButton:hover{
+  color: #ccc
+}

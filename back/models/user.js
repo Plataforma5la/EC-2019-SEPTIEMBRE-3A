@@ -10,12 +10,6 @@ User.init(
       type: S.STRING,
       allowNull: false
     },
-    token: {
-      type: S.STRING,
-    },
-    fbID: {
-      type: S.STRING,
-    },
     password: {
       type: S.STRING,
       allowNull: false

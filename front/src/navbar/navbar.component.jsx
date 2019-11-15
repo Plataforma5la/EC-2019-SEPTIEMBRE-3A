@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import RegisterContainer from "../register/register.container";
 import LoginContainer from "../login/login.container";
+import FbLogin from "../fbLogin/loginButton.component"
 
 export default function MenuAppBar(props) {
   return (
@@ -69,35 +70,18 @@ export default function MenuAppBar(props) {
           </div>
         ) : (
             <div className="col-3 loginRegisterContainer">
+              <FbLogin registerUser={props.registerUser} />
+              <span> </span>
               <LoginContainer />
               <span> </span>
               <span> </span>
               <RegisterContainer />
-              <a href="/auth/facebook/callback" className="btn btn-primary"><span className="fa fa-facebook"></span>Facebook Login</a>
             </div>
           )}
       </Navbar>
-    </div>
+
+    </div >
   );
 }
 
-{
-  /* {props.user.username ? (
-                  <div id="bienvenido" className="textoNavbar">
-                    <Button className="navButton" onClick={props.handleLogOut}>
-                      Logout
-                    </Button>
-                  </div>
-                ) : (
-                  <div>
-                    <LoginContainer />
-                    <span> </span>
-                    <RegisterContainer />
-                  </div>
-                )}
-                {props.user.username ? (
-                  <h1 className="textoNavbar">
-                    BienvenidX.X.X {props.user.username}
-                  </h1>
-                ) : null} */
-}
+
