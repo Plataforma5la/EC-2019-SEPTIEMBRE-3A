@@ -25,7 +25,7 @@ export default function({
         <ul className="list-unstyled">
           {categories.map(category => {
             return (
-              <div key={category.id}>
+              <div key={category.id} style={{marginLeft:0}} className="row">
                 <li
                   className="playlist-item menu-item"
                   onClick={() => FilterbyCategory(category.id)}
@@ -40,7 +40,7 @@ export default function({
                   <button
                     onClick={e => handleDelete(category)}
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn trashSidebar btn-secondary"
                   >
                     <GoTrashcan />
                   </button>
@@ -49,24 +49,24 @@ export default function({
             );
           })}
         </ul>
-        {!user.isAdmin && (
+        {user.isAdmin && (
           <div>
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
-                placeholder="Category"
+                placeholder="Agregar categoría"
                 value={newCategory}
                 onChange={e => handleChange(e)}
               />
             </form>
             <Link to={"/newproduct"}>
-              <button type="button" className="navButton btn btn-drk btn-sm">
-                Add Product!
+              <button type="button" className="adminButton btn btn-drk btn-sm">
+                Agregar roducto
               </button>
             </Link>
             <Link to={"/editcategory"}>
-              <button type="button" className="navButton btn btn-drk btn-sm">
-                Edit Category!
+              <button type="button" className="adminButton btn btn-drk btn-sm">
+                Editar categoría
               </button>
             </Link>
           </div>
@@ -74,42 +74,4 @@ export default function({
       </section>
     </div>
   );
-}
-
-{
-  /* <div>
-<nav id="sidebar">
-  <div class="sidebar-header">
-    <h3>BOOTSTRAP SIDEBAR</h3>
-  </div>
-
-  <ul class="list-unstyled components">
-    <p>Dummy Heading</p>
-
-    <li>
-      <a href="#">About</a>
-    </li>
-
-    <li>
-      <a href="#">Services</a>
-    </li>
-    <li>
-      <a href="#">Contact Us</a>
-    </li>
-  </ul>
-
-  <ul class="list-unstyled CTAs">
-    <li>
-      <a href="#" class="download">
-        Download code
-      </a>
-    </li>
-    <li>
-      <a href="#" class="article">
-        article
-      </a>
-    </li>
-  </ul>
-</nav>
-</div> */
 }

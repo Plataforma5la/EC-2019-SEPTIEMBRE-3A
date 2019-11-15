@@ -22,16 +22,22 @@ export default function MenuAppBar(props) {
         </div>
         {props.user.username ? (
           <div className="col-3">
-            <h4 className="textoNavbar">
-              BienvenidX.X.X {props.user.username}
-            </h4>
+            {props.user.isAdmin ? (
+              <h4 className="textoNavbarAdmin">
+                Hello Master {props.user.username}
+              </h4>
+            ) : (
+                <h4 className="textoNavbar">
+                  Bienvenidx.x.x {props.user.username}
+                </h4>
+              )}
             {props.user.isAdmin ? (
               <Link to="orders">
-                <button>Ver órdenes</button>
+                <button className="adminButton">Ver órdenes</button>
               </Link>
             ) : (
                 <Link to="/history">
-                  <button>Ver Historial de Compra</button>
+                  <button className="navButton">Ver Historial de Compra</button>
                 </Link>
               )}
           </div>
@@ -51,11 +57,11 @@ export default function MenuAppBar(props) {
           </Form>
           {props.user.isAdmin ? (
             <Link to="/users">
-              <button>Ver usuarios</button>
+              <button className=" adminButton verUsuarios">Ver usuarios</button>
             </Link>
           ) : (
               <Link to="/cart">
-                <button>carrito</button>
+                <button className="navButton verCarrito">carrito</button>
               </Link>
             )}
         </div>

@@ -4,6 +4,9 @@ import { TiThermometer } from "react-icons/ti";
 import { GoTrashcan } from "react-icons/go";
 import { IoIosEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import _ from "lodash"
+
+import { SnackbarProvider, wrapComponent } from 'react-snackbar-alert';
 
 function ProductList({
   products,
@@ -26,26 +29,37 @@ function ProductList({
                 </Link>
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
-                  <h5 className="card-title">{product.price}</h5>
-                  <h5 className="card-title">{product.ratingValue}</h5>
+                  <h5 className="card-title">$ {product.price}</h5>
+
+                  {/* <h5 className="card-title">US$ {product.price}</h5>
+                  {(product.ratingCount>0) ? <TiThermometer /> : ' '}
+                  <h5 className="card-title">{(product.ratingCount>0) ? (product.ratingValue/product.ratingCount,2).toFixed(1) : ' '}</h5> */}
+                
                   {product.categories.map(category => (
-                    <i key={category.id} className="card-title">
-                      #{category.name}
+                    <i key={category.id} className="card-title badge singleProductCategoriesTag badge-secondary">
+                      {category.name}
                     </i>
                   ))}
                   <br></br>
                   <div>
-                    <TiThermometer />
-                    <TiThermometer />
-                    <TiThermometer />
+                  {product.ratingCount? (_.range( Math.ceil(product.ratingValue / product.ratingCount)).map(()=>
+                <TiThermometer key={Math.random()} />
+                ))
+                :
+                <p id="sinPuntuarList"> Este producto aún no ha sido puntuado.</p>
+                }
                   </div>
-                  <button
+                  <SnackbarProvider position="bottom">
+                    <Container handleAddToCart={handleAddToCart} product={product} message='Agregado al carrito!'/>
+                  </SnackbarProvider>
+                  {/* <button
                     type="button"
                     className="btn btn-secondary"
                     onClick={() => handleAddToCart(product)}
                   >
                     Deseo
-                  </button>
+                  </button> */}
+                 
                 </div>
                 <br></br>
                 <br></br>
@@ -64,19 +78,23 @@ function ProductList({
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
 
-                <h5 className="card-title">{product.price}</h5>
+                <h5 className="card-title">$ {product.price}</h5>
 
-                <h5 className="card-title">{product.ratingValue}</h5>
+               
                 {product.categories.map(category => (
-                  <i key={category.id} className="card-title">
-                    #{category.name}
+                  <i key={category.id} className="card-title badge singleProductCategoriesTag badge-secondary">
+                    {category.name}
                   </i>
                 ))}
                 <br></br>
                 <div>
-                  <TiThermometer />
-                  <TiThermometer />
-                  <TiThermometer />
+                {product.ratingCount? (_.range( Math.ceil(product.ratingValue / product.ratingCount)).map(()=>
+                <TiThermometer key={Math.random()} />
+                ))
+                :
+                <p id="sinPuntuarList"> Este producto aún no ha sido puntuado.</p>
+                }
+
                 </div>
                 <div>
                   <button
@@ -119,3 +137,25 @@ function ProductList({
 }
 
 export default ProductList;
+
+
+const Container = wrapComponent(function({ createSnackbar, handleAddToCart, product, message }) {
+  function showSnackbar() {
+    createSnackbar({
+      message: message,
+      dismissable: false,
+      pauseOnHover: false,
+      progressBar: false,
+      sticky: false,
+      theme: 'success',
+      timeout: 2000
+    });
+  }
+
+  return (
+    <div>
+      <button type="button" className="btn btn-secondary"
+      onClick={()=>{showSnackbar(); handleAddToCart(product)}}>Lo deseo!</button>
+    </div>
+  );
+});

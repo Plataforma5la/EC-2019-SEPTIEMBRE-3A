@@ -1,8 +1,8 @@
-.oneLessToCart{
-border-radius: 50%;
+.oneLessToCart {
+  border-radius: 50%;
 }
 
-.oneMoreToCart{
+.oneMoreToCart {
   border-radius: 50%;
 }
 
@@ -45,7 +45,7 @@ border-radius: 50%;
 
 .cartSingleProductBox {
   background-color: whitesmoke;
-  display:flex;
+  display: flex;
   margin-bottom: 5px;
 }
 
@@ -60,6 +60,9 @@ border-radius: 50%;
 .textoNavbar {
   color: white;
 }
+.textoNavbarAdmin {
+  color: gold;
+}
 .shoppingCart {
   color: black;
 }
@@ -73,7 +76,7 @@ border-radius: 50%;
   overflow: hidden;
   flex-direction: row;
   background-color: rgb(87, 64, 82);
-  border-radius: 100px;
+  border-radius: 85px;
 }
 
 .singleProductDescription {
@@ -90,7 +93,7 @@ border-radius: 50%;
 }
 
 .singleProductPic {
-  max-height: 50vh;
+  max-height: 55vh;
   object-fit: contain;
   height: 2%;
 }
@@ -156,7 +159,7 @@ body {
   text-align: center;
   display: inline-flex;
   margin: 5px;
-  height: 400px;
+  height: 450px;
   border-radius: 25px;
 }
 .img {
@@ -210,9 +213,11 @@ body {
 
 #botonEditarProducto {
   border-radius: 10px;
-  background-color: white;
-  color: black;
-  margin-top: 50px;
+  background-color: grey;
+  border: solid grey;
+  border: 0;
+  color: white;
+  margin: 0;
 }
 
 .productTitle {
@@ -240,7 +245,6 @@ body {
   background-color: #600624;
   margin-right: 10px;
 }
-
 
 .paginaprincipal {
   position: sticky;
@@ -272,8 +276,6 @@ body {
   padding-left: 200px;
 }
 
-
-
 /* Slider Style */
 
 .slidecontainer {
@@ -288,8 +290,8 @@ body {
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .slider:hover {
@@ -299,18 +301,18 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
-  background: url('fire.png');
+  background: url("fire.gif");
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 70px;
+  width: 47px;
   height: 70px;
   border: 0;
-  background: url('fire.png');
+  background: url("fire.gif");
   cursor: pointer;
 }
 
@@ -338,4 +340,70 @@ body {
 
 .fbLoginButton:hover{
   color: #ccc
+}
+.singleProductCategoriesTag {
+  margin-right: 3px;
+}
+
+.categoriesTagContainer {
+  padding-left: 0px;
+  padding-top: 5px;
+}
+
+.addOrDeleteCategoryButton {
+  border-radius: 80px;
+  border: hidden;
+  background-color: grey;
+  color: white;
+}
+
+.BackgroundcolorGrayWhiteFont {
+  border: solid grey;
+  background-color: grey;
+  color: white;
+}
+
+#sinPuntuar {
+  font-size: 15px;
+  color: white;
+}
+
+#sinPuntuarList {
+  font-size: 10px;
+  margin-bottom: 7px;
+  color: white;
+}
+
+.singleProductReviewsBox {
+  border-left: solid grey;
+}
+
+.singleReview {
+  border-bottom: solid;
+  color: white;
+}
+
+.opiniones {
+  padding-top: 37px;
+}
+
+.trashSidebar {
+  margin-top: 8px;
+  margin-bottom: 6px;
+  padding: 0;
+}
+
+.verCarrito{
+margin-top: 5px;
+}
+
+.verUsuarios{
+  margin-top: 5px;
+}
+
+.adminButton{
+  border-radius: 10px;
+  background-color: gold;
+  color: black !important;
+  border: solid gold;
 }

@@ -15,6 +15,4 @@ router.get("/:productid", function(req, res) {
   });
 });
 
-
-
 module.exports = router;

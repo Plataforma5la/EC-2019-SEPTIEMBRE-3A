@@ -1,51 +1,82 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
+import { MdCancel } from "react-icons/md";
+import { FaCheck } from "react-icons/fa";
 
-export default function ({
+export default function({
   orders,
   handleAccept,
   handleCancel,
   handleChange,
   filterOrders,
-  selectedStatus
+  selectedStatus,
+  unAuthorized
 }) {
   return (
     <div className="container cartProductsContainer">
-      <form>
-        <select onChange={handleChange}>
-          <option value="open">open</option>
-          <option value="processing">processing</option>
-          <option value="open">open</option>
-          <option value="cancelled">cancelled</option>
-        </select>
-      </form>
-      <button onClick={() => filterOrders(selectedStatus)}>Filter</button>
-      {orders &&
-        orders.map(order => (
-          <div key={order.id} className="cartSingleProductBox">
-            <h3>Order ID: {order.id}</h3>
-
-            <div>
-              <p>Status: {order.status}</p>
-              <p>EMAIL: {order.buyer.email}</p>
-
-
-              {order.status === "processing" && (
-                <div>
-                  <button onClick={() => handleAccept(order)}>
-                    Accept Order
-                  </button>
-                  <button onClick={() => handleCancel(order)}>
-                    Cancel Order
-                  </button>
-                </div>
-              )}
-              <Link to={`/order/${order.id}`}>
-                <button>See detail</button>
-              </Link>
-            </div>
-          </div>
-        ))}
+      {unAuthorized ? (
+        <h3>No podés pasar acá</h3>
+      ) : (
+        <div>
+          <h3>Ver órdenes</h3>
+          <form>
+            <select onChange={handleChange}>
+              <option value="open">open</option>
+              <option value="processing">processing</option>
+              <option value="closed">closed</option>
+              <option value="cancelled">cancelled</option>
+            </select>
+          </form>
+          <button onClick={() => filterOrders(selectedStatus)}>Filter</button>
+        </div>
+      )}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Buyer Email</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders &&
+            orders.map(order => (
+              <tr key={order.id}>
+                <td>{order.id}</td>
+                <td>{order.buyer.email}</td>
+                <td>${order.preciototalalcomprar}</td>
+                <td>
+                  {order.status}
+                  {order.status === "processing" && (
+                    <div>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => handleAccept(order)}
+                      >
+                        <FaCheck />
+                      </button>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => handleCancel(order)}
+                      >
+                        <MdCancel />
+                      </button>
+                    </div>
+                  )}
+                </td>
+                <td>
+                  <Link to={`/order/${order.id}`}>
+                    <button className="btn btn-secondary">See more!</button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
+      ;
     </div>
   );
 }

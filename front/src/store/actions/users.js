@@ -11,13 +11,31 @@ export const fetchUsers = () => dispatch =>
     .then(res => res.data)
     .then(users => {
       dispatch(receiveUsers(users));
+    })
+    .catch(err => {
+      throw err;
     });
 
-
-export const setUserAsAdmin = (user) => dispatch =>
+export const setUserAsAdmin = user => dispatch =>
   axios
     .put(`/api/users/${user.id}`)
-    .then((res) => res.data)
+    .then(res => res.data)
     .then(users => {
-      dispatch(receiveUsers(users))
-    })
+      dispatch(receiveUsers(users));
+    });
+
+export const removeAdmin = user => dispatch =>
+  axios
+    .put(`/api/users/noadmin/${user.id}`)
+    .then(res => res.data)
+    .then(users => {
+      dispatch(receiveUsers(users));
+    });
+
+export const deleteUser = user => dispatch =>
+  axios
+    .delete("/api/admin/deleteuser", { data: user })
+    .then(res => res.data)
+    .then(users => {
+      dispatch(receiveUsers(users));
+    });
